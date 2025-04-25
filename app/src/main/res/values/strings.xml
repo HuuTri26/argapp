@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">AgrStore</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Password</string>
+    <string name="login_label">Login</string>
+    <string name="login_btn_label">LOGIN</string>
+    <!--    <string name="not_registered_yed_label">Not yet registered? SignUp Now</string>-->
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_page_label">Sign up</string>
+    <string name="already_have_an_account_label">Already have an account? Log in</string>
+    <string name="first_name_hint">First name</string>
+    <string name="last_name_hint">Last name</string>
+    <string name="confirm_password_hint">Confirm password</string>
+    <string name="phone_number">Phone number</string>
+    <string name="phone_number_prefix">+972</string>
+    <string name="category_name">Category Name</string>
+    <string name="item_name">Item Name</string>
+    <string name="item_price">9.90</string>
+    <string name="ils_symbol">₪</string>
+    <string name="menu_home">Home</string>
+    <string name="menu_shopping_cart">Shopping Cart</string>
+    <string name="menu_liked_items_list">Liked Items</string>
+    <string name="menu_search">Search</string>
+
+</resources>

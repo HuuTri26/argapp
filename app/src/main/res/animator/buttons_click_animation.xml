@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Move Upward Slightly -->
+    <objectAnimator
+        android:propertyName="translationY"
+        android:duration="500"
+        android:valueFrom="0"
+        android:valueTo="-5dp" />
+
+    <!-- Move Back Down -->
+    <objectAnimator
+        android:propertyName="translationY"
+        android:duration="500"
+        android:startDelay="500"
+        android:valueFrom="-5dp"
+        android:valueTo="0" />
+
+</set>
