@@ -17,5 +17,9 @@
         android:icon="@drawable/liked_items_bar_button_selector"
         android:title="@string/menu_liked_items_list"/>
 
+    <item android:id="@+id/profileBarButton"
+        android:icon="@drawable/menu_icon_person_24"
+        android:title="@string/menu_account"/>
+
 
 </menu>

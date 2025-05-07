@@ -23,5 +23,6 @@
     <string name="menu_shopping_cart">Shopping Cart</string>
     <string name="menu_liked_items_list">Liked Items</string>
     <string name="menu_search">Search</string>
+    <string name="menu_account">Profile</string>
 
 </resources>
