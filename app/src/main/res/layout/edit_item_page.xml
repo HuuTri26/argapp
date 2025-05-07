@@ -167,4 +167,132 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Phần mô tả sản phẩm -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/descriptionScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="40dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/ratingButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mô tả sản phẩm"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserratbold"
+                android:textColor="@color/black"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/itemDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đây là mô tả chi tiết về sản phẩm. Mô tả bao gồm các thông tin như nguồn gốc, thành phần, cách sử dụng và các lợi ích của sản phẩm."
+                android:textSize="16sp"
+                android:textColor="#333333"/>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Nút gọi đánh giá sản phẩm -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ratingButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Đánh giá sản phẩm"
+        android:textColor="@color/white"
+        android:backgroundTint="#43C736"
+        app:cornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <!-- Phần đánh giá và feedback sản phẩm (ẩn mặc định) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/feedbackSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đánh giá sản phẩm"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserratbold"
+                android:textColor="@color/black"/>
+
+            <ImageButton
+                android:id="@+id/closeRatingButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="-30dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="Đóng"/>
+
+            <RatingBar
+                android:id="@+id/productRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="0.5"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/feedbackInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nhập nhận xét của bạn"
+                    android:inputType="textMultiLine"
+                    android:minLines="2"
+                    android:maxLines="4"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitFeedbackButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Gửi đánh giá"
+                android:textColor="@color/white"
+                android:backgroundTint="#43C736"
+                app:cornerRadius="4dp"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
