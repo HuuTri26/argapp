@@ -77,7 +77,19 @@
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView" />
-
+    <!-- Thêm TextView này cùng phần hiển thị giá, sau TextView itemPrice -->
+    <TextView
+        android:id="@+id/itemUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16sp"
+        android:fontFamily="@font/montserratbold"
+        android:textColor="@color/black"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/itemPrice"
+        app:layout_constraintTop_toTopOf="@+id/itemPrice"
+        app:layout_constraintBottom_toBottomOf="@+id/itemPrice" />
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
@@ -201,7 +213,37 @@
                 android:layout_height="wrap_content"
                 android:text="Đây là mô tả chi tiết về sản phẩm. Mô tả bao gồm các thông tin như nguồn gốc, thành phần, cách sử dụng và các lợi ích của sản phẩm."
                 android:textSize="16sp"
-                android:textColor="#333333"/>
+                android:textColor="#333333"
+                android:layout_marginBottom="16dp"/>
+
+            <!-- Phần đánh giá và bình luận của khách hàng -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Đánh giá từ khách hàng"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/montserratbold"
+                android:textColor="@color/black"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/reviewsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"/>
+
+            <TextView
+                android:id="@+id/noReviewsText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Chưa có đánh giá nào cho sản phẩm này"
+                android:textSize="16sp"
+                android:textColor="#666666"
+                android:textAlignment="center"
+                android:padding="16dp"
+                android:visibility="gone"/>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
