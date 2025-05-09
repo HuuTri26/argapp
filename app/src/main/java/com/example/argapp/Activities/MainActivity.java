@@ -113,6 +113,11 @@ public class MainActivity extends AppCompatActivity {
                     m_NavContorller.navigate(R.id.searchPage);
                     isHandled = true;
                 }
+                else if(itemId == R.id.profileBarButton)
+                {
+                    m_NavContorller.navigate(R.id.profilePage);
+                    isHandled = true;
+                }
 
                 return isHandled;
             }
@@ -135,12 +140,16 @@ public class MainActivity extends AppCompatActivity {
             {
                 m_BottomNavigationView.getMenu().findItem(R.id.searchBarButton).setChecked(true);
             }
-            else {
+            else if (destinationId == R.id.profileBarButton)
+            {
+                m_BottomNavigationView.getMenu().findItem(R.id.profileBarButton).setChecked(true);
+            } else {
                 // Bỏ đánh dấu tất cả các nút nếu fragment hiện tại không phải là một trong các fragment chính
                 m_BottomNavigationView.getMenu().findItem(R.id.homeButton).setChecked(false);
                 m_BottomNavigationView.getMenu().findItem(R.id.shoppingCartBarButton).setChecked(false);
                 m_BottomNavigationView.getMenu().findItem(R.id.likedItemsBarButton).setChecked(false);
                 m_BottomNavigationView.getMenu().findItem(R.id.searchBarButton).setChecked(false);
+                m_BottomNavigationView.getMenu().findItem(R.id.profileBarButton).setChecked(false);
             }
         });
     }

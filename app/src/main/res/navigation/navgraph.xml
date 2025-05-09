@@ -15,27 +15,27 @@
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out"/>
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_login_page_to_categories_page"
             app:destination="@id/categories_page"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out"/>
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/signup_page"
         android:name="com.example.argapp.Fragments.SignUp"
         android:label="signup_page"
-        tools:layout="@layout/signup_page" >
+        tools:layout="@layout/signup_page">
         <action
             android:id="@+id/action_signup_page_to_login_page"
             app:destination="@id/login_page"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out"/>
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/categories_page"
@@ -48,27 +48,27 @@
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out"/>
+            app:popExitAnim="@anim/fade_out" />
         <action
             android:id="@+id/action_categories_page_to_category_items_page"
             app:destination="@id/category_items"
             app:enterAnim="@anim/fade_in"
             app:exitAnim="@anim/fade_out"
             app:popEnterAnim="@anim/fade_in"
-            app:popExitAnim="@anim/fade_out"/>
+            app:popExitAnim="@anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/category_items"
         android:name="com.example.argapp.Fragments.CategoryItems"
         android:label="category_items"
-        tools:layout="@layout/category_items_page" >
+        tools:layout="@layout/category_items_page">
         <action
             android:id="@+id/action_category_items_page_to_edit_item_page"
             app:destination="@id/editItem"
             app:enterAnim="@anim/slide_in_up"
             app:exitAnim="@anim/slide_out_down"
             app:popEnterAnim="@anim/slide_in_up"
-            app:popExitAnim="@anim/slide_out_down"/>
+            app:popExitAnim="@anim/slide_out_down" />
     </fragment>
     <fragment
         android:id="@+id/editItem"
@@ -79,41 +79,120 @@
         android:id="@+id/shoppingCartPage"
         android:name="com.example.argapp.Fragments.ShoppingCartPage"
         android:label="shopping_cart_page"
-        tools:layout="@layout/shopping_cart_page" >
+        tools:layout="@layout/shopping_cart_page">
         <action
             android:id="@+id/action_shoppingCartPage_to_editItem"
             app:destination="@id/editItem"
             app:enterAnim="@anim/slide_in_up"
             app:exitAnim="@anim/slide_out_down"
             app:popEnterAnim="@anim/slide_in_up"
-            app:popExitAnim="@anim/slide_out_down"/>
+            app:popExitAnim="@anim/slide_out_down" />
     </fragment>
     <fragment
         android:id="@+id/likedItemsPage"
         android:name="com.example.argapp.Fragments.LikedItemsPage"
         android:label="liked_items_page"
-        tools:layout="@layout/liked_items_page" >
+        tools:layout="@layout/liked_items_page">
         <action
             android:id="@+id/action_likedItemsPage_to_editItem"
             app:destination="@id/editItem"
             app:enterAnim="@anim/slide_in_up"
             app:exitAnim="@anim/slide_out_down"
             app:popEnterAnim="@anim/slide_in_up"
-            app:popExitAnim="@anim/slide_out_down"/>
+            app:popExitAnim="@anim/slide_out_down" />
     </fragment>
     <fragment
         android:id="@+id/searchPage"
         android:name="com.example.argapp.Fragments.SearchPage"
         android:label="search_page"
-        tools:layout="@layout/search_page" >
+        tools:layout="@layout/search_page">
         <action
             android:id="@+id/action_searchPage_to_editItem"
             app:destination="@id/editItem"
             app:enterAnim="@anim/slide_in_up"
             app:exitAnim="@anim/slide_out_down"
             app:popEnterAnim="@anim/slide_in_up"
-            app:popExitAnim="@anim/slide_out_down"/>
+            app:popExitAnim="@anim/slide_out_down" />
     </fragment>
+  
+    <!--    <fragment-->
+    <!--        android:id="@+id/profilePage"-->
+    <!--        android:name="com.example.argapp.Fragments.ProfilePage"-->
+    <!--        android:label="profile_page"-->
+    <!--        tools:layout="@layout/fragment_profile_page" >-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_profilePage_to_editItem"-->
+    <!--            app:destination="@id/profilePage"-->
+    <!--            app:enterAnim="@anim/slide_in_up"-->
+    <!--            app:exitAnim="@anim/slide_out_down"-->
+    <!--            app:popEnterAnim="@anim/slide_in_up"-->
+    <!--            app:popExitAnim="@anim/slide_out_down"/>-->
+    <!--    </fragment>-->
+    <!--    <fragment-->
+    <!--        android:id="@+id/profileDetail"-->
+    <!--        android:name="com.example.argapp.Fragments.ProfileDetailFragment"-->
+    <!--        android:label="profile_detail"-->
+    <!--        tools:layout="@layout/fragment_profile_detail" >-->
+    <!--        <action-->
+    <!--            android:id="@+id/action_profilePage_to_profile_detail"-->
+    <!--            app:destination="@id/profileDetail"-->
+    <!--            app:enterAnim="@anim/slide_in_up"-->
+    <!--            app:exitAnim="@anim/slide_out_down"-->
+    <!--            app:popEnterAnim="@anim/slide_in_up"-->
+    <!--            app:popExitAnim="@anim/slide_out_down"/>-->
+    <!--    </fragment>-->
+    <fragment
+        android:id="@+id/profilePage"
+        android:name="com.example.argapp.Fragments.ProfilePage"
+        android:label="profile_page"
+        tools:layout="@layout/fragment_profile_page">
+
+        <!--  action chuyển sang profile detail -->
+        <action
+            android:id="@+id/action_profilePage_to_profile_detail"
+            app:destination="@id/profileDetail"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down" />
+
+        <!-- Action sang ChangePassword -->
+        <action
+            android:id="@+id/action_profilePage_to_changePassword"
+            app:destination="@id/changePassword"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down" />
+
+        <!-- Action sang orderBill history -->
+        <action
+            android:id="@+id/action_homeFragment_to_orderBillFragment"
+            app:destination="@id/orderBillHistory"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileDetail"
+        android:name="com.example.argapp.Fragments.ProfileDetailFragment"
+        android:label="profile_detail"
+        tools:layout="@layout/fragment_profile_detail" />
+
+    <fragment
+        android:id="@+id/changePassword"
+        android:name="com.example.argapp.Fragments.ChangePasswordFragment"
+        android:label="Change Password"
+        tools:layout="@layout/fragment_change_password" />
+
+    <fragment
+        android:id="@+id/orderBillHistory"
+        android:name="com.example.argapp.Fragments.OrderHistoryFragment"
+        android:label="OrderBill history"
+        tools:layout="@layout/fragment_order_history" />
+
     <fragment
         android:id="@+id/emailVerification"
         android:name="com.example.argapp.Fragments.SendOTPVerifyGmail"
@@ -129,4 +208,5 @@
         android:name="com.example.argapp.Fragments.OTPVerify"
         android:label="OTP Verification"
         tools:layout="@layout/otp_verify_gmail" />
+
 </navigation>
