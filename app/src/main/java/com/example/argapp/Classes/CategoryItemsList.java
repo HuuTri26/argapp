@@ -35,9 +35,21 @@ public class CategoryItemsList
                     String itemName = itemSnapshot.child("Name").getValue(String.class);
                     Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
                     String itemImage = itemSnapshot.child("Image").getValue(String.class);
+                    String itemDescription = itemSnapshot.child("Description").getValue(String.class);
+                    String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
+
+
                     int itemQuantity = 0;
 
                     Item item = new Item(itemName, itemPrice, itemQuantity, itemImage);
+
+                    // Thiết lập các trường mới nếu có dữ liệu
+                    if (itemDescription != null) {
+                        item.setDescription(itemDescription);
+                    }
+                    if (itemUnit != null) {
+                        item.setUnit(itemUnit);
+                    }
                     m_CategoryItems.add(item);
                 }
 
@@ -70,9 +82,19 @@ public class CategoryItemsList
                         String itemName = itemSnapshot.child("Name").getValue(String.class);
                         Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
                         String itemImage = itemSnapshot.child("Image").getValue(String.class);
+                        String itemDescription = itemSnapshot.child("Description").getValue(String.class);
+                        String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
                         int itemQuantity = 0;
 
                         Item item = new Item(itemName, itemPrice, itemQuantity, itemImage);
+                        // Thiết lập các trường mới nếu có dữ liệu
+                        if (itemDescription != null) {
+                            item.setDescription(itemDescription);
+                        }
+
+                        if (itemUnit != null) {
+                            item.setUnit(itemUnit);
+                        }
                         m_AllItems.add(item);
                     }
                 }

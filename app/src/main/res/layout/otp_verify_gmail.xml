@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xác nhận OTP"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#1565C0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="48dp"/>
+
+    <TextView
+        android:id="@+id/otpVerificationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vui lòng nhập mã OTP đã gửi đến email của bạn"
+        android:textSize="16sp"
+        android:textColor="#757575"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@id/titleText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="24dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/otpInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        app:layout_constraintTop_toBottomOf="@id/otpVerificationLabel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        app:startIconDrawable="@android:drawable/ic_lock_idle_lock">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/otpInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nhập mã OTP"
+            android:inputType="number"
+            android:maxLength="6"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    
+    <TextView
+        android:id="@+id/resendOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gửi lại mã OTP"
+        android:textColor="#1565C0"
+        android:textSize="14sp"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/otpInputLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/verifyOtpButton"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="Xác nhận"
+        android:textSize="16sp"
+        android:layout_marginTop="32dp"
+        app:cornerRadius="8dp"
+        app:layout_constraintTop_toBottomOf="@id/resendOtp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

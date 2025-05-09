@@ -71,4 +71,13 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth'         // Authentication
     implementation 'com.google.firebase:firebase-storage'      // Storage
 
+    implementation 'com.google.android.material:material:1.9.0'
+    // Navigation Component
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
+
+    // ConstraintLayout
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }
