@@ -15,10 +15,8 @@ import com.example.argapp.Classes.Item;
 import com.example.argapp.Classes.ShoppingCart;
 import com.example.argapp.Interfaces.OnItemListener;
 import com.example.argapp.R;
-
 import java.util.HashMap;
 import java.util.List;
-
 /**
  * Adapter tùy chỉnh để hiển thị danh sách các sản phẩm của một danh mục trong RecyclerView
  * Xử lý hiển thị thông tin sản phẩm và các tương tác (yêu thích, thêm vào giỏ hàng)
@@ -81,9 +79,15 @@ public class CategoryItemsAdapter extends RecyclerView.Adapter<CategoryItemsAdap
         holder.m_CategoryItemName.setText(categoryItem.getName());
 
         // Định dạng và hiển thị giá sản phẩm với 2 chữ số thập phân
+       // double price = categoryItem.getPrice();
+      //  holder.m_CategoryItemPrice.setText(String.format("%.2f", price));
+        // Định dạng và hiển thị giá sản phẩm với 2 chữ số thập phân và đơn vị tính
         double price = categoryItem.getPrice();
-        holder.m_CategoryItemPrice.setText(String.format("%.2f", price));
-
+        String priceText = String.format("%.2f", price);
+        if (categoryItem.getUnit() != null && !categoryItem.getUnit().isEmpty()) {
+            priceText += " / " + categoryItem.getUnit();
+        }
+        holder.m_CategoryItemPrice.setText(priceText);
         // Cập nhật icon trạng thái yêu thích dựa trên trạng thái hiện tại
         if(isItemLiked(categoryItem))
         {

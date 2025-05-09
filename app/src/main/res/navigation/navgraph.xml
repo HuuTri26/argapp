@@ -114,6 +114,7 @@
             app:popEnterAnim="@anim/slide_in_up"
             app:popExitAnim="@anim/slide_out_down" />
     </fragment>
+  
     <!--    <fragment-->
     <!--        android:id="@+id/profilePage"-->
     <!--        android:name="com.example.argapp.Fragments.ProfilePage"-->
@@ -191,4 +192,21 @@
         android:name="com.example.argapp.Fragments.OrderHistoryFragment"
         android:label="OrderBill history"
         tools:layout="@layout/fragment_order_history" />
+
+    <fragment
+        android:id="@+id/emailVerification"
+        android:name="com.example.argapp.Fragments.SendOTPVerifyGmail"
+        android:label="Email Verification"
+        tools:layout="@layout/gmail_signup">
+        <action
+            android:id="@+id/action_emailVerification_to_otpVerification"
+            app:destination="@id/otpVerification" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/otpVerification"
+        android:name="com.example.argapp.Fragments.OTPVerify"
+        android:label="OTP Verification"
+        tools:layout="@layout/otp_verify_gmail" />
+
 </navigation>

@@ -1,5 +1,6 @@
 package com.example.argapp.Classes;
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -57,7 +58,8 @@ public class CategoriesList {
                     String categoryId = itemSnapshot.child("Id").getValue(String.class);
                     String categoryName = itemSnapshot.child("Name").getValue(String.class);
                     String categoryImage = itemSnapshot.child("Image").getValue(String.class);
-
+                    System.out.println(categoryImage);
+                    Log.e("A",categoryImage);
                     // Tạo đối tượng Category mới với dữ liệu vừa lấy
                     Category category = new Category(categoryId, categoryName, categoryImage);
                     // Thêm vào danh sách các danh mục

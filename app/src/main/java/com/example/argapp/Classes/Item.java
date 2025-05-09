@@ -9,9 +9,10 @@ public class Item implements Serializable {
     private double m_Price;
     private String m_Image;
     private int m_Quantity;
+    private String description;  // Trường mô tả sản phẩm
+    private String unit;         // Đơn vị tính (kg, g, cái, chai, v.v.)
 
-    public Item()
-    {
+    public Item() {
 
     }
 
@@ -20,6 +21,18 @@ public class Item implements Serializable {
         this.m_Price = i_Price;
         this.m_Quantity = i_Quantity;
         this.m_Image = i_Image;
+        this.description = "";
+        this.unit = "";
+    }
+
+    // Thêm constructor mới có đủ các trường
+    public Item(String i_Name, double i_Price, int i_Quantity, String i_Image, String description, String unit) {
+        this.m_Name = i_Name;
+        this.m_Price = i_Price;
+        this.m_Quantity = i_Quantity;
+        this.m_Image = i_Image;
+        this.description = description;
+        this.unit = unit;
     }
 
     public String getName() {
@@ -53,6 +66,24 @@ public class Item implements Serializable {
     public void setImage(String i_Image) {
         this.m_Image = i_Image;
     }
+
+    // Thêm các getter và setter cho các trường mới
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
+    }
+
 
     @Override
     public boolean equals(Object obj) {
