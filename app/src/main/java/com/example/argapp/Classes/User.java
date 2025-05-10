@@ -1,91 +1,130 @@
 package com.example.argapp.Classes;
+
 public class User {
-    private String m_FirstName;
-    private String m_LastName;
-    private String m_Password;
-    private String m_Email;
-    private String m_PhoneNumber;
-    private String m_avatar;
-    private String m_address;
+    // Field names for Firebase serialization/deserialization 
+    private String FirstName; 
+    private String LastName;  
+    private String Password;  
+    private String Email;     
+    private String PhoneNumber; 
+    private String avatar;
+    private String address;
+    
+    // These fields are for maintaining compatibility with existing code
+    private transient String m_FirstName;
+    private transient String m_LastName;
+    private transient String m_Password;
+    private transient String m_Email;
+    private transient String m_PhoneNumber;
 
     public User()
     {
-
+        // Required empty constructor for Firebase
     }
+
     public User(String i_FirstName, String i_LastName, String i_Password,
                 String i_Email, String i_PhoneNumber)
     {
-        m_FirstName = i_FirstName;
-        m_LastName = i_LastName;
-        m_Password = i_Password;
-        m_Email = i_Email;
-        m_PhoneNumber = i_PhoneNumber;
+        this.FirstName = i_FirstName;
+        this.LastName = i_LastName;
+        this.Password = i_Password;
+        this.Email = i_Email;
+        this.PhoneNumber = i_PhoneNumber;
+        
+        // Keep compatibility fields in sync
+        this.m_FirstName = i_FirstName;
+        this.m_LastName = i_LastName;
+        this.m_Password = i_Password;
+        this.m_Email = i_Email;
+        this.m_PhoneNumber = i_PhoneNumber;
     }
 
 
     public User(String m_FirstName, String m_LastName, String m_Password, String m_Email, String m_PhoneNumber, String m_avatar, String m_address) {
+        this.FirstName = m_FirstName;
+        this.LastName = m_LastName;
+        this.Password = m_Password;
+        this.Email = m_Email;
+        this.PhoneNumber = m_PhoneNumber;
+        this.avatar = m_avatar;
+        this.address = m_address;
+        
+        // Keep compatibility fields in sync
         this.m_FirstName = m_FirstName;
         this.m_LastName = m_LastName;
         this.m_Password = m_Password;
         this.m_Email = m_Email;
         this.m_PhoneNumber = m_PhoneNumber;
-        this.m_avatar = m_avatar;
-        this.m_address = m_address;
     }
 
     public String getPhoneNumber() {
-        return m_PhoneNumber;
+        return PhoneNumber;
     }
 
     public String getEmail() {
-        return m_Email;
+        return Email;
     }
 
     public String getPassword() {
-        return m_Password;
+        return Password;
     }
 
     public String getLastName() {
-        return m_LastName;
+        return LastName;
     }
 
     public String getFirstName() {
-        return m_FirstName;
+        return FirstName;
     }
 
     public void setFirstName(String i_FirstName) {
+        this.FirstName = i_FirstName;
         this.m_FirstName = i_FirstName;
     }
 
     public void setLastName(String i_LastName) {
+        this.LastName = i_LastName;
         this.m_LastName = i_LastName;
     }
 
     public void setPassword(String i_Password) {
+        this.Password = i_Password;
         this.m_Password = i_Password;
     }
 
     public void setEmail(String i_Email) {
+        this.Email = i_Email;
         this.m_Email = i_Email;
     }
 
     public void setPhoneNumber(String i_PhoneNumber) {
+        this.PhoneNumber = i_PhoneNumber;
         this.m_PhoneNumber = i_PhoneNumber;
     }
 
     public String getM_avatar() {
-        return m_avatar;
+        return avatar;
     }
 
     public void setM_avatar(String m_avatar) {
-        this.m_avatar = m_avatar;
+        this.avatar = m_avatar;
     }
 
     public String getM_address() {
-        return m_address;
+        return address;
     }
 
     public void setM_address(String m_address) {
-        this.m_address = m_address;
+        this.address = m_address;
+    }
+    
+    @Override
+    public String toString() {
+        return "User{" +
+                "firstName='" + FirstName + '\'' +
+                ", lastName='" + LastName + '\'' +
+                ", email='" + Email + '\'' +
+                ", phone='" + PhoneNumber + '\'' +
+                '}';
     }
 }

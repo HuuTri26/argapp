@@ -127,20 +127,55 @@ public class UserModel {
     {
         // Read from the database
         String userId = getCurrentUserId();
+        Log.d("GetUser", "Retrieving user with ID: " + userId);
+
+        if (userId == null) {
+            callback.onFailure(DatabaseError.fromException(new Exception("User ID is null")));
+            return;
+        }
 
         m_Ref.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-                User user = dataSnapshot.getValue(User.class);
+                try {
+                    // Log the raw data for debugging
+                    Log.d("GetUser", "Raw data: " + dataSnapshot.toString());
 
-                callback.onSuccess(user);
+                    // Try to deserialize into User object
+                    User user = dataSnapshot.getValue(User.class);
+
+                    if (user == null) {
+                        Log.e("GetUser", "Failed to deserialize user data");
+
+                        // Create minimal user with data from Firebase Auth
+                        FirebaseUser authUser = m_Auth.getCurrentUser();
+                        if (authUser != null) {
+                            user = new User();
+                            user.setEmail(authUser.getEmail());
+
+                            // Save this minimal user to database for future reference
+                            m_Ref.child(userId).setValue(user);
+
+                            Log.d("GetUser", "Created new minimal user from auth data");
+                            callback.onSuccess(user);
+                        } else {
+                            Log.e("GetUser", "Both database and auth user are null");
+                            callback.onFailure(DatabaseError.fromException(new Exception("User data not found")));
+                        }
+                    } else {
+                        Log.d("GetUser", "Successfully retrieved user: " + user.toString());
+                        callback.onSuccess(user);
+                    }
+                } catch (Exception e) {
+                    Log.e("GetUser", "Exception during user data parsing: " + e.getMessage());
+                    callback.onFailure(DatabaseError.fromException(e));
+                }
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
+                Log.e("GetUser", "Database error: " + error.getMessage());
                 callback.onFailure(error);
             }
         });

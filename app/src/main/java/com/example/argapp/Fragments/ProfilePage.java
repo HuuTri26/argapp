@@ -20,6 +20,7 @@ import com.example.argapp.Classes.User;
 import com.example.argapp.Controllers.UserController;
 import com.example.argapp.Models.UserModel;
 import com.example.argapp.R;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
 
 /**
@@ -34,7 +35,6 @@ public class ProfilePage extends Fragment {
 
     private UserController m_UserController; // Biến điều khiển người dùng, xử lý tương tác với Firebase
     //    private MainActivity m_HostedActivity;
-    private User m_User;  // Đối tượng chứa thông tin người dùng hiện tại
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -72,17 +72,20 @@ public class ProfilePage extends Fragment {
         m_UserController.GetUser(new UserModel.UserCallback() {
             @Override
             public void onSuccess(User user) {
-                m_User = user;
-
-                textViewHoTen.setText(m_User.getFirstName() + m_User.getLastName());
-                textViewEmail.setText(m_User.getEmail());
+                if (user != null) {
+                    textViewHoTen.setText(user.getFirstName() + " " + user.getLastName());
+                    textViewEmail.setText(user.getEmail());
+                } else {
+                    Toast.makeText(getContext(), "Lỗi lấy thông tin người dùng", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
             public void onFailure(DatabaseError error) {
-//                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override

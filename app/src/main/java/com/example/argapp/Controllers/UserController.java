@@ -4,6 +4,7 @@ import com.example.argapp.Classes.Item;
 import com.example.argapp.Classes.ShoppingCart;
 import com.example.argapp.Classes.User;
 import com.example.argapp.Models.UserModel;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.util.HashMap;
 

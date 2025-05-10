@@ -27,6 +27,7 @@ import com.example.argapp.R;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseError;
 
 import java.util.HashMap;
@@ -182,6 +183,7 @@ public class MainActivity extends AppCompatActivity {
             public void onSuccess() {
                 // Hiển thị thông báo đăng nhập thành công
                 Toast.makeText(MainActivity.this, "Login Succeeded", Toast.LENGTH_SHORT).show();
+
                 // Điều hướng đến trang danh mục
                 NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.fragmentContainerView);
                 NavController navController = navHostFragment.getNavController();
