@@ -122,7 +122,7 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
     private ImageButton m_MinusButton;        // Nút giảm số lượng
     private ImageButton m_AddButton;          // Nút tăng số lượng
     private TextView m_Quantity;              // TextView hiển thị số lượng
-
+    private TextView m_Inventory;         // TextView hiển thị số lượng tồn kho
     private TextView m_ItemDescription;  // Thêm biến thành viên mới
     private TextView m_ItemUnit;         // Thêm biến thành viên mới
     /**
@@ -182,6 +182,7 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
         m_MinusButton = m_View.findViewById(R.id.minusButton);
         m_AddButton = m_View.findViewById(R.id.addButton);
         m_Quantity = m_View.findViewById(R.id.itemQuantity);
+        m_Inventory = m_View.findViewById(R.id.inventory);
 
         // Đăng ký Fragment này làm listener cho sự kiện cập nhật giỏ hàng
         m_HostedActivity.SetShoppingCartUpdatedListener(this);
@@ -258,8 +259,9 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
                 qunatity += 1;  // Tăng số lượng lên 1
                 m_Quantity.setText(qunatity + "");  // Cập nhật hiển thị số lượng
 
-                // Cập nhật trạng thái nút giảm số lượng dựa trên số lượng mới
+                // Cập nhật trạng thái nút tăng/ số lượng dựa trên số lượng mới
                 updateMinusButtonState(qunatity);
+                updateAddButtonState(qunatity);
             }
         });
 
@@ -271,8 +273,9 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
                 qunatity -= 1;  // Giảm số lượng xuống 1
                 m_Quantity.setText(qunatity + "");  // Cập nhật hiển thị số lượng
 
-                // Cập nhật trạng thái nút giảm số lượng dựa trên số lượng mới
+                // Cập nhật trạng thái nút tăng/giảm số lượng dựa trên số lượng mới
                 updateMinusButtonState(qunatity);
+                updateAddButtonState(qunatity);
             }
         });
 
@@ -308,6 +311,25 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
     }
 
     /**
+     * Cập nhật trạng thái của nút tăng số lượng
+     * Vô hiệu hóa nút khi số lượng >= tồn kho và kích hoạt khi số lượng < tồn kho
+     * @param quantity Số lượng hiện tại
+     */
+    private void updateAddButtonState(int quantity) {
+        if (quantity >= m_CurrentItem.getInventory()) {
+            // Nếu số lượng >= tồn kho, vô hiệu hóa nút tăng
+            m_AddButton.setEnabled(false);
+            m_AddButton.setAlpha(0.5f);  // Làm mờ nút
+            m_AddButton.setBackgroundColor(0xB0B0B0);  // Đổi màu nền thành xám
+        } else {
+            // Nếu số lượng < tồn kho, kích hoạt nút tăng
+            m_AddButton.setEnabled(true);
+            m_AddButton.setAlpha(1.0f);  // Hiển thị nút rõ nét
+            m_AddButton.setBackgroundColor(0x3D3C3C);  // Đổi màu nền thành màu gốc
+        }
+    }
+
+    /**
      * Lấy thông tin giỏ hàng và danh sách yêu thích của người dùng từ MainActivity
      */
     private void getUserDetails() {
@@ -327,6 +349,8 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
         m_ItemName.setText(m_CurrentItem.getName());  // Tên sản phẩm
         m_ItemImage.setImageResource(itemImage);      // Hình ảnh sản phẩm
         m_ItemPrice.setText(String.format("%.2f", m_CurrentItem.getPrice()));  // Giá sản phẩm (định dạng 2 số thập phân)
+        m_Inventory.setText(String.valueOf(m_CurrentItem.getInventory()));  // Số lượng tồn kho
+        //Log.d("CurrentItem", "Inventory: " + m_CurrentItem.getInventory());
 
         // Hiển thị giá và đơn vị
         String priceWithUnit = String.format("%.2f", m_CurrentItem.getPrice());
