@@ -1,5 +1,8 @@
 package com.example.argapp.Fragments;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.ActionBar;
@@ -73,14 +76,21 @@ public class ProfilePage extends Fragment {
             @Override
             public void onSuccess(User user) {
                 m_User = user;
+                if(m_User != null){
+                    // Hien thi ho ten dung format:
+                    String fullName = m_User.getFirstName() + " " + m_User.getLastName();
+                    textViewHoTen.setText(fullName);
+                    textViewEmail.setText(m_User.getEmail());
 
-                textViewHoTen.setText(m_User.getFirstName() + m_User.getLastName());
-                textViewEmail.setText(m_User.getEmail());
+                }
             }
 
             @Override
             public void onFailure(DatabaseError error) {
-//                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                // Xử lý lỗi khi không thể lấy thông tin người dùng
+                if(getActivity() != null){
+                    Toast.makeText(getActivity(),"Khong the lay thong tin nguoi dung",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -103,8 +113,10 @@ public class ProfilePage extends Fragment {
 
         this.textViewHoTen = view.findViewById(R.id.userName);
         this.textViewEmail = view.findViewById(R.id.email);
-
+        //Khởi tạo  Usercontroller để lấy dữ lệu người dùng
         this.m_UserController = new UserController();
+
+        //Lấy thông tin người dùng
         GetUser();
 //        this.m_HostedActivity.GetUser();
 
@@ -113,6 +125,8 @@ public class ProfilePage extends Fragment {
         LinearLayout layoutChangePassword = view.findViewById(R.id.layoutChangePassword);
 
         LinearLayout layoutOrderHistory = view.findViewById(R.id.layoutOrderHistory);
+
+        LinearLayout layoutLogout = view.findViewById(R.id.layoutLogout);
 
         layoutProfileDetail.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_profilePage_to_profile_detail);
@@ -126,9 +140,68 @@ public class ProfilePage extends Fragment {
             Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_orderBillFragment);
         });
 
+        // Xư lý s kiện click nút đăng xuất
+        layoutLogout.setOnClickListener(v -> {
+            showLogoutConfirmationDialog();
+        });
+
         return view;
         // return inflater.inflate(R.layout.fragment_profile_page, container, false);
     }
 
+    // Thêm phương thức để hiển thị hộp thoại xác nhận đăng xuất
+    private void showLogoutConfirmationDialog() {
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
+        builder.setTitle("Xác nhận đăng xuất");
+        builder.setMessage("Bạn có chắc chắn muốn đăng xuất?");
+        
+        // Tạo nút xác nhận với màu xanh lá
+        builder.setPositiveButton("Xác nhận", (dialog, which) -> {
+            // Đăng xuất khỏi hệ thống
+            performLogout();
+        });
+        
+        // Tạo nút hủy với màu đỏ
+        builder.setNegativeButton("Hủy", (dialog, which) -> {
+            dialog.dismiss();
+        });
+        
+        // Tạo và hiển thị hộp thoại
+        androidx.appcompat.app.AlertDialog dialog = builder.create();
+        dialog.show();
+        
+        // Đặt màu cho các nút sau khi hiển thị dialog
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
+              .setTextColor(android.graphics.Color.parseColor("#4CAF50")); // Màu xanh lá cây
+        dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)
+              .setTextColor(android.graphics.Color.parseColor("#F44336")); // Màu đỏ
+    }
+
+    // Phương thức để thực hiện đăng xuất
+    private void performLogout() {
+        try {
+            // Đăng xuất khỏi Firebase Auth
+            com.google.firebase.auth.FirebaseAuth.getInstance().signOut();
+
+            // Xóa thông tin đăng nhập đã lưu
+            SharedPreferences sharedPreferences = requireActivity().getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.clear();
+            editor.apply();
+
+            // Sử dụng Intent để khởi động lại ứng dụng ở trang Login
+            Intent intent = new Intent(requireActivity(), requireActivity().getClass());
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            requireActivity().finish();
+
+            // Thông báo đăng xuất thành công
+            Toast.makeText(requireContext(), "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(requireContext(), "Lỗi đăng xuất: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+    // Cập nhật phương tức GetUsser hiển thị dũ liệu :
 
 }

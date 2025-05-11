@@ -18,7 +18,7 @@
         android:title="@string/menu_liked_items_list"/>
 
     <item android:id="@+id/profileBarButton"
-        android:icon="@drawable/menu_icon_person_24"
+        android:icon="@drawable/profile_icon_selector"
         android:title="@string/menu_account"/>
 
 
