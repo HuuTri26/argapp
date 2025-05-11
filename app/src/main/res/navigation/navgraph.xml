@@ -173,14 +173,31 @@
             app:exitAnim="@anim/slide_out_down"
             app:popEnterAnim="@anim/slide_in_up"
             app:popExitAnim="@anim/slide_out_down" />
-    </fragment>
 
+        <action
+            android:id="@+id/action_profilePage_to_loginActivity"
+            app:destination="@id/login_page"
+            app:popUpTo="@id/navgraph"
+            app:popUpToInclusive="true" />
+    </fragment>
     <fragment
         android:id="@+id/profileDetail"
         android:name="com.example.argapp.Fragments.ProfileDetailFragment"
         android:label="profile_detail"
-        tools:layout="@layout/fragment_profile_detail" />
-
+        tools:layout="@layout/fragment_profile_detail">
+        <action
+            android:id="@+id/action_profileDetail_to_editProfile"
+            app:destination="@id/editProfileFragment"
+            app:enterAnim="@anim/slide_in_up"
+            app:exitAnim="@anim/slide_out_down"
+            app:popEnterAnim="@anim/slide_in_up"
+            app:popExitAnim="@anim/slide_out_down" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.argapp.Fragments.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" />
     <fragment
         android:id="@+id/changePassword"
         android:name="com.example.argapp.Fragments.ChangePasswordFragment"

@@ -3,12 +3,14 @@ package com.example.argapp.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.argapp.Adapters.OrderBillAdapter;
 import com.example.argapp.Classes.OrderBill;
@@ -87,6 +89,12 @@ public class OrderHistoryFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         this.orderBillItemRecycleView.setLayoutManager(linearLayoutManager);
         this.orderBillItemRecycleView.setAdapter(this.orderBillAdapter);
+
+        // Thiết lập sự kiện click cho nút back (lưu ý ID khác: btnBack)
+        ImageView backBtn = view.findViewById(R.id.btnBack);
+        backBtn.setOnClickListener(v -> {
+            Navigation.findNavController(v).popBackStack();
+        });
 
         return view;
         // return inflater.inflate(R.layout.fragment_order_history, container, false);

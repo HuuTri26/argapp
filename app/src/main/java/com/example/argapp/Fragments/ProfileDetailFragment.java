@@ -9,8 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.argapp.Classes.User;
+import com.example.argapp.Controllers.UserController;
+import com.example.argapp.Models.UserModel;
 import com.example.argapp.R;
+import com.google.firebase.database.DatabaseError;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +33,14 @@ public class ProfileDetailFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView userNameTextView;
+    private TextView emailTextView;
+    private TextView phoneTextView;
+
+    private TextView addressTextView;
+    private UserController m_UserController;
+    private User m_User;
 
     public ProfileDetailFragment() {
         // Required empty public constructor
@@ -66,12 +80,83 @@ public class ProfileDetailFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_profile_detail, container, false);
 
+        // Timcac view trong layout
+        userNameTextView = view.findViewById(R.id.userName);
+        emailTextView = view.findViewById(R.id.email);
+        phoneTextView= view.findViewWithTag("phoneNumber");
+        addressTextView = view.findViewWithTag("address");
+
+        // Khoi tao UserController
+        m_UserController= new UserController();
+
+        //Lấy thong tin nguoi dung tu Firebase
+        GetUser();
+
         ImageView backBtn = view.findViewById(R.id.backBtn);
         backBtn.setOnClickListener(v -> {
             Navigation.findNavController(v).popBackStack();
         });
-
+        ImageView editBtn = view.findViewById(R.id.editBtn);
+        editBtn.setOnClickListener(v -> {
+            // Chuyển hướng đến EditProfileFragment
+            Navigation.findNavController(v).navigate(R.id.action_profileDetail_to_editProfile);
+            // Xu ly chuc nang chinh sua thong tin o day
+            Toast.makeText(getContext(), "Chức năng chỉnh sửa đang được phát triển", Toast.LENGTH_SHORT).show();
+        });
         return view;
         // return inflater.inflate(R.layout.fragment_profile_detail, container, false);
+    }
+
+    // Lấy thông tin người dùng từ Firebase
+    private void GetUser() {
+        m_UserController.GetUser(new UserModel.UserCallback() {
+            @Override
+            public void onSuccess(User user) {
+                m_User = user;
+
+                if (m_User != null) {
+                    // Hiển thị thông tin người dùng
+                    String fullName = m_User.getFirstName() + " " + m_User.getLastName();
+                    userNameTextView.setText(fullName);
+
+                    // Email
+                    TextView emailView = view().findViewById(R.id.email);
+                    if (emailView != null) {
+                        emailView.setText(m_User.getEmail());
+                    }
+
+                    // Số điện thoại - tìm TextView trong "Phone" section
+                    View phoneLayout = view().findViewWithTag("phoneSection");
+                    if (phoneLayout != null) {
+                        TextView phoneValue = phoneLayout.findViewById(R.id.phoneValue);
+                        if (phoneValue != null) {
+                            phoneValue.setText(m_User.getPhoneNumber());
+                        }
+                    }
+
+                    // Địa chỉ - tìm TextView trong "Address" section
+                    View addressLayout = view().findViewWithTag("addressSection");
+                    if (addressLayout != null) {
+                        TextView addressValue = addressLayout.findViewById(R.id.addressValue);
+                        if (addressValue != null) {
+                            String address = m_User.getM_address();
+                            addressValue.setText(address != null ? address : "Chưa cập nhật địa chỉ");
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(DatabaseError error) {
+                if (getActivity() != null) {
+                    Toast.makeText(getActivity(), "Không thể tải thông tin chi tiết người dùng: " +
+                            error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+    // Helper method để tránh null pointer exception
+    private View view() {
+        return getView();
     }
 }

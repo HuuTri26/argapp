@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
+import android.content.SharedPreferences;
+import android.content.Context;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -82,8 +84,13 @@ public class MainActivity extends AppCompatActivity {
         m_NavContorller = navHostFragment.getNavController();
         // Tìm và gán thanh điều hướng dưới
         m_BottomNavigationView = findViewById(R.id.navigationView);
+        // Thêm code này để loại bỏ màu tint mặc định
+        m_BottomNavigationView.setItemIconTintList(null);
         // Khởi tạo UserController để tương tác với Firebase
         m_UserController = new UserController();
+
+        // Kiểm tra xem có cần tự động đăng nhập không
+        checkAutoLogin();
 
         // Vô hiệu hóa các nút điều hướng giỏ hàng và danh sách yêu thích ban đầu
         // (được kích hoạt sau khi đăng nhập thành công)
@@ -464,5 +471,23 @@ public class MainActivity extends AppCompatActivity {
 
         // Kích hoạt nút danh sách yêu thích
         m_BottomNavigationView.getMenu().findItem(R.id.likedItemsBarButton).setEnabled(true);
+    }
+
+    /**
+     * Kiểm tra và thực hiện đăng nhập tự động nếu có thông tin lưu trữ
+     */
+    private void checkAutoLogin() {
+        SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
+        boolean rememberMe = sharedPreferences.getBoolean("isRemembered", false);
+        
+        if (rememberMe) {
+            String email = sharedPreferences.getString("emailAddress", "");
+            String password = sharedPreferences.getString("password", "");
+            
+            if (!email.isEmpty() && !password.isEmpty()) {
+                // Tự động đăng nhập với thông tin đã lưu
+                Login(email, password);
+            }
+        }
     }
 }

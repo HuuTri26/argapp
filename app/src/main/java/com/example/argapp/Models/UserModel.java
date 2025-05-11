@@ -50,6 +50,11 @@ public class UserModel {
         void onFailure(DatabaseError error);
     }
 
+    public interface UpdateProfileCallback {
+        void onSuccess();
+        void onFailure(Exception e);
+    }
+
     public interface ShoppingCartCallback
     {
         void onSuccess(ShoppingCart userShoppingCart);
@@ -156,6 +161,28 @@ public class UserModel {
             // If no user is signed in, return null or an empty string
             return null;
         }
+    }
+
+    // Phương thức cập nhật thông tin người dùng
+    public void updateUserProfile(String userId, String firstName, String lastName, String phoneNumber, String address, UpdateProfileCallback callback) {
+        if (userId == null || userId.isEmpty()) {
+            userId = getCurrentUserId();
+        }
+
+        // Tạo HashMap chứa các thông tin cần cập nhật
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put("firstName", firstName);
+        updates.put("lastName", lastName);
+        updates.put("phoneNumber", phoneNumber);
+        updates.put("address", address);
+
+        m_Ref.child(userId).updateChildren(updates).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                callback.onSuccess();
+            } else {
+                callback.onFailure(task.getException());
+            }
+        });
     }
 
     public void UpdateShoppingCart(ShoppingCart i_UserShoppingCart, UpdateShoppingCartCallback callback)
