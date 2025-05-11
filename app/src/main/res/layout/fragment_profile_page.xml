@@ -217,6 +217,38 @@
                     android:contentDescription="Go"/>
             </LinearLayout>
 
+            <!-- Item đăng xuất - Thêm bên dưới layoutOrderHistory -->
+            <LinearLayout
+                android:id="@+id/layoutLogout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:padding="16dp"
+                android:background="?attr/selectableItemBackground">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:src="@drawable/baseline_logout_24"
+                    android:contentDescription="Đăng xuất"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingStart="16dp"
+                    android:text="Đăng xuất"
+                    android:textColor="#FF0000"
+                    android:textSize="17sp"/>
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/icon_arrow_right"
+                    android:contentDescription="Go"/>
+            </LinearLayout>
+
             <!-- Copy thêm các item dưới đây cho: Payment Methods, Language, Account & Security, My Profile -->
 
         </LinearLayout>

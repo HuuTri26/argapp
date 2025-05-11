@@ -2,6 +2,8 @@ package com.example.argapp.Fragments;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -19,8 +21,8 @@ import android.widget.TextView;
 
 import com.example.argapp.Activities.MainActivity;
 import com.example.argapp.R;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.textfield.TextInputLayout;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -74,6 +76,12 @@ public class Login extends Fragment {
     private Button m_LoginButton;
     private TextView m_SignUpButton;
     private MainActivity m_HostedActivity;
+    private MaterialCheckBox m_RememberMeCheckBox;
+    private SharedPreferences sharedPreferences;
+    private static final String PREF_NAME = "LoginPrefs";
+    private static final String KEY_EMAIL = "emailAddress";
+    private static final String KEY_PASSWORD = "password";
+    private static final String KEY_REMEMBER = "isRemembered";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,6 +92,7 @@ public class Login extends Fragment {
         m_SignUpButton = m_View.findViewById(R.id.signUpButton);
         m_Email = m_View.findViewById(R.id.emailEditText);
         m_Password = m_View.findViewById(R.id.passwordEditText);
+        m_RememberMeCheckBox = m_View.findViewById(R.id.rememberMeCheckBox);
         m_HostedActivity = (MainActivity) requireActivity();
 
         AnimatorSet buttonAnimator = (AnimatorSet) AnimatorInflater.loadAnimator(
@@ -102,6 +111,16 @@ public class Login extends Fragment {
             }
         });
 
+        // Khởi tạo SharedPreferences
+        sharedPreferences = requireActivity().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
+        
+        // Kiểm tra xem có dữ liệu đăng nhập đã lưu không
+        if (sharedPreferences.getBoolean(KEY_REMEMBER, false)) {
+            m_Email.setText(sharedPreferences.getString(KEY_EMAIL, ""));
+            m_Password.setText(sharedPreferences.getString(KEY_PASSWORD, ""));
+            m_RememberMeCheckBox.setChecked(true);
+        }
+
         m_LoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -112,6 +131,20 @@ public class Login extends Fragment {
                 String password = m_Password.getText().toString();
 
                 if(checkValidation()) {
+                    // Lưu thông tin đăng nhập nếu checkbox được chọn
+                    if (m_RememberMeCheckBox.isChecked()) {
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString(KEY_EMAIL, email);
+                        editor.putString(KEY_PASSWORD, password);
+                        editor.putBoolean(KEY_REMEMBER, true);
+                        editor.apply();
+                    } else {
+                        // Xóa thông tin đăng nhập nếu checkbox không được chọn
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.clear();
+                        editor.apply();
+                    }
+                    
                     m_HostedActivity.Login(email, password);
                 }
             }

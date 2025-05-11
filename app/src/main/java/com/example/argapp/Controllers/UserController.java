@@ -60,6 +60,18 @@ public class UserController {
     }
 
     /**
+     * Cập nhật thông tin người dùng
+     * @param firstName Tên người dùng
+     * @param lastName Họ người dùng
+     * @param phoneNumber Số điện thoại
+     * @param address Địa chỉ
+     * @param callback Callback thông báo kết quả
+     */
+    public void updateUserProfile(String firstName, String lastName, String phoneNumber, String address, UserModel.UpdateProfileCallback callback) {
+        m_UserModel.updateUserProfile(null, firstName, lastName, phoneNumber, address, callback);
+    }
+
+    /**
      * Cập nhật giỏ hàng của người dùng vào cơ sở dữ liệu
      * @param i_UserShoppingCart Giỏ hàng mới cần cập nhật
      * @param callback Interface callback để thông báo kết quả cập nhật
