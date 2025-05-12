@@ -37,11 +37,13 @@ public class CategoryItemsList
                     String itemImage = itemSnapshot.child("Image").getValue(String.class);
                     String itemDescription = itemSnapshot.child("Description").getValue(String.class);
                     String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
+                    int itemInventory = itemSnapshot.child("Inventory").getValue(Integer.class);
+
 
 
                     int itemQuantity = 0;
 
-                    Item item = new Item(itemName, itemPrice, itemQuantity, itemImage);
+                    Item item = new Item(itemName, itemPrice, itemQuantity, itemImage, itemInventory);
 
                     // Thiết lập các trường mới nếu có dữ liệu
                     if (itemDescription != null) {
@@ -84,9 +86,11 @@ public class CategoryItemsList
                         String itemImage = itemSnapshot.child("Image").getValue(String.class);
                         String itemDescription = itemSnapshot.child("Description").getValue(String.class);
                         String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
+                        int itemInventory = itemSnapshot.child("Inventory").getValue(Integer.class);
+
                         int itemQuantity = 0;
 
-                        Item item = new Item(itemName, itemPrice, itemQuantity, itemImage);
+                        Item item = new Item(itemName, itemPrice, itemQuantity, itemImage, itemInventory);
                         // Thiết lập các trường mới nếu có dữ liệu
                         if (itemDescription != null) {
                             item.setDescription(itemDescription);
