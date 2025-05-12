@@ -3,11 +3,14 @@ package com.example.argapp.Classes;
 import java.util.Map;
 
 public class OrderBill {
+    private String orderBillId;
     private String userUid; // chính là key như "26bHh7N..."
     private long orderDate;
     private String status;
     private double totalPrice;
     private Map<String, OrderBillItem> items;
+    private String address;
+    private String phoneNumber;
 
     public OrderBill() {
     }
@@ -19,6 +22,8 @@ public class OrderBill {
         this.totalPrice = totalPrice;
     }
 
+
+
     public OrderBill(String userUid, long orderDate, String status, double totalPrice, Map<String, OrderBillItem> items) {
         this.userUid = userUid;
         this.orderDate = orderDate;
@@ -27,6 +32,13 @@ public class OrderBill {
         this.items = items;
     }
 
+    public String getOrderBillId() {
+        return orderBillId;
+    }
+
+    public void setOrderBillId(String orderBillId) {
+        this.orderBillId = orderBillId;
+    }
     public String getUserUid() {
         return userUid;
     }
@@ -65,5 +77,20 @@ public class OrderBill {
 
     public void setItems(Map<String, OrderBillItem> items) {
         this.items = items;
+    }
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

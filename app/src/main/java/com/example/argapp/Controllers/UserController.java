@@ -1,6 +1,8 @@
 package com.example.argapp.Controllers;
 
 import com.example.argapp.Classes.Item;
+import com.example.argapp.Classes.OrderBill;
+import com.example.argapp.Classes.OrderBillItem;
 import com.example.argapp.Classes.ShoppingCart;
 import com.example.argapp.Classes.User;
 import com.example.argapp.Models.UserModel;
@@ -107,5 +109,31 @@ public class UserController {
     public void GetUserLikedItemsList(UserModel.LikedItemsCallback callback)
     {
         m_UserModel.GetUserLikedItemsList(callback);  // Chuyển yêu cầu lấy ds yêu thích cho UserModel xử lý
+    }
+
+
+    /**
+     * Lưu đơn hàng vào cơ sở dữ liệu
+     * @param orderBill Đơn hàng cần lưu
+     * @param callback Interface callback để thông báo kết quả
+     */
+    public void saveOrderBill(OrderBill orderBill, UserModel.SaveOrderBillCallback callback) {
+        m_UserModel.saveOrderBill(orderBill, callback);
+    }
+    /**
+     * Lấy tất cả đơn hàng của người dùng từ cơ sở dữ liệu
+     * @param callback Interface callback để trả về danh sách đơn hàng
+     */
+    public void getUserOrderBills(UserModel.OrderBillsCallback callback) {
+        m_UserModel.getUserOrderBills(callback);
+    }
+
+    /**
+     * Lấy chi tiết đơn hàng theo ID
+     * @param orderBillId ID của đơn hàng cần lấy thông tin
+     * @param callback Interface callback để trả về chi tiết đơn hàng
+     */
+    public void getOrderDetail(String orderBillId, UserModel.OrderDetailCallback callback) {
+        m_UserModel.getOrderDetail(orderBillId, callback);
     }
 }

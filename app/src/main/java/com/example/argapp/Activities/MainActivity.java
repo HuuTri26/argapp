@@ -160,7 +160,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    
+    /**
+     * Trả về đối tượng UserController để sử dụng trong các fragment
+     * @return UserController hiện tại
+     */
+    public UserController getUserController() {
+        return m_UserController;
+    }
     /**
      * Thiết lập listener cho sự kiện cập nhật danh sách yêu thích
      * @param listener Interface lắng nghe sự kiện
