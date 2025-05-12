@@ -3,6 +3,7 @@ package com.example.argapp.Fragments;
 import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,11 +20,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.argapp.Activities.MainActivity;
 import com.example.argapp.Adapters.ShoppingCartAdapter;
 import com.example.argapp.Classes.Item;
+import com.example.argapp.Classes.OrderBill;
 import com.example.argapp.Classes.ShoppingCart;
 import com.example.argapp.Interfaces.OnShoppingCartItemListener;
 import com.example.argapp.Interfaces.OnShoppingCartUpdatedListener;
+import com.example.argapp.Models.UserModel;
 import com.example.argapp.R;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -111,10 +115,8 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
     private CartAction m_CurrentAction;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        m_View =  inflater.inflate(R.layout.shopping_cart_page, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        m_View = inflater.inflate(R.layout.shopping_cart_page, container, false);
         m_ShoppingCartRecyclerView = m_View.findViewById(R.id.shoppingCartRecyclerView);
         m_HostedActivity = (MainActivity) requireActivity();
         m_PaymentButton = m_View.findViewById(R.id.paymentButton);
@@ -132,56 +134,125 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
         m_PaymentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!m_UserShoppingCart.getShoppingCart().isEmpty()){
-                    showConfetti();
-
-                    m_UserShoppingCart.Clear();
-                    m_UserShoppingCartAsList.clear();
-                    m_HostedActivity.UpdateShoppingCart(m_UserShoppingCart);
-                    m_CurrentAction = CartAction.PAYMENT_SUCCEEDED;
+                try {
+                    if (m_UserShoppingCart != null && !m_UserShoppingCart.getShoppingCart().isEmpty()) {
+                        processPayment();
+                    } else {
+                        Toast.makeText(getContext(), "Giỏ hàng trống", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    Toast.makeText(getContext(), "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
         return m_View;
     }
 
-    private void showConfetti(){
-        m_KonfettiView =  m_View.findViewById(R.id.konfettiView);
-        Drawable bananaDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.banana);
-        Drawable appleDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.apple);
-        Drawable orangeDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.orange);
+    private void processPayment() {
+        try {
+            if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+                Toast.makeText(getContext(), "Vui lòng đăng nhập để thanh toán", Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-        m_DrawableShape = new ArrayList<>();
-        m_DrawableShape.add(ImageUtil.loadDrawable(bananaDrawable, true, true));
-        m_DrawableShape.add(ImageUtil.loadDrawable(appleDrawable, true, true));
-        m_DrawableShape.add(ImageUtil.loadDrawable(orangeDrawable, true, true));
+            String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
-        m_KonfettiView.start(
-                new PartyFactory(emitterConfig)
-                        .angle(Angle.RIGHT - 45)
-                        .spread(Spread.WIDE)
-                        .shapes(m_DrawableShape)
-                        .sizes(new Size(12, 5f, 0.2f))
-                        .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
-                        .setSpeedBetween(10f, 30f)
-                        .position(new Position.Relative(0.0, 0.5))
-                        .build(),
-                new PartyFactory(emitterConfig)
-                        .angle(Angle.LEFT + 45)
-                        .spread(Spread.WIDE)
-                        .shapes(m_DrawableShape)
-                        .sizes(new Size(12, 5f, 0.2f))
-                        .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
-                        .setSpeedBetween(10f, 30f)
-                        .position(new Position.Relative(1.0, 0.5))
-                        .build());
+            if (m_UserShoppingCart == null || m_UserShoppingCart.getShoppingCart().isEmpty()) {
+                Toast.makeText(getContext(), "Giỏ hàng trống", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            OrderBill newOrder = m_UserShoppingCart.createOrderBill(userId);
+
+            if (m_HostedActivity.getUserController() == null) {
+                Toast.makeText(getContext(), "Lỗi hệ thống, vui lòng thử lại", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            m_HostedActivity.getUserController().saveOrderBill(newOrder, new UserModel.SaveOrderBillCallback() {
+                @Override
+                public void onSuccess(String orderBillId) {
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                m_UserShoppingCart.Clear();
+                                m_UserShoppingCartAsList.clear();
+                                m_HostedActivity.UpdateShoppingCart(m_UserShoppingCart);
+                                m_CurrentAction = CartAction.PAYMENT_SUCCEEDED;
+
+                                Toast.makeText(getContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                                showConfetti();
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onFailure(Exception error) {
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getContext(), "Lỗi khi đặt hàng: " + (error != null ? error.getMessage() : "Không xác định"), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(getContext(), "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
-    private void prepareQuantityDialog()
-    {
+    private void showConfetti() {
+        try {
+            m_KonfettiView = m_View.findViewById(R.id.konfettiView);
+
+            if (m_KonfettiView == null) {
+                return;
+            }
+
+            Drawable bananaDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.banana);
+            Drawable appleDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.apple);
+            Drawable orangeDrawable = ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.orange);
+
+            if (bananaDrawable == null || appleDrawable == null || orangeDrawable == null) {
+                return;
+            }
+
+            m_DrawableShape = new ArrayList<>();
+            m_DrawableShape.add(ImageUtil.loadDrawable(bananaDrawable, true, true));
+            m_DrawableShape.add(ImageUtil.loadDrawable(appleDrawable, true, true));
+            m_DrawableShape.add(ImageUtil.loadDrawable(orangeDrawable, true, true));
+
+            EmitterConfig emitterConfig = new Emitter(100L, TimeUnit.MILLISECONDS).max(100);
+            m_KonfettiView.start(
+                    new PartyFactory(emitterConfig)
+                            .angle(Angle.RIGHT - 45)
+                            .spread(Spread.WIDE)
+                            .shapes(m_DrawableShape)
+                            .sizes(new Size(12, 5f, 0.2f))
+                            .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
+                            .setSpeedBetween(10f, 30f)
+                            .position(new Position.Relative(0.0, 0.5))
+                            .build(),
+                    new PartyFactory(emitterConfig)
+                            .angle(Angle.LEFT + 45)
+                            .spread(Spread.WIDE)
+                            .shapes(m_DrawableShape)
+                            .sizes(new Size(12, 5f, 0.2f))
+                            .colors(Arrays.asList(0xfce18a, 0xff726d, 0xf4306d, 0xb48def))
+                            .setSpeedBetween(10f, 30f)
+                            .position(new Position.Relative(1.0, 0.5))
+                            .build());
+        } catch (Exception e) {
+            // Bỏ qua lỗi hiệu ứng để không làm crash app
+        }
+    }
+
+    private void prepareQuantityDialog() {
         m_QuantityDialog = new Dialog(getContext());
         m_QuantityDialog.setContentView(R.layout.edit_quantity_dialog);
         m_QuantityDialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -189,10 +260,16 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
     }
 
     private void updatePaymentButton() {
-        m_PaymentButton.setText("PAYMENT (" + m_UserShoppingCart.getTotalPrice() + ")");
+        try {
+            if (m_PaymentButton != null && m_UserShoppingCart != null) {
+                m_PaymentButton.setText("THANH TOÁN (" + m_UserShoppingCart.getTotalPrice() + " VNĐ)");
+            }
+        } catch (Exception e) {
+            Log.e("ShoppingCartPage", "Error updating payment button: " + e.getMessage());
+        }
     }
-    private void createRecyclerView()
-    {
+
+    private void createRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         m_ShoppingCartRecyclerView.setLayoutManager(layoutManager);
         m_Adapter = new ShoppingCartAdapter(m_UserShoppingCartAsList, m_HostedActivity, this);
@@ -236,22 +313,22 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
         m_AddButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int qunatity = Integer.parseInt(m_QuantityTextView.getText().toString());
-                qunatity += 1;
-                m_QuantityTextView.setText(qunatity + "");
+                int quantity = Integer.parseInt(m_QuantityTextView.getText().toString());
+                quantity += 1;
+                m_QuantityTextView.setText(quantity + "");
 
-                updateMinusButtonState(qunatity);
+                updateMinusButtonState(quantity);
             }
         });
 
         m_MinusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int qunatity = Integer.parseInt(m_QuantityTextView.getText().toString());
-                qunatity -= 1;
-                m_QuantityTextView.setText(qunatity + "");
+                int quantity = Integer.parseInt(m_QuantityTextView.getText().toString());
+                quantity -= 1;
+                m_QuantityTextView.setText(quantity + "");
 
-                updateMinusButtonState(qunatity);
+                updateMinusButtonState(quantity);
             }
         });
 
@@ -262,8 +339,7 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
 
                 m_UserShoppingCart.UpdateItemQuantityOnCart(item, quantity);
 
-                if(m_UserLikedItemsList.containsKey(item.getName()))
-                {
+                if (m_UserLikedItemsList.containsKey(item.getName())) {
                     m_UserLikedItemsList.put(item.getName(), item);
                 }
 
@@ -272,8 +348,8 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
                 m_CurrentAction = CartAction.ITEM_UPDATED;
             }
         });
-
     }
+
     private void updateMinusButtonState(int quantity) {
         if (quantity <= 1) {
             m_MinusButton.setEnabled(false);
@@ -288,23 +364,36 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
 
     @Override
     public void OnShoppingCartUpdated() {
-        switch (m_CurrentAction)
-        {
-            case ITEM_REMOVED:
-                Toast.makeText(getContext(), "Item has been removed", Toast.LENGTH_SHORT).show();
-                break;
-            case ITEM_UPDATED:
-                Toast.makeText(getContext(), "Item has been updated", Toast.LENGTH_SHORT).show();
-                m_QuantityDialog.dismiss();
-                break;
-            case PAYMENT_SUCCEEDED:
-                Toast.makeText(getContext(), "Payment processed successfully!", Toast.LENGTH_SHORT).show();
-                break;
-        }
+        try {
+            if (m_CurrentAction == null) {
+                return;
+            }
 
-        m_Adapter.notifyDataSetChanged();
-        updatePaymentButton();
+            switch (m_CurrentAction) {
+                case ITEM_REMOVED:
+                    Toast.makeText(getContext(), "Đã xóa sản phẩm", Toast.LENGTH_SHORT).show();
+                    break;
+                case ITEM_UPDATED:
+                    Toast.makeText(getContext(), "Đã cập nhật số lượng", Toast.LENGTH_SHORT).show();
+                    if (m_QuantityDialog != null && m_QuantityDialog.isShowing()) {
+                        m_QuantityDialog.dismiss();
+                    }
+                    break;
+                case PAYMENT_SUCCEEDED:
+                    Toast.makeText(getContext(), "Thanh toán thành công!", Toast.LENGTH_SHORT).show();
+                    showConfetti();
+                    break;
+            }
+
+            if (m_Adapter != null) {
+                m_Adapter.notifyDataSetChanged();
+            }
+            updatePaymentButton();
+        } catch (Exception e) {
+            Log.e("ShoppingCartPage", "Error in OnShoppingCartUpdated: " + e.getMessage());
+        }
     }
+
     public enum CartAction {
         ITEM_REMOVED,
         ITEM_UPDATED,

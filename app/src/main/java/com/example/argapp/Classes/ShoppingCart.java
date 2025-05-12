@@ -85,13 +85,46 @@ public class ShoppingCart {
         m_TotalPrice = Math.max(0.0, m_TotalPrice);
     }
 
-    public List<Item> ToList()
-    {
+    public OrderBill createOrderBill(String userUid) {
+        if (m_ShoppingCart == null || m_ShoppingCart.isEmpty() || userUid == null) {
+            return null;
+        }
+
+        try {
+            long orderDate = System.currentTimeMillis();
+            String status = "PAID";
+            OrderBill orderBill = new OrderBill(userUid, orderDate, status, m_TotalPrice);
+
+            HashMap<String, OrderBillItem> orderItems = new HashMap<>();
+
+            for (Item item : m_ShoppingCart.values()) {
+                if (item != null) {
+                    OrderBillItem orderItem = new OrderBillItem(
+                            item.getName(),
+                            item.getName(),
+                            item.getPrice(),
+                            item.getQuantity(),
+                            item.getUnit() != null ? item.getUnit() : "",
+                            item.getImage() != null ? item.getImage() : ""
+                    );
+                    orderItems.put(item.getName(), orderItem);
+                }
+            }
+
+            orderBill.setItems(orderItems);
+
+            return orderBill;
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    public List<Item> ToList() {
         List<Item> itemList = new ArrayList<>(this.m_ShoppingCart.values());
         return itemList;
     }
 
-    public void Clear(){
+    public void Clear() {
         this.m_ShoppingCart.clear();
         this.m_TotalPrice = 0;
     }

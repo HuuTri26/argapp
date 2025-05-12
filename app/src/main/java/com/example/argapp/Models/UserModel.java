@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.argapp.Classes.Item;
+import com.example.argapp.Classes.OrderBill;
 import com.example.argapp.Classes.ShoppingCart;
 import com.example.argapp.Classes.User;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -334,6 +335,153 @@ public class UserModel {
                         } else {
                             callback.onFailure(task.getException());
                         }
+                    }
+                });
+    }
+    // Thêm interface mới cho việc lưu và lấy OrderBill
+    public interface SaveOrderBillCallback {
+        void onSuccess(String orderBillId);
+        void onFailure(Exception error);
+    }
+
+    public interface OrderBillsCallback {
+        void onSuccess(List<OrderBill> orderBills);
+        void onFailure(DatabaseError error);
+    }
+
+    public interface OrderDetailCallback {
+        void onSuccess(OrderBill orderBill);
+        void onFailure(Exception error);
+    }
+
+    // Thêm phương thức để lấy chi tiết đơn hàng dựa trên ID
+    public void getOrderDetail(String orderBillId, OrderDetailCallback callback) {
+        if (orderBillId == null || orderBillId.isEmpty()) {
+            callback.onFailure(new Exception("Invalid order ID"));
+            return;
+        }
+        
+        m_Database.getReference("OrderBills").child(orderBillId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        OrderBill orderBill = snapshot.getValue(OrderBill.class);
+                        callback.onSuccess(orderBill);
+                    }
+                    
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        callback.onFailure(error.toException());
+                    }
+                });
+    }
+
+    // Thêm phương thức để lưu OrderBill vào Firebase
+    public void saveOrderBill(OrderBill orderBill, SaveOrderBillCallback callback) {
+        try {
+            String userId = getCurrentUserId();
+            if (userId == null) {
+                callback.onFailure(new Exception("User not authenticated"));
+                return;
+            }
+
+            // Kiểm tra orderBill không null
+            if (orderBill == null) {
+                callback.onFailure(new Exception("Invalid order data"));
+                return;
+            }
+
+            // Tạo reference để lưu đơn hàng
+            DatabaseReference orderRef = m_Database.getReference("OrderBills").push();
+            String orderBillId = orderRef.getKey();
+
+            // Thêm ID vào OrderBill
+            orderBill.setOrderBillId(orderBillId);
+
+            // Lưu OrderBill vào Firebase
+            orderRef.setValue(orderBill)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            // Lưu tham chiếu đến OrderBill trong hồ sơ người dùng
+                            m_Database.getReference("Users").child(userId)
+                                    .child("orderBills").child(orderBillId)
+                                    .setValue(true)
+                                    .addOnCompleteListener(userOrderTask -> {
+                                        if (userOrderTask.isSuccessful()) {
+                                            callback.onSuccess(orderBillId);
+                                        } else {
+                                            callback.onFailure(userOrderTask.getException());
+                                        }
+                                    });
+                        } else {
+                            callback.onFailure(task.getException());
+                        }
+                    });
+        } catch (Exception e) {
+            // Bắt mọi exception để tránh crash
+            callback.onFailure(e);
+        }
+    }
+
+
+    // Phương thức lấy tất cả đơn hàng của người dùng
+    public void getUserOrderBills(OrderBillsCallback callback) {
+        String userId = getCurrentUserId();
+        if (userId == null) {
+            callback.onFailure(null);
+            return;
+        }
+
+        // Lấy các ID đơn hàng của người dùng
+        m_Database.getReference("Users").child(userId).child("orderBills")
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        List<OrderBill> orderBills = new ArrayList<>();
+
+                        if (!snapshot.exists() || snapshot.getChildrenCount() == 0) {
+                            callback.onSuccess(orderBills);
+                            return;
+                        }
+
+                        final long[] orderCount = {snapshot.getChildrenCount()};
+                        final long[] processedCount = {0};
+
+                        for (DataSnapshot orderIdSnapshot : snapshot.getChildren()) {
+                            String orderBillId = orderIdSnapshot.getKey();
+
+                            // Lấy chi tiết từng đơn hàng
+                            m_Database.getReference("OrderBills").child(orderBillId)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot orderSnapshot) {
+                                            OrderBill orderBill = orderSnapshot.getValue(OrderBill.class);
+                                            if (orderBill != null) {
+                                                orderBills.add(orderBill);
+                                            }
+
+                                            processedCount[0]++;
+                                            if (processedCount[0] == orderCount[0]) {
+                                                // Sắp xếp theo thời gian giảm dần (mới nhất đầu tiên)
+                                                orderBills.sort((o1, o2) -> Long.compare(o2.getOrderDate(), o1.getOrderDate()));
+                                                callback.onSuccess(orderBills);
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            processedCount[0]++;
+                                            if (processedCount[0] == orderCount[0]) {
+                                                callback.onSuccess(orderBills);
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        callback.onFailure(error);
                     }
                 });
     }

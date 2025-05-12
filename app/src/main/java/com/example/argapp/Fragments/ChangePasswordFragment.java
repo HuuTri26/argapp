@@ -141,7 +141,7 @@ public class ChangePasswordFragment extends Fragment {
             }
         });
 
-        ImageView backBtn = view.findViewById(R.id.backBtn); // Nếu dùng Fragment
+        backBtn = view.findViewById(R.id.backBtn); // Nếu dùng Fragment
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
