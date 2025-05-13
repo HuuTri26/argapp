@@ -73,19 +73,19 @@ public class User {
         this.m_PhoneNumber = i_PhoneNumber;
     }
 
-    public String getM_avatar() {
+    public String getAvatar() {
         return m_avatar;
     }
 
-    public void setM_avatar(String m_avatar) {
+    public void setAvatar(String m_avatar) {
         this.m_avatar = m_avatar;
     }
 
-    public String getM_address() {
+    public String getAddress() {
         return m_address;
     }
 
-    public void setM_address(String m_address) {
+    public void setAddress(String m_address) {
         this.m_address = m_address;
     }
 }

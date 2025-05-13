@@ -72,7 +72,7 @@
             android:layout_height="wrap_content"
             android:text="Võ Hồng Nguyên"
             android:textStyle="bold"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:layout_marginTop="16dp" />
 
         <!-- Location -->
@@ -80,9 +80,10 @@
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
             android:text="Khách hàng"
-            android:textColor="#2e7d32"
-            android:layout_marginTop="4dp" />
+            android:textSize="16dp"
+            android:textColor="#2e7d32" />
 
         <!-- Info Items -->
         <LinearLayout
@@ -115,18 +116,18 @@
 
                     <TextView
                         android:text="Số điện thoại"
-                        android:textSize="14sp"
+                        android:textSize="15dp"
                         android:textColor="#888888"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
                     <TextView
                         android:id="@+id/phoneValue"
-                        android:text="0478201728"
-                        android:textSize="16sp"
-                        android:textColor="#000000"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:text="0478201728"
+                        android:textColor="#000000"
+                        android:textSize="18dp" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -153,14 +154,14 @@
 
                     <TextView
                         android:text="Email"
-                        android:textSize="12sp"
+                        android:textSize="15dp"
                         android:textColor="#888888"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
                         android:id="@+id/email"
                         android:text="example@gmail.com"
-                        android:textSize="16sp"
+                        android:textSize="18dp"
                         android:textColor="#000000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -191,7 +192,7 @@
 
                     <TextView
                         android:text="Địa chỉ"
-                        android:textSize="14sp"
+                        android:textSize="15dp"
                         android:textColor="#888888"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
@@ -199,7 +200,7 @@
                     <TextView
                         android:id="@+id/addressValue"
                         android:text="Franklin Avenue, Corner St. London, 24125151"
-                        android:textSize="16sp"
+                        android:textSize="18dp"
                         android:textColor="#000000"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
