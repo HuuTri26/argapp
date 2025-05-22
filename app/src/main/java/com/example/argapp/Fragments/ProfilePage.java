@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,10 +35,12 @@ public class ProfilePage extends Fragment {
 
     private TextView textViewHoTen;
     private TextView textViewEmail;
+    private ImageView profileImage;
 
     private UserController m_UserController; // Biến điều khiển người dùng, xử lý tương tác với Firebase
     //    private MainActivity m_HostedActivity;
     private User m_User;  // Đối tượng chứa thông tin người dùng hiện tại
+    private Context context;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -76,11 +79,32 @@ public class ProfilePage extends Fragment {
             @Override
             public void onSuccess(User user) {
                 m_User = user;
-                if(m_User != null){
+                if (m_User != null) {
                     // Hien thi ho ten dung format:
                     String fullName = m_User.getFirstName() + " " + m_User.getLastName();
                     textViewHoTen.setText(fullName);
                     textViewEmail.setText(m_User.getEmail());
+
+                    // Hiển thị ảnh đại diện
+                    String avatarPath = m_User.getAvatar();
+                    Log.d("ProfilePage", "avatarPath: " + avatarPath);  // Debug thông thường
+                    String imageName;
+                    if (avatarPath != null && !avatarPath.isEmpty()) {
+                        // Lấy phần tên file ảnh sau "drawable/"
+                        if (avatarPath.contains("/")) {
+                            imageName = avatarPath.substring(avatarPath.lastIndexOf("/") + 1); // "vageta"
+                        } else {
+                            imageName = avatarPath; // nếu chỉ là "vageta"
+                        }
+                        // Lấy resource id từ drawable
+                        int resId = getResources().getIdentifier(imageName, "drawable", requireContext().getPackageName());
+                        // Gán vào ImageView nếu có
+                        if (resId != 0) {
+                            profileImage.setImageResource(resId);
+                        } else {
+                            profileImage.setImageResource(R.drawable.doremon); // ảnh mặc định
+                        }
+                    }
 
                 }
             }
@@ -88,8 +112,8 @@ public class ProfilePage extends Fragment {
             @Override
             public void onFailure(DatabaseError error) {
                 // Xử lý lỗi khi không thể lấy thông tin người dùng
-                if(getActivity() != null){
-                    Toast.makeText(getActivity(),"Khong the lay thong tin nguoi dung",Toast.LENGTH_SHORT).show();
+                if (getActivity() != null) {
+                    Toast.makeText(getActivity(), "Khong the lay thong tin nguoi dung", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -113,6 +137,8 @@ public class ProfilePage extends Fragment {
 
         this.textViewHoTen = view.findViewById(R.id.userName);
         this.textViewEmail = view.findViewById(R.id.email);
+        this.profileImage = view.findViewById(R.id.profileImage);
+
         //Khởi tạo  Usercontroller để lấy dữ lệu người dùng
         this.m_UserController = new UserController();
 
@@ -154,27 +180,27 @@ public class ProfilePage extends Fragment {
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(requireContext());
         builder.setTitle("Xác nhận đăng xuất");
         builder.setMessage("Bạn có chắc chắn muốn đăng xuất?");
-        
+
         // Tạo nút xác nhận với màu xanh lá
         builder.setPositiveButton("Xác nhận", (dialog, which) -> {
             // Đăng xuất khỏi hệ thống
             performLogout();
         });
-        
+
         // Tạo nút hủy với màu đỏ
         builder.setNegativeButton("Hủy", (dialog, which) -> {
             dialog.dismiss();
         });
-        
+
         // Tạo và hiển thị hộp thoại
         androidx.appcompat.app.AlertDialog dialog = builder.create();
         dialog.show();
-        
+
         // Đặt màu cho các nút sau khi hiển thị dialog
         dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_POSITIVE)
-              .setTextColor(android.graphics.Color.parseColor("#4CAF50")); // Màu xanh lá cây
+                .setTextColor(android.graphics.Color.parseColor("#4CAF50")); // Màu xanh lá cây
         dialog.getButton(androidx.appcompat.app.AlertDialog.BUTTON_NEGATIVE)
-              .setTextColor(android.graphics.Color.parseColor("#F44336")); // Màu đỏ
+                .setTextColor(android.graphics.Color.parseColor("#F44336")); // Màu đỏ
     }
 
     // Phương thức để thực hiện đăng xuất

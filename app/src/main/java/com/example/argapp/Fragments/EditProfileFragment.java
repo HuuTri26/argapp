@@ -76,7 +76,7 @@ public class EditProfileFragment extends Fragment {
                     phoneNumberInput.setText(user.getPhoneNumber());
 
                     // Điền địa chỉ nếu có
-                    String address = user.getM_address();
+                    String address = user.getAddress();
                     if (address != null && !address.isEmpty()) {
                         addressInput.setText(address);
                     }

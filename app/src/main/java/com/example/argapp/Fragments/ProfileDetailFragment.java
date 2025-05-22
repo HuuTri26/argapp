@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +40,8 @@ public class ProfileDetailFragment extends Fragment {
     private TextView phoneTextView;
 
     private TextView addressTextView;
+
+    private ImageView profileImage;
     private UserController m_UserController;
     private User m_User;
 
@@ -85,6 +88,7 @@ public class ProfileDetailFragment extends Fragment {
         emailTextView = view.findViewById(R.id.email);
         phoneTextView= view.findViewWithTag("phoneNumber");
         addressTextView = view.findViewWithTag("address");
+        profileImage = view.findViewById(R.id.avatar);
 
         // Khoi tao UserController
         m_UserController= new UserController();
@@ -115,6 +119,26 @@ public class ProfileDetailFragment extends Fragment {
                 m_User = user;
 
                 if (m_User != null) {
+                    // Hiển thị ảnh đại diện
+                    String avatarPath = m_User.getAvatar();
+                    Log.d("ProfilePage", "avatarPath: " + avatarPath);  // Debug thông thường
+                    String imageName;
+                    if (avatarPath != null && !avatarPath.isEmpty()) {
+                        // Lấy phần tên file ảnh sau "drawable/"
+                        if (avatarPath.contains("/")) {
+                            imageName = avatarPath.substring(avatarPath.lastIndexOf("/") + 1); // "vageta"
+                        } else {
+                            imageName = avatarPath; // nếu chỉ là "vageta"
+                        }
+                        // Lấy resource id từ drawable
+                        int resId = getResources().getIdentifier(imageName, "drawable", requireContext().getPackageName());
+                        // Gán vào ImageView nếu có
+                        if (resId != 0) {
+                            profileImage.setImageResource(resId);
+                        } else {
+                            profileImage.setImageResource(R.drawable.doremon); // ảnh mặc định
+                        }
+                    }
                     // Hiển thị thông tin người dùng
                     String fullName = m_User.getFirstName() + " " + m_User.getLastName();
                     userNameTextView.setText(fullName);
@@ -139,7 +163,7 @@ public class ProfileDetailFragment extends Fragment {
                     if (addressLayout != null) {
                         TextView addressValue = addressLayout.findViewById(R.id.addressValue);
                         if (addressValue != null) {
-                            String address = m_User.getM_address();
+                            String address = m_User.getAddress();
                             addressValue.setText(address != null ? address : "Chưa cập nhật địa chỉ");
                         }
                     }
