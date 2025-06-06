@@ -1,5 +1,6 @@
 package com.example.argapp.Interfaces;
 
+import com.example.argapp.Classes.Coupon;
 import com.example.argapp.Classes.Item;
 
 public interface OnShoppingCartItemListener {

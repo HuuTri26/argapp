@@ -32,6 +32,8 @@ public class CategoryItemsList
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot itemSnapshot : snapshot.getChildren()) {
+                    String itemId = itemSnapshot.child("Id").getValue(String.class);
+                    String itemType = itemSnapshot.child("Type").getValue(String.class);
                     String itemName = itemSnapshot.child("Name").getValue(String.class);
                     Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
                     String itemImage = itemSnapshot.child("Image").getValue(String.class);
@@ -41,7 +43,7 @@ public class CategoryItemsList
 
                     int itemQuantity = 0;
 
-                    Item item = new Item(itemName, itemPrice, itemQuantity, itemImage);
+                    Item item = new Item(itemId, itemType, itemName, itemPrice, itemQuantity, itemImage, itemDescription, itemUnit);
 
                     // Thiết lập các trường mới nếu có dữ liệu
                     if (itemDescription != null) {

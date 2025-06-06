@@ -1,3 +1,4 @@
+
 package com.example.argapp.Models;
 
 import android.util.Log;
@@ -35,7 +36,7 @@ public class UserModel {
     {
         m_Auth = FirebaseAuth.getInstance();
         m_Database = FirebaseDatabase.getInstance();
-        m_Ref = m_Database.getReference("Users");
+        m_Ref = m_Database.getReference("Data/Users");
         m_FirebaseUser = m_Auth.getCurrentUser();
     }
 
@@ -360,7 +361,7 @@ public class UserModel {
             callback.onFailure(new Exception("Invalid order ID"));
             return;
         }
-        
+
         m_Database.getReference("OrderBills").child(orderBillId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -368,7 +369,7 @@ public class UserModel {
                         OrderBill orderBill = snapshot.getValue(OrderBill.class);
                         callback.onSuccess(orderBill);
                     }
-                    
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         callback.onFailure(error.toException());
