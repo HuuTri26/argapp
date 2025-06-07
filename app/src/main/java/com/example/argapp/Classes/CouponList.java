@@ -1,6 +1,7 @@
 package com.example.argapp.Classes;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,11 +30,12 @@ public class CouponList {
 
     /**
      * Phương thức để lấy danh sách coupon từ Firebase Realtime Database
-     * @param context Context để hiển thị thông báo lỗi nếu cần
+     *
+     * @param context    Context để hiển thị thông báo lỗi nếu cần
      * @param i_CouponId ID của coupon cần truy vấn
-     * @param callback Interface callback để trả về kết quả sau khi truy vấn thành công hoặc thất bại
+     * @param callback   Interface callback để trả về kết quả sau khi truy vấn thành công hoặc thất bại
      */
-    public void getCouponsByCouponId(Context context, String i_CouponId, OnCouponsFetchedListener callback){
+    public void getCouponsByCouponId(Context context, String i_CouponId, OnCouponsFetchedListener callback) {
         // Khởi tạo tham chiếu đến Firebase Database
         FirebaseDatabase m_Database;
         DatabaseReference m_Ref;
@@ -49,11 +51,11 @@ public class CouponList {
         m_Ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                boolean couponFound = false;
 
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     String couponId = dataSnapshot.child("Id").getValue(String.class);
-                    System.out.println("Coupon ID: " + couponId);
+//                    System.out.println("Coupon ID: " + couponId);
+                    Log.d("CouponList", "Coupon ID: " + couponId);
 
                     if (couponId != null && couponId.equals(i_CouponId)) {
                         String productId = dataSnapshot.child("productId").getValue(String.class);
@@ -81,7 +83,6 @@ public class CouponList {
                                 startDate, endDate, description);
 
                         m_CouponsList.add(coupon);
-                        couponFound = true;
                         break; // Thoát vòng lặp khi tìm thấy coupon
                     }
                 }
