@@ -31,63 +31,62 @@ public class UserModel {
     private DatabaseReference m_Ref;
     private FirebaseUser m_FirebaseUser;
 
-    public UserModel()
-    {
+    public UserModel() {
         m_Auth = FirebaseAuth.getInstance();
         m_Database = FirebaseDatabase.getInstance();
         m_Ref = m_Database.getReference("Users");
         m_FirebaseUser = m_Auth.getCurrentUser();
     }
 
-    public interface AuthCallback
-    {
+    public interface AuthCallback {
         void onSuccess();
+
         void onFailure(Exception i_Exception);
     }
 
-    public interface UserCallback
-    {
+    public interface UserCallback {
         void onSuccess(User user);
+
         void onFailure(DatabaseError error);
     }
 
     public interface UpdateProfileCallback {
         void onSuccess();
+
         void onFailure(Exception e);
     }
 
-    public interface ShoppingCartCallback
-    {
+    public interface ShoppingCartCallback {
         void onSuccess(ShoppingCart userShoppingCart);
+
         void onFailure(DatabaseError error);
     }
 
-    public interface LikedItemsCallback
-    {
+    public interface LikedItemsCallback {
         void onSuccess(HashMap<String, Item> userLikedItemsList);
+
         void onFailure(DatabaseError error);
     }
 
-    public interface UpdateShoppingCartCallback
-    {
+    public interface UpdateShoppingCartCallback {
         void onSuccess();
+
         void onFailure(Exception error);
     }
 
-    public interface UpdateLikedItemsListCallback
-    {
+    public interface UpdateLikedItemsListCallback {
         void onSuccess();
+
         void onFailure(Exception error);
     }
 
-    public interface NavigationCallback
-    {
+    public interface NavigationCallback {
         void onSuccess();
+
         void onFailure(Exception e);
     }
 
-    public void Login(String i_Email, String i_Password, AuthCallback callback)
-    {
+    public void Login(String i_Email, String i_Password, AuthCallback callback) {
         m_Auth.signInWithEmailAndPassword(i_Email, i_Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -102,8 +101,7 @@ public class UserModel {
                 });
     }
 
-    public void Register(User i_NewUser, AuthCallback callback)
-    {
+    public void Register(User i_NewUser, AuthCallback callback) {
         m_Auth.createUserWithEmailAndPassword(i_NewUser.getEmail(), i_NewUser.getPassword())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -129,8 +127,7 @@ public class UserModel {
                 });
     }
 
-    public void GetUser(UserCallback callback)
-    {
+    public void GetUser(UserCallback callback) {
         // Read from the database
         String userId = getCurrentUserId();
 
@@ -186,8 +183,7 @@ public class UserModel {
         });
     }
 
-    public void UpdateShoppingCart(ShoppingCart i_UserShoppingCart, UpdateShoppingCartCallback callback)
-    {
+    public void UpdateShoppingCart(ShoppingCart i_UserShoppingCart, UpdateShoppingCartCallback callback) {
         String userId = m_FirebaseUser.getUid();
         HashMap<String, Object> updates = new HashMap<>();
         updates.put("shoppingCart", i_UserShoppingCart);
@@ -195,20 +191,16 @@ public class UserModel {
         m_Ref.child(userId).updateChildren(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     callback.onSuccess();
-                }
-                else
-                {
+                } else {
                     callback.onFailure(task.getException());
                 }
             }
         });
     }
 
-    public void UpdateLikedItemsList(HashMap<String, Item> i_UserLikedItemsList, UpdateLikedItemsListCallback callback)
-    {
+    public void UpdateLikedItemsList(HashMap<String, Item> i_UserLikedItemsList, UpdateLikedItemsListCallback callback) {
         String userId = m_FirebaseUser.getUid();
         HashMap<String, Object> updates = new HashMap<>();
         updates.put("likedItems", i_UserLikedItemsList);
@@ -216,20 +208,16 @@ public class UserModel {
         m_Ref.child(userId).updateChildren(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
-                if(task.isSuccessful())
-                {
+                if (task.isSuccessful()) {
                     callback.onSuccess();
-                }
-                else
-                {
+                } else {
                     callback.onFailure(task.getException());
                 }
             }
         });
     }
 
-    public void GetUserShoppingCart(ShoppingCartCallback callback)
-    {
+    public void GetUserShoppingCart(ShoppingCartCallback callback) {
         String userId = getCurrentUserId();
 
         m_Ref.child(userId).child("shoppingCart").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -255,8 +243,7 @@ public class UserModel {
 
                 ShoppingCart userShoppingCart = snapshot.getValue(ShoppingCart.class);
 
-                if(userShoppingCart == null)
-                {
+                if (userShoppingCart == null) {
                     userShoppingCart = new ShoppingCart();
                 }
 
@@ -271,8 +258,7 @@ public class UserModel {
         });
     }
 
-    public void GetUserLikedItemsList(LikedItemsCallback callback)
-    {
+    public void GetUserLikedItemsList(LikedItemsCallback callback) {
         String userId = getCurrentUserId();
 
         m_Ref.child(userId).child("likedItems").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -296,8 +282,7 @@ public class UserModel {
         });
     }
 
-    public void LoginWithCredential(String i_Email, String i_Password, NavigationCallback callback)
-    {
+    public void LoginWithCredential(String i_Email, String i_Password, NavigationCallback callback) {
         m_Auth.signInWithEmailAndPassword(i_Email, i_Password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -312,8 +297,7 @@ public class UserModel {
                 });
     }
 
-    public void RegisterWithCredential(User i_NewUser, NavigationCallback callback)
-    {
+    public void RegisterWithCredential(User i_NewUser, NavigationCallback callback) {
         m_Auth.createUserWithEmailAndPassword(i_NewUser.getEmail(), i_NewUser.getPassword())
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -338,19 +322,23 @@ public class UserModel {
                     }
                 });
     }
+
     // Thêm interface mới cho việc lưu và lấy OrderBill
     public interface SaveOrderBillCallback {
         void onSuccess(String orderBillId);
+
         void onFailure(Exception error);
     }
 
     public interface OrderBillsCallback {
         void onSuccess(List<OrderBill> orderBills);
+
         void onFailure(DatabaseError error);
     }
 
     public interface OrderDetailCallback {
         void onSuccess(OrderBill orderBill);
+
         void onFailure(Exception error);
     }
 
@@ -360,7 +348,7 @@ public class UserModel {
             callback.onFailure(new Exception("Invalid order ID"));
             return;
         }
-        
+
         m_Database.getReference("OrderBills").child(orderBillId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -368,10 +356,41 @@ public class UserModel {
                         OrderBill orderBill = snapshot.getValue(OrderBill.class);
                         callback.onSuccess(orderBill);
                     }
-                    
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         callback.onFailure(error.toException());
+                    }
+                });
+    }
+
+    // thêm phương thức lấy User theo userID
+    public void getUserById(String userId, UserCallback callback) {
+        if (userId == null || userId.isEmpty()) {
+            callback.onFailure(DatabaseError.fromException(new Exception("Invalid user ID")));
+            return;
+        }
+
+        FirebaseDatabase m_Database = FirebaseDatabase.getInstance();
+        m_Database.getReference("Users").child(userId)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()) {
+                            User user = snapshot.getValue(User.class);
+                            if (user != null) {
+                                callback.onSuccess(user);
+                            } else {
+                                callback.onFailure(DatabaseError.fromException(new Exception("User data is null")));
+                            }
+                        } else {
+                            callback.onFailure(DatabaseError.fromException(new Exception("User not found")));
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        callback.onFailure(DatabaseError.fromException(error.toException()));
                     }
                 });
     }

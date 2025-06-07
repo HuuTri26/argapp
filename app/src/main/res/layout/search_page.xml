@@ -7,25 +7,86 @@
     tools:context=".Fragments.SearchPage"
     android:background="@drawable/groceroy_items_background">
 
+<!--    <LinearLayout-->
+<!--        android:id="@+id/linearLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:background="@color/white"-->
+<!--        android:padding="5dp">-->
+
+<!--        <SearchView-->
+<!--            android:id="@+id/searchView"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:queryHint="Search products..."-->
+<!--            android:iconifiedByDefault="false"-->
+<!--            android:background="@drawable/search_shape"-->
+<!--            />-->
+
+<!--    </LinearLayout>-->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
         android:background="@color/white"
-        android:padding="5dp">
+        android:padding="8dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- SearchView -->
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
             android:queryHint="Search products..."
             android:iconifiedByDefault="false"
             android:background="@drawable/search_shape"
-            />
+            android:layout_marginBottom="8dp" />
+
+        <!-- Hàng lọc giá: Min, Max, Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <EditText
+                android:id="@+id/minPriceEditText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Min"
+                android:inputType="number"
+
+                android:padding="8dp"
+                android:layout_marginEnd="4dp"/>
+
+            <EditText
+                android:id="@+id/maxPriceEditText"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:hint="Max"
+                android:inputType="number"
+
+                android:padding="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/priceFilterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="#AC1045"
+                android:text="TÌM"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView

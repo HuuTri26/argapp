@@ -52,6 +52,21 @@
             tools:text="Đơn hàng #12345678" />
 
         <TextView
+            android:id="@+id/tvDetailOrderCustomerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            tools:text="Khách hàng: Trần Minh Nghĩa" />
+        <TextView
+            android:id="@+id/tvDetailOrderPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            tools:text="Số điện thoai: 0378291902" />
+
+        <TextView
             android:id="@+id/tvDetailOrderDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,6 +91,13 @@
             android:textSize="16sp"
             android:textStyle="bold"
             tools:text="Tổng tiền: 75.000 VNĐ" />
+        <TextView
+            android:id="@+id/tvDetailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="14sp"
+            tools:text="Địa chỉ: 97 Man Thiện, Phường Hiệp Phú, Quận 9, TP HCM" />
     </LinearLayout>
 
     <!-- Danh sách sản phẩm -->

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -82,7 +84,11 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
     private List<Item> m_SearchedItemList;
     private SearchView m_SearchView;
     private ShoppingCart m_UserShoppingCart;
-    private HashMap<String, Item> m_UserLikedItemsList ;
+    private HashMap<String, Item> m_UserLikedItemsList;
+
+    private EditText minPriceEditText;
+    private EditText maxPriceEditText;
+    private Button priceFilterButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,6 +100,10 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
         this.m_SearchItemsRecyclerView = this.m_View.findViewById(R.id.searchItemRecyclerView);
         this.m_AllItemsList = new ArrayList<>();
         this.m_SearchedItemList = new ArrayList<>();
+
+        minPriceEditText = m_View.findViewById(R.id.minPriceEditText);
+        maxPriceEditText = m_View.findViewById(R.id.maxPriceEditText);
+        priceFilterButton = m_View.findViewById(R.id.priceFilterButton);
 
         m_HostedActivity.SetLikedItemsListUpdateListener(this);
         m_HostedActivity.SetShoppingCartUpdatedListener(this);
@@ -125,22 +135,95 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
             }
         });
 
+        // tìm sản phẩm theo giá
+        // Thêm sự kiện click cho nút lọc giá
+
+        priceFilterButton.setOnClickListener(v -> {
+            String minPriceStr = minPriceEditText.getText().toString().trim();
+            String maxPriceStr = maxPriceEditText.getText().toString().trim();
+
+            // Kiểm tra giá trị nhập vào
+            if (minPriceStr.isEmpty() && maxPriceStr.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter at least one price value", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            Double minPrice = null;
+            Double maxPrice = null;
+            try {
+                if (!minPriceStr.isEmpty()) {
+                    minPrice = Double.parseDouble(minPriceStr);
+                }
+                if (!maxPriceStr.isEmpty()) {
+                    maxPrice = Double.parseDouble(maxPriceStr);
+                }
+                // Kiểm tra trường hợp cả minPrice và maxPrice đều được nhập
+                if (minPrice != null && maxPrice != null && minPrice > maxPrice) {
+                    Toast.makeText(getContext(), "Minimum price cannot be greater than maximum price", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            } catch (NumberFormatException e) {
+                Toast.makeText(getContext(), "Please enter valid numbers for price", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Gọi hàm timSanPhamTheoGia với minPrice và maxPrice (có thể null)
+            CategoryItemsList.timSanPhamTheoGia(minPrice, maxPrice, getContext(), new OnCategoryItemsFetchedListener() {
+                @Override
+                public void onCategoryItemsFetched(List<Item> filteredItems) {
+                    // Cập nhật danh sách hiển thị
+                    m_SearchedItemList.clear();
+                    m_SearchedItemList.addAll(filteredItems);
+                    m_Adapter.notifyDataSetChanged();
+
+                    if (filteredItems.isEmpty()) {
+                        Toast.makeText(getContext(), "No items found in this price range", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        });
+
+        // Lấy danh sách tất cả sản phẩm ban đầu
+        CategoryItemsList.GetAllItems(this.m_HostedActivity, new OnCategoryItemsFetchedListener() {
+            @Override
+            public void onCategoryItemsFetched(List<Item> allItems) {
+                m_AllItemsList.clear();
+                m_AllItemsList.addAll(allItems);
+                m_SearchedItemList.clear();
+                m_SearchedItemList.addAll(allItems);
+                m_UserShoppingCart = m_HostedActivity.GetUserShoppingCart();
+                m_UserLikedItemsList = m_HostedActivity.GetUserLikedItemsList();
+
+                createRecyclerView();
+
+                m_SearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        filterList(newText);
+                        return true;
+                    }
+                });
+            }
+        });
+
         return m_View;
     }
 
-    private void createRecyclerView(){
+    private void createRecyclerView() {
         this.m_SearchItemsRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         this.m_Adapter = new CategoryItemsAdapter(this.m_HostedActivity, this.m_SearchedItemList, this.m_UserShoppingCart, this.m_UserLikedItemsList, this);
         this.m_SearchItemsRecyclerView.setAdapter(m_Adapter);
     }
-    private void filterList(String i_Query)
-    {
+
+    private void filterList(String i_Query) {
         List<Item> filteredList = new ArrayList<>();
 
-        for(Item item : this.m_AllItemsList)
-        {
-            if(item.getName().toLowerCase().contains(i_Query.toLowerCase()))
-            {
+        for (Item item : this.m_AllItemsList) {
+            if (item.getName().toLowerCase().contains(i_Query.toLowerCase())) {
                 filteredList.add(item);
             }
         }
@@ -165,15 +248,11 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
 
     @Override
     public void onLikeClick(Item item) {
-        if(m_UserLikedItemsList.containsKey(item.getName()))
-        {
+        if (m_UserLikedItemsList.containsKey(item.getName())) {
             m_UserLikedItemsList.remove(item.getName());
-        }
-        else
-        {
+        } else {
             HashMap<String, Item> userShoppingCart = m_UserShoppingCart.getShoppingCart();
-            if(userShoppingCart.containsKey(item.getName()))
-            {
+            if (userShoppingCart.containsKey(item.getName())) {
                 item.setQuantity(userShoppingCart.get(item.getName()).getQuantity());
             }
 
@@ -193,8 +272,7 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
     public void onAddToCartClick(Item item) {
         m_UserShoppingCart.AddToCart(item);
 
-        if(m_UserLikedItemsList.containsKey(item.getName()))
-        {
+        if (m_UserLikedItemsList.containsKey(item.getName())) {
             m_UserLikedItemsList.put(item.getName(), item);
         }
 
