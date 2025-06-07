@@ -1,6 +1,7 @@
 package com.example.argapp.Activities;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -200,6 +201,9 @@ public class MainActivity extends AppCompatActivity {
                 NavController navController = navHostFragment.getNavController();
                 navController.navigate(R.id.action_login_page_to_categories_page);
 
+                // Lấy thông tin người dùng trước
+                GetUser();
+
                 // Lấy giỏ hàng của người dùng từ Firebase
                 FetchUserShoppingCartFromFB(new UserModel.ShoppingCartCallback() {
                     @Override
@@ -211,7 +215,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(DatabaseError error) {
-                        Toast.makeText(MainActivity.this, "The email or password are invalid", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Không thể tải giỏ hàng: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -226,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(DatabaseError error) {
-                        Toast.makeText(MainActivity.this, "The email or password are invalid", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Không thể tải danh sách yêu thích: " + error.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -237,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Exception i_Exception) {
                 // Hiển thị thông báo nếu đăng nhập thất bại
-                Toast.makeText(MainActivity.this, "The email or password are invalid", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Email hoặc mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -275,21 +279,42 @@ public class MainActivity extends AppCompatActivity {
      */
     public void GetUser()
     {
+        Log.d("MainActivity", "DEBUG: GetUser() called");
+
         m_UserController.GetUser(new UserModel.UserCallback() {
             @Override
             public void onSuccess(User user) {
-                m_User = user;
-                ActionBar actionBar = getSupportActionBar();
+                Log.d("MainActivity", "DEBUG: GetUser onSuccess called, user: " + (user != null ? "not null" : "null"));
+                if (user != null) {
+                    Log.d("MainActivity", "DEBUG: User details - FirstName: " + user.getFirstName() + ", LastName: " + user.getLastName());
+                    m_User = user;
+                    ActionBar actionBar = getSupportActionBar();
 
-                // Cập nhật tiêu đề ActionBar với tên người dùng
-                if (actionBar != null) {
-                    actionBar.setTitle("Welcome, " + m_User.getFirstName() + " " + m_User.getLastName());
+                    // Cập nhật tiêu đề ActionBar với tên người dùng
+                    if (actionBar != null) {
+                        String firstName = user.getFirstName() != null ? user.getFirstName() : "";
+                        String lastName = user.getLastName() != null ? user.getLastName() : "";
+                        actionBar.setTitle("Welcome, " + firstName + " " + lastName);
+                    }
+                } else {
+                    // Xử lý trường hợp user null
+                    Log.d("MainActivity", "DEBUG: User is null in onSuccess");
+                    Toast.makeText(MainActivity.this, "Không thể tải thông tin người dùng", Toast.LENGTH_SHORT).show();
+                    ActionBar actionBar = getSupportActionBar();
+                    if (actionBar != null) {
+                        actionBar.setTitle("Welcome");
+                    }
                 }
             }
 
             @Override
             public void onFailure(DatabaseError error) {
-                Toast.makeText(MainActivity.this, error.toString(), Toast.LENGTH_SHORT).show();
+                Log.d("MainActivity", "DEBUG: GetUser onFailure called: " + error.getMessage());
+                Toast.makeText(MainActivity.this, "Lỗi khi tải thông tin: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                ActionBar actionBar = getSupportActionBar();
+                if (actionBar != null) {
+                    actionBar.setTitle("Welcome");
+                }
             }
         });
     }
@@ -368,7 +393,7 @@ public class MainActivity extends AppCompatActivity {
     {
         m_UserShoppingCart = i_UserShoppingCart;
 
-        m_UserController.UpdateShoppingCart(i_UserShoppingCart, new UserModel.UpdateShoppingCartCallback() {
+        m_UserController.UpdateShoppingCart(m_UserShoppingCart, new UserModel.UpdateShoppingCartCallback() {
             @Override
             public void onSuccess() {
                 // Thông báo cho listener nếu có
@@ -386,7 +411,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-    
+
     /**
      * Thiết lập dữ liệu giỏ hàng và danh sách yêu thích
      * @param i_UserShoppingCart Giỏ hàng
@@ -423,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
     {
         m_BottomNavigationView.setVisibility(View.GONE);
     }
-    
+
     /**
      * Hiện thanh điều hướng dưới và chọn nút Home
      */
@@ -432,7 +457,7 @@ public class MainActivity extends AppCompatActivity {
         m_BottomNavigationView.setVisibility(View.VISIBLE);
         m_BottomNavigationView.setSelectedItemId(R.id.homeButton);
     }
-    
+
     /**
      * Cập nhật hiển thị số lượng mặt hàng trên nút giỏ hàng trong thanh điều hướng
      */
@@ -485,11 +510,11 @@ public class MainActivity extends AppCompatActivity {
     private void checkAutoLogin() {
         SharedPreferences sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE);
         boolean rememberMe = sharedPreferences.getBoolean("isRemembered", false);
-        
+
         if (rememberMe) {
             String email = sharedPreferences.getString("emailAddress", "");
             String password = sharedPreferences.getString("password", "");
-            
+
             if (!email.isEmpty() && !password.isEmpty()) {
                 // Tự động đăng nhập với thông tin đã lưu
                 Login(email, password);

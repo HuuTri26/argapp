@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.argapp.Activities.MainActivity;
 import com.example.argapp.Adapters.ShoppingCartAdapter;
+import com.example.argapp.Classes.Coupon;
 import com.example.argapp.Classes.Item;
 import com.example.argapp.Classes.OrderBill;
 import com.example.argapp.Classes.ShoppingCart;

@@ -1,3 +1,4 @@
+
 package com.example.argapp.Models;
 
 import android.util.Log;
@@ -34,7 +35,7 @@ public class UserModel {
     public UserModel() {
         m_Auth = FirebaseAuth.getInstance();
         m_Database = FirebaseDatabase.getInstance();
-        m_Ref = m_Database.getReference("Users");
+        m_Ref = m_Database.getReference("Data/Users");
         m_FirebaseUser = m_Auth.getCurrentUser();
     }
 
