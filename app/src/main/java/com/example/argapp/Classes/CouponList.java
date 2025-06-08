@@ -26,7 +26,7 @@ import java.util.Locale;
  */
 public class CouponList {
     private static List<Coupon> m_CouponsList = new ArrayList<>();
-    private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+    private static final SimpleDateFormat m_DateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
     /**
      * Phương thức để lấy danh sách coupon từ Firebase Realtime Database
@@ -70,10 +70,10 @@ public class CouponList {
 
                         try {
                             if (startDateStr != null) {
-                                startDate = DATE_FORMAT.parse(startDateStr);
+                                startDate = m_DateFormat.parse(startDateStr);
                             }
                             if (endDateStr != null) {
-                                endDate = DATE_FORMAT.parse(endDateStr);
+                                endDate = m_DateFormat.parse(endDateStr);
                             }
                         } catch (ParseException e) {
                             System.err.println("Error parsing date: " + e.getMessage());

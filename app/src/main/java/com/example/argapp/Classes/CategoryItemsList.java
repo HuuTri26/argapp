@@ -1,6 +1,7 @@
 package com.example.argapp.Classes;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -15,6 +16,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class CategoryItemsList
 {
@@ -220,5 +222,62 @@ public class CategoryItemsList
             }
         });
     }
-}
 
+    public static void searchCategoryItemsByTheMostPopular(Context context, Map<String, Integer> i_Top_n_Items, OnCategoryItemsFetchedListener callback){
+        FirebaseDatabase m_Database;
+        DatabaseReference m_Ref;
+
+        m_CategoryItems.clear();
+        m_Database = FirebaseDatabase.getInstance();
+        m_Ref = m_Database.getReference("Data/CategoriesItems");
+
+        m_Ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot itemSnapshot : categorySnapshot.getChildren()) {
+                        String itemId = itemSnapshot.child("Id").getValue(String.class);
+                        String itemType = itemSnapshot.child("Type").getValue(String.class);
+                        String itemName = itemSnapshot.child("Name").getValue(String.class);
+                        Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
+                        String itemImage = itemSnapshot.child("Image").getValue(String.class);
+                        String itemDescription = itemSnapshot.child("Description").getValue(String.class);
+                        String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
+
+                        int itemQuantity = 0;
+
+                        String itemIdentifier = itemType + "-" + itemId;
+                        Log.d("CategoryItemsList", "itemIdentifier:" + itemIdentifier);
+                        // Kiểm tra nếu sản phẩm nằm trong danh sách top n
+                        if (i_Top_n_Items.containsKey(itemIdentifier)) {
+                            Item item = new Item(itemId, itemType, itemName, itemPrice, itemQuantity, itemImage, itemDescription, itemUnit);
+                            m_CategoryItems.add(item);
+                        }
+                    }
+                }
+
+                // Sort items by sales in decreasing order before callback
+                m_CategoryItems.sort((item1, item2) -> {
+                    // Get sales for each item from the top items map
+                    Integer sales1 = i_Top_n_Items.get(item1.getId() + "-" + item1.getType());
+                    Integer sales2 = i_Top_n_Items.get(item2.getId() + "-" + item2.getType());
+
+                    // Handle null values
+                    if (sales1 == null) sales1 = 0;
+                    if (sales2 == null) sales2 = 0;
+
+                    // Sort in decreasing order (highest sales first)
+                    return sales2.compareTo(sales1);
+                });
+
+                callback.onCategoryItemsFetched(m_CategoryItems);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                callback.onCategoryItemsFetched(new ArrayList<>());
+            }
+        });
+    }
+}

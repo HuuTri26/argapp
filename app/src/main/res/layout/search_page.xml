@@ -7,27 +7,6 @@
     tools:context=".Fragments.SearchPage"
     android:background="@drawable/groceroy_items_background">
 
-<!--    <LinearLayout-->
-<!--        android:id="@+id/linearLayout"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        android:background="@color/white"-->
-<!--        android:padding="5dp">-->
-
-<!--        <SearchView-->
-<!--            android:id="@+id/searchView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:layout_marginTop="15dp"-->
-<!--            android:queryHint="Search products..."-->
-<!--            android:iconifiedByDefault="false"-->
-<!--            android:background="@drawable/search_shape"-->
-<!--            />-->
-
-<!--    </LinearLayout>-->
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -85,6 +64,72 @@
                 android:layout_height="40dp"
                 android:background="#AC1045"
                 android:text="TÌM"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <!-- Sản phẩm phổ biến -->
+        <EditText
+            android:id="@+id/popularProductsEditText"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:text="Sản phẩm phổ biến"
+            android:textStyle="bold"
+            android:background="@android:color/transparent"
+            android:focusable="false"
+            android:clickable="false"
+            android:padding="8dp"
+            android:textSize="16sp" />
+
+        <!-- Hàng các nút thời gian -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/threeDaysBtn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:text="3 ngày qua"
+                android:textSize="12sp"
+                android:background="#E0E0E0"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/sevenDaysBtn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:text="7 ngày qua"
+                android:textSize="12sp"
+                android:background="#E0E0E0"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/fourteenDaysBtn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:text="14 ngày qua"
+                android:textSize="12sp"
+                android:background="#E0E0E0"
+                android:textColor="@android:color/black"
+                android:layout_marginEnd="4dp" />
+
+            <Button
+                android:id="@+id/thirtyDaysBtn"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_weight="1"
+                android:text="30 ngày qua"
+                android:textSize="12sp"
+                android:background="#E0E0E0"
                 android:textColor="@android:color/black" />
         </LinearLayout>
     </LinearLayout>
