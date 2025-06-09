@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class OrderBill {
     private String orderBillId;
-    private String userUid; // chính là key như "26bHh7N..."
+    private String userUId; // chính là key như "26bHh7N..."
     private long orderDate;
     private String status;
     private double totalPrice;
@@ -16,7 +16,7 @@ public class OrderBill {
     }
 
     public OrderBill(String userUid, long orderDate, String status, double totalPrice) {
-        this.userUid = userUid;
+        this.userUId = userUid;
         this.orderDate = orderDate;
         this.status = status;
         this.totalPrice = totalPrice;
@@ -25,7 +25,7 @@ public class OrderBill {
 
 
     public OrderBill(String userUid, long orderDate, String status, double totalPrice, Map<String, OrderBillItem> items) {
-        this.userUid = userUid;
+        this.userUId = userUid;
         this.orderDate = orderDate;
         this.status = status;
         this.totalPrice = totalPrice;
@@ -40,11 +40,11 @@ public class OrderBill {
         this.orderBillId = orderBillId;
     }
     public String getUserUid() {
-        return userUid;
+        return userUId;
     }
 
     public void setUserUid(String userUid) {
-        this.userUid = userUid;
+        this.userUId = userUid;
     }
 
     public long getOrderDate() {

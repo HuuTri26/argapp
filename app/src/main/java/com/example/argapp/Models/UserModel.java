@@ -350,7 +350,7 @@ public class UserModel {
             return;
         }
 
-        m_Database.getReference("OrderBills").child(orderBillId)
+        m_Database.getReference("Data/OrderBills").child(orderBillId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -373,7 +373,7 @@ public class UserModel {
         }
 
         FirebaseDatabase m_Database = FirebaseDatabase.getInstance();
-        m_Database.getReference("Users").child(userId)
+        m_Database.getReference("Data/Users").child(userId)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -453,7 +453,7 @@ public class UserModel {
         }
 
         // Lấy các ID đơn hàng của người dùng
-        m_Database.getReference("Users").child(userId).child("orderBills")
+        m_Database.getReference("Data/Users").child(userId).child("orderBills")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -471,7 +471,7 @@ public class UserModel {
                             String orderBillId = orderIdSnapshot.getKey();
 
                             // Lấy chi tiết từng đơn hàng
-                            m_Database.getReference("OrderBills").child(orderBillId)
+                            m_Database.getReference("Data/OrderBills").child(orderBillId)
                                     .addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot orderSnapshot) {
