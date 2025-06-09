@@ -285,6 +285,23 @@ public class ShoppingCartPage extends Fragment implements OnShoppingCartItemList
     }
 
     @Override
+    public void onItemDiscount(Item item) {
+        // Tìm và cập nhật item trong m_UserShoppingCartAsList
+        for (int i = 0; i < m_UserShoppingCartAsList.size(); i++) {
+            Item listItem = m_UserShoppingCartAsList.get(i);
+            if (listItem.getName().equals(item.getName()) &&
+                    listItem.getId().equals(item.getId())) {
+                // Cập nhật giá của item trong list
+                listItem.setPrice(item.getPrice());
+                break;
+            }
+        }
+        m_UserShoppingCart.recalculateTotalPrice();
+        updatePaymentButton();
+        showConfetti();
+    }
+
+    @Override
     public void onRemoveItem(Item item) {
         m_UserShoppingCartAsList.remove(item);
         m_HostedActivity.RemoveItem(item);

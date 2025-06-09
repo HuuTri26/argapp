@@ -70,6 +70,8 @@ public class ShoppingCart {
         m_TotalPrice += roundedPrice.doubleValue();
         m_TotalPrice = BigDecimal.valueOf(m_TotalPrice).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
+    
+    
 
     public void UpdateItemQuantityOnCart(Item i_Item, int i_Quantity)
     {
@@ -127,5 +129,17 @@ public class ShoppingCart {
     public void Clear() {
         this.m_ShoppingCart.clear();
         this.m_TotalPrice = 0;
+    }
+
+    public void recalculateTotalPrice() {
+        m_TotalPrice = 0.0;
+        for (Item item : m_ShoppingCart.values()) {
+            if (item != null) {
+                BigDecimal itemTotal = BigDecimal.valueOf(item.getPrice() * item.getQuantity()).setScale(2, RoundingMode.HALF_UP);
+                m_TotalPrice += itemTotal.doubleValue();
+            }
+        }
+        m_TotalPrice = BigDecimal.valueOf(m_TotalPrice).setScale(2, RoundingMode.HALF_UP).doubleValue();
+        m_TotalPrice = Math.max(0.0, m_TotalPrice);
     }
 }

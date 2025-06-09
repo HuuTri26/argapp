@@ -1,5 +1,6 @@
 package com.example.argapp.Adapters;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.argapp.Activities.MainActivity;
@@ -22,8 +24,21 @@ import com.example.argapp.Interfaces.OnCouponsFetchedListener;
 import com.example.argapp.Interfaces.OnShoppingCartItemListener;
 import com.example.argapp.R;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import nl.dionsegijn.konfetti.core.Angle;
+import nl.dionsegijn.konfetti.core.PartyFactory;
+import nl.dionsegijn.konfetti.core.Position;
+import nl.dionsegijn.konfetti.core.Spread;
+import nl.dionsegijn.konfetti.core.emitter.Emitter;
+import nl.dionsegijn.konfetti.core.emitter.EmitterConfig;
+import nl.dionsegijn.konfetti.core.models.Size;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
+import nl.dionsegijn.konfetti.xml.image.ImageUtil;
 
 /**
  * Adapter tùy chỉnh để hiển thị danh sách các sản phẩm trong giỏ hàng
@@ -35,7 +50,6 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     private CouponList m_CouponsList;            // Danh sách các mã giảm giá (nếu có)
     private MainActivity m_HostedActivity;          // Activity chứa RecyclerView
     private OnShoppingCartItemListener m_Listener;  // Interface callback để xử lý sự kiện trên các sản phẩm trong giỏ hàng
-
     /**
      * Constructor cho ShoppingCartAdapter
      *
@@ -75,6 +89,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         int itemPosition = position;  // Lưu lại vị trí hiện tại để sử dụng trong các listener
         Item shoppingCartItem = m_ShoppingCartAsList.get(position);  // Lấy đối tượng Item ở vị trí position
+        Log.d("ShoppingCartAdapter", "Binding item at position: " + position + ", Item: " + shoppingCartItem.getName());
         String itemImage = shoppingCartItem.getImage();  // Lấy tên file hình ảnh
 
         // Thiết lập tên sản phẩm
@@ -197,11 +212,15 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
                                 }
 
                                 Toast.makeText(m_HostedActivity, "Áp dụng mã giảm giá thành công!", Toast.LENGTH_SHORT).show();
+
                                 shoppingCartItem.setPrice(discountedPrice);  // Cập nhật giá sản phẩm trong giỏ hàng
+
                                 holder.m_ItemPrice.setText(String.format("%.2f", discountedPrice));  // Cập nhật giá hiển thị
 
                                 // Xóa text trong EditText sau khi áp dụng thành công
                                 holder.m_CouponEditText.setText("");
+
+                                m_Listener.onItemDiscount(shoppingCartItem);  // Gọi callback để thông báo đã áp dụng mã giảm giá
                             } else {
                                 Toast.makeText(m_HostedActivity, "Mã giảm giá không có thông tin thời hạn", Toast.LENGTH_SHORT).show();
                             }
@@ -261,6 +280,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
      * @return true nếu sản phẩm khớp, false nếu không
      */
     private boolean isProductMatched(String i_CouponProductId, Item i_ShoppingCartItem) {
+        boolean isMatched = false;
         if (i_CouponProductId == null || i_CouponProductId.isEmpty()) {
             return false;
         }
@@ -273,29 +293,14 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter<ShoppingCartAdapte
         // Nếu type và id không null, sử dụng format "category/itemId"
         if (i_ShoppingCartItem.getType() != null && i_ShoppingCartItem.getId() != null) {
             String itemIdentifier = i_ShoppingCartItem.getType() + "/" + i_ShoppingCartItem.getId();
-            boolean isMatched = i_CouponProductId.equals(itemIdentifier);
+            isMatched = i_CouponProductId.equals(itemIdentifier);
 
             Log.d("Coupon", "Coupon ProductId: " + i_CouponProductId);
             Log.d("Coupon", "Item Identifier: " + itemIdentifier);
             Log.d("Coupon", "Match result: " + isMatched);
 
-            return isMatched;
-        } else {
-            // Fallback: sử dụng name-based matching
-            Log.d("Coupon", "Using name-based matching as fallback");
-            String itemName = i_ShoppingCartItem.getName().toLowerCase();
-
-            // Mapping dựa trên tên sản phẩm
-            if (i_CouponProductId.equals("beverages/item1") && itemName.contains("orange juice")) {
-                Log.d("Coupon", "Matched Orange Juice with beverages/item1");
-                return true;
-            } else if (i_CouponProductId.equals("beverages/item2") && itemName.contains("strawberry juice")) {
-                Log.d("Coupon", "Matched Strawberry Juice with beverages/item2");
-                return true;
-            }
-
-            Log.d("Coupon", "No match found for: " + itemName);
-            return false;
         }
+        return isMatched;
     }
+
 }
