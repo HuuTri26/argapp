@@ -19,15 +19,19 @@ import com.example.argapp.Adapters.CategoryItemsAdapter;
 import com.example.argapp.Classes.CategoryItemsList;
 import com.example.argapp.Classes.Item;
 import com.example.argapp.Classes.ShoppingCart;
+import com.example.argapp.Classes.SoldItemsMap;
 import com.example.argapp.Interfaces.OnCategoryItemsFetchedListener;
 import com.example.argapp.Interfaces.OnItemListener;
 import com.example.argapp.Interfaces.OnLikedItemsListUpdatedListener;
 import com.example.argapp.Interfaces.OnShoppingCartUpdatedListener;
+import com.example.argapp.Interfaces.OnSoldItemsFetchedListener;
 import com.example.argapp.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -89,6 +93,10 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
     private EditText minPriceEditText;
     private EditText maxPriceEditText;
     private Button priceFilterButton;
+    private Button threeDaysButton;
+    private Button sevenDaysButton;
+    private Button fourteenDaysButton;
+    private Button thirtyDaysButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -104,6 +112,10 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
         minPriceEditText = m_View.findViewById(R.id.minPriceEditText);
         maxPriceEditText = m_View.findViewById(R.id.maxPriceEditText);
         priceFilterButton = m_View.findViewById(R.id.priceFilterButton);
+        threeDaysButton = m_View.findViewById(R.id.threeDaysBtn);
+        sevenDaysButton = m_View.findViewById(R.id.sevenDaysBtn);
+        fourteenDaysButton = m_View.findViewById(R.id.fourteenDaysBtn);
+        thirtyDaysButton = m_View.findViewById(R.id.thirtyDaysBtn);
 
         m_HostedActivity.SetLikedItemsListUpdateListener(this);
         m_HostedActivity.SetShoppingCartUpdatedListener(this);
@@ -180,6 +192,123 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
                     }
                 }
             });
+        });
+
+        threeDaysButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SoldItemsMap.getSoldItemMapRecently(getContext(), 3, new OnSoldItemsFetchedListener() {
+
+                    @Override
+                    public void onSuccess() {
+                        Map<String, Integer> i_top_n_Items = SoldItemsMap.getTop(3);
+                        CategoryItemsList.searchCategoryItemsByTheMostPopular(getContext(), i_top_n_Items, new OnCategoryItemsFetchedListener() {
+                            @Override
+                            public void onCategoryItemsFetched(List<Item> items) {
+                                m_SearchedItemList.clear();
+                                m_SearchedItemList.addAll(items);
+                                m_Adapter.notifyDataSetChanged();
+
+                                if (items.isEmpty()) {
+                                    Toast.makeText(getContext(), "No items found in the last 3 days", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Toast.makeText(getContext(), "Error loading Sold Items: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        sevenDaysButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SoldItemsMap.getSoldItemMapRecently(getContext(), 7, new OnSoldItemsFetchedListener() {
+                    @Override
+                    public void onSuccess() {
+                        Map<String, Integer> i_top_n_Items = SoldItemsMap.getTop(7);
+                        CategoryItemsList.searchCategoryItemsByTheMostPopular(getContext(), i_top_n_Items, new OnCategoryItemsFetchedListener() {
+                            @Override
+                            public void onCategoryItemsFetched(List<Item> items) {
+                                m_SearchedItemList.clear();
+                                m_SearchedItemList.addAll(items);
+                                m_Adapter.notifyDataSetChanged();
+
+                                if (items.isEmpty()) {
+                                    Toast.makeText(getContext(), "No items found in the last 7 days", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Toast.makeText(getContext(), "Error loading Sold Items: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        fourteenDaysButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SoldItemsMap.getSoldItemMapRecently(getContext(), 14, new OnSoldItemsFetchedListener() {
+                    @Override
+                    public void onSuccess() {
+                        Map<String, Integer> i_top_n_Items = SoldItemsMap.getTop(10);
+                        CategoryItemsList.searchCategoryItemsByTheMostPopular(getContext(), i_top_n_Items, new OnCategoryItemsFetchedListener() {
+                            @Override
+                            public void onCategoryItemsFetched(List<Item> items) {
+                                m_SearchedItemList.clear();
+                                m_SearchedItemList.addAll(items);
+                                m_Adapter.notifyDataSetChanged();
+
+                                if (items.isEmpty()) {
+                                    Toast.makeText(getContext(), "No items found in the last 14 days", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Toast.makeText(getContext(), "Error loading Sold Items: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+        thirtyDaysButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SoldItemsMap.getSoldItemMapRecently(getContext(), 30, new OnSoldItemsFetchedListener() {
+                    @Override
+                    public void onSuccess() {
+                        Map<String, Integer> i_top_n_Items = SoldItemsMap.getTop(15);
+                        CategoryItemsList.searchCategoryItemsByTheMostPopular(getContext(), i_top_n_Items, new OnCategoryItemsFetchedListener() {
+                            @Override
+                            public void onCategoryItemsFetched(List<Item> items) {
+                                m_SearchedItemList.clear();
+                                m_SearchedItemList.addAll(items);
+                                m_Adapter.notifyDataSetChanged();
+
+                                if (items.isEmpty()) {
+                                    Toast.makeText(getContext(), "No items found in the last 30 days", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailure(String errorMessage) {
+                        Toast.makeText(getContext(), "Error loading Sold Items: " + errorMessage, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
         });
 
         // Lấy danh sách tất cả sản phẩm ban đầu
