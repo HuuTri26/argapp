@@ -18,12 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class CategoryItemsList
-{
+public class CategoryItemsList {
     private static List<Item> m_CategoryItems = new ArrayList<>();
     private static List<Item> m_AllItems = new ArrayList<>();
-    public static void GetItemsListByCategoryId(String i_CategoryId, Context context, OnCategoryItemsFetchedListener callback)
-    {
+
+    public static void GetItemsListByCategoryId(String i_CategoryId, Context context, OnCategoryItemsFetchedListener callback) {
         FirebaseDatabase m_Database;
         DatabaseReference m_Ref;
 
@@ -69,8 +68,7 @@ public class CategoryItemsList
         });
     }
 
-    public static void GetAllItems(Context context, OnCategoryItemsFetchedListener callback)
-    {
+    public static void GetAllItems(Context context, OnCategoryItemsFetchedListener callback) {
         FirebaseDatabase m_Database;
         DatabaseReference m_Ref;
 
@@ -82,8 +80,7 @@ public class CategoryItemsList
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
-                    for(DataSnapshot itemSnapshot : categorySnapshot.getChildren())
-                    {
+                    for (DataSnapshot itemSnapshot : categorySnapshot.getChildren()) {
                         String itemName = itemSnapshot.child("Name").getValue(String.class);
                         Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
                         String itemImage = itemSnapshot.child("Image").getValue(String.class);
@@ -223,7 +220,71 @@ public class CategoryItemsList
         });
     }
 
-    public static void searchCategoryItemsByTheMostPopular(Context context, Map<String, Integer> i_Top_n_Items, OnCategoryItemsFetchedListener callback){
+    // hàm tìm sản phẩm theo tên và giá
+    public static void searchItemsByNameAndPrice(String query, Double minPrice, Double maxPrice, Context context, OnCategoryItemsFetchedListener callback) {
+        FirebaseDatabase m_Database;
+        DatabaseReference m_Ref;
+
+        m_CategoryItems.clear();
+        m_Database = FirebaseDatabase.getInstance();
+        m_Ref = m_Database.getReference("Data/CategoriesItems");
+
+        m_Ref.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot categorySnapshot : snapshot.getChildren()) {
+                    for (DataSnapshot itemSnapshot : categorySnapshot.getChildren()) {
+                        String itemName = itemSnapshot.child("Name").getValue(String.class);
+                        Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
+                        String itemImage = itemSnapshot.child("Image").getValue(String.class);
+                        String itemDescription = itemSnapshot.child("Description").getValue(String.class);
+                        String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
+                        int itemQuantity = 0;
+
+                        // Kiểm tra tên (chứa từ khóa không phân biệt hoa thường)
+                        boolean matchesName = (query == null || query.isEmpty()) ||
+                                (itemName != null && itemName.toLowerCase().contains(query.toLowerCase()));
+
+                        // Kiểm tra giá trị giá
+                        boolean matchesPriceRange = true;
+
+                        if (itemPrice != null) {
+                            if (minPrice != null && itemPrice < minPrice) {
+                                matchesPriceRange = false;
+                            }
+                            if (maxPrice != null && itemPrice > maxPrice) {
+                                matchesPriceRange = false;
+                            }
+                        } else {
+                            matchesPriceRange = false; // Nếu giá không tồn tại, bỏ qua sản phẩm
+                        }
+
+                        // Nếu thỏa mãn cả tên và giá, thêm vào danh sách
+                        if (matchesName && matchesPriceRange) {
+                            Item item = new Item(itemName, itemPrice, itemQuantity, itemImage);
+                            if (itemDescription != null) {
+                                item.setDescription(itemDescription);
+                            }
+                            if (itemUnit != null) {
+                                item.setUnit(itemUnit);
+                            }
+                            m_CategoryItems.add(item);
+                        }
+                    }
+                }
+
+                callback.onCategoryItemsFetched(m_CategoryItems);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                callback.onCategoryItemsFetched(new ArrayList<>());
+            }
+        });
+    }
+
+    public static void searchCategoryItemsByTheMostPopular(Context context, Map<String, Integer> i_Top_n_Items, OnCategoryItemsFetchedListener callback) {
         FirebaseDatabase m_Database;
         DatabaseReference m_Ref;
 
