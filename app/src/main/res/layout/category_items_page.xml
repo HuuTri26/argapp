@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.CategoryItems"
-    android:background="@drawable/groceroy_items_background">
+    android:orientation="vertical"
+    android:background="@drawable/groceroy_items_background"
+    tools:context=".Fragments.CategoryItems">
+
+    <!-- Header cho Seasonal Products -->
+    <LinearLayout
+        android:id="@+id/seasonHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:padding="8dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:id="@+id/seasonIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/summer_icon"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/seasonTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="Products"
+            android:textSize="20sp"
+            android:fontFamily="@font/montserratbold"
+            android:textColor="#333333" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/categoryItemsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:clipToPadding="false"
         android:layout_margin="4dp"
         android:padding="15dp" />
-
-</FrameLayout>
+</LinearLayout>

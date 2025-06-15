@@ -69,6 +69,79 @@ public class CategoryItemsList
         });
     }
 
+    public static void GetSeasonalItems(String season, Context context, OnCategoryItemsFetchedListener callback) {
+        FirebaseDatabase m_Database = FirebaseDatabase.getInstance();
+        DatabaseReference categoriesRef = m_Database.getReference("Data/Categories");
+
+        categoriesRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot categoriesSnapshot) {
+                List<String> seasonalCategoryIds = new ArrayList<>();
+                for (DataSnapshot categorySnapshot : categoriesSnapshot.getChildren()) {
+                    String categorySeason = categorySnapshot.child("Season").getValue(String.class);
+                    if (categorySeason != null && categorySeason.equalsIgnoreCase(season)) {
+                        String categoryId = categorySnapshot.child("Id").getValue(String.class);
+                        if (categoryId != null) {
+                            seasonalCategoryIds.add(categoryId);
+                        }
+                    }
+                }
+
+                if (seasonalCategoryIds.isEmpty()) {
+                    callback.onCategoryItemsFetched(new ArrayList<>());
+                    return;
+                }
+
+                DatabaseReference itemsRef = m_Database.getReference("Data/CategoriesItems");
+                List<Item> seasonalItems = new ArrayList<>();
+
+                for (String categoryId : seasonalCategoryIds) {
+                    itemsRef.child(categoryId).addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot itemsSnapshot) {
+                            for (DataSnapshot itemSnapshot : itemsSnapshot.getChildren()) {
+                                String itemId = itemSnapshot.child("Id").getValue(String.class);
+                                String itemType = itemSnapshot.child("Type").getValue(String.class);
+                                String itemName = itemSnapshot.child("Name").getValue(String.class);
+                                Double itemPrice = itemSnapshot.child("Price").getValue(Double.class);
+                                String itemImage = itemSnapshot.child("Image").getValue(String.class);
+                                String itemDescription = itemSnapshot.child("Description").getValue(String.class);
+                                String itemUnit = itemSnapshot.child("Unit").getValue(String.class);
+
+                                int itemQuantity = 0;
+                                Item item = new Item(itemId, itemType, itemName, itemPrice, itemQuantity, itemImage, itemDescription, itemUnit);
+
+                                if (itemDescription != null) {
+                                    item.setDescription(itemDescription);
+                                }
+                                if (itemUnit != null) {
+                                    item.setUnit(itemUnit);
+                                }
+                                seasonalItems.add(item);
+                            }
+
+                            if (seasonalCategoryIds.indexOf(categoryId) == seasonalCategoryIds.size() - 1) {
+                                callback.onCategoryItemsFetched(seasonalItems);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                            callback.onCategoryItemsFetched(new ArrayList<>());
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+                callback.onCategoryItemsFetched(new ArrayList<>());
+            }
+        });
+    }
+
     public static void GetAllItems(Context context, OnCategoryItemsFetchedListener callback)
     {
         FirebaseDatabase m_Database;
