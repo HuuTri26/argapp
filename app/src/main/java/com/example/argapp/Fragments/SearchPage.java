@@ -150,15 +150,62 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
         // tìm sản phẩm theo giá
         // Thêm sự kiện click cho nút lọc giá
 
+//        priceFilterButton.setOnClickListener(v -> {
+//            String minPriceStr = minPriceEditText.getText().toString().trim();
+//            String maxPriceStr = maxPriceEditText.getText().toString().trim();
+//
+//            // Kiểm tra giá trị nhập vào
+//            if (minPriceStr.isEmpty() && maxPriceStr.isEmpty()) {
+//                Toast.makeText(getContext(), "Please enter at least one price value", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//            Double minPrice = null;
+//            Double maxPrice = null;
+//            try {
+//                if (!minPriceStr.isEmpty()) {
+//                    minPrice = Double.parseDouble(minPriceStr);
+//                }
+//                if (!maxPriceStr.isEmpty()) {
+//                    maxPrice = Double.parseDouble(maxPriceStr);
+//                }
+//                // Kiểm tra trường hợp cả minPrice và maxPrice đều được nhập
+//                if (minPrice != null && maxPrice != null && minPrice > maxPrice) {
+//                    Toast.makeText(getContext(), "Minimum price cannot be greater than maximum price", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//            } catch (NumberFormatException e) {
+//                Toast.makeText(getContext(), "Please enter valid numbers for price", Toast.LENGTH_SHORT).show();
+//                return;
+//            }
+//
+//            // Gọi hàm timSanPhamTheoGia với minPrice và maxPrice (có thể null)
+//            CategoryItemsList.timSanPhamTheoGia(minPrice, maxPrice, getContext(), new OnCategoryItemsFetchedListener() {
+//                @Override
+//                public void onCategoryItemsFetched(List<Item> filteredItems) {
+//                    // Cập nhật danh sách hiển thị
+//                    m_SearchedItemList.clear();
+//                    m_SearchedItemList.addAll(filteredItems);
+//                    m_Adapter.notifyDataSetChanged();
+//
+//                    if (filteredItems.isEmpty()) {
+//                        Toast.makeText(getContext(), "No items found in this price range", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//        });
+
+        // tìm sản phẩm theo giá + tên
         priceFilterButton.setOnClickListener(v -> {
             String minPriceStr = minPriceEditText.getText().toString().trim();
             String maxPriceStr = maxPriceEditText.getText().toString().trim();
+            String query = m_SearchView.getQuery().toString().trim();
 
             // Kiểm tra giá trị nhập vào
-            if (minPriceStr.isEmpty() && maxPriceStr.isEmpty()) {
-                Toast.makeText(getContext(), "Please enter at least one price value", Toast.LENGTH_SHORT).show();
+            if (minPriceStr.isEmpty() && maxPriceStr.isEmpty() && query.isEmpty()) {
+                Toast.makeText(getContext(), "Please enter at least one search criterion (name or price)", Toast.LENGTH_SHORT).show();
                 return;
             }
+
             Double minPrice = null;
             Double maxPrice = null;
             try {
@@ -178,8 +225,8 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
                 return;
             }
 
-            // Gọi hàm timSanPhamTheoGia với minPrice và maxPrice (có thể null)
-            CategoryItemsList.timSanPhamTheoGia(minPrice, maxPrice, getContext(), new OnCategoryItemsFetchedListener() {
+            // Gọi hàm tìm kiếm kết hợp tên và giá
+            CategoryItemsList.searchItemsByNameAndPrice(query, minPrice, maxPrice, getContext(), new OnCategoryItemsFetchedListener() {
                 @Override
                 public void onCategoryItemsFetched(List<Item> filteredItems) {
                     // Cập nhật danh sách hiển thị
@@ -188,7 +235,7 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
                     m_Adapter.notifyDataSetChanged();
 
                     if (filteredItems.isEmpty()) {
-                        Toast.makeText(getContext(), "No items found in this price range", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "No items found with the given criteria", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
