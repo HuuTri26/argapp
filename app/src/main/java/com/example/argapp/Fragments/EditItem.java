@@ -518,7 +518,7 @@ public class EditItem extends Fragment implements OnShoppingCartUpdatedListener 
      * Gửi đánh giá lên database
      */
     private void submitReviewToDatabase(FirebaseUser currentUser, float rating, String comment, String catId, String itmId) {
-        mDatabase.child("Users").child(currentUser.getUid())
+        mDatabase.child("Data/Users").child(currentUser.getUid())
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {

@@ -398,7 +398,7 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
     private void filterList(String i_Query) {
         List<Item> filteredList = new ArrayList<>();
 
-        for (Item item : this.m_AllItemsList) {
+        for (Item item : this.getMAllItemsList()) {
             if (item.getName().toLowerCase().contains(i_Query.toLowerCase())) {
                 filteredList.add(item);
             }
@@ -407,6 +407,10 @@ public class SearchPage extends Fragment implements OnItemListener, OnShoppingCa
         this.m_SearchedItemList.clear();
         this.m_SearchedItemList.addAll(filteredList);
         this.m_Adapter.notifyDataSetChanged();
+    }
+
+    private List<Item> getMAllItemsList() {
+        return m_AllItemsList;
     }
 
     @Override

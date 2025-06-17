@@ -1,5 +1,6 @@
 package com.example.argapp.Fragments;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -122,5 +123,56 @@ public class OrderHistoryFragment extends Fragment implements OrderBillAdapter.O
         Bundle args = new Bundle();
         args.putString("orderBillId", orderBill.getOrderBillId());
         Navigation.findNavController(view).navigate(R.id.action_orderBillHistory_to_orderDetailFragment, args);
+    }
+
+    @Override
+    public void onCancelOrderClick(OrderBill orderBill, int position) {
+        // Kiểm tra trạng thái đơn hàng
+        if (!"PENDING".equals(orderBill.getStatus())) {
+            Toast.makeText(getContext(), "Chỉ có thể hủy đơn hàng đang chờ xử lý", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Hiển thị dialog xác nhận hủy đơn hàng
+        new AlertDialog.Builder(getContext())
+                .setTitle("Xác nhận hủy đơn hàng")
+                .setMessage("Bạn có chắc chắn muốn hủy đơn hàng #" + orderBill.getOrderBillId() + " không?")
+                .setPositiveButton("Hủy đơn hàng", (dialog, which) -> {
+                    cancelOrder(orderBill, position);
+                })
+                .setNegativeButton("Không", null)
+                .show();
+    }
+
+    private void cancelOrder(OrderBill orderBill, int position) {
+        // Hiển thị loading
+        progressBar.setVisibility(View.VISIBLE);
+
+        userController.cancelOrder(orderBill.getOrderBillId(), new UserModel.CancelOrderCallback() {
+            @Override
+            public void onSuccess() {
+                // Ẩn loading
+                progressBar.setVisibility(View.GONE);
+
+                // Cập nhật trạng thái đơn hàng trong adapter
+                orderBillAdapter.updateOrderStatus(position, "CANCELLED");
+
+                // Hiển thị thông báo thành công
+                Toast.makeText(getContext(), "Đã hủy đơn hàng thành công", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Exception error) {
+                // Ẩn loading
+                progressBar.setVisibility(View.GONE);
+
+                // Hiển thị thông báo lỗi
+                String errorMessage = "Không thể hủy đơn hàng";
+                if (error != null && error.getMessage() != null) {
+                    errorMessage += ": " + error.getMessage();
+                }
+                Toast.makeText(getContext(), errorMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

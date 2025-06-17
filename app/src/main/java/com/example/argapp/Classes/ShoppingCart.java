@@ -94,7 +94,7 @@ public class ShoppingCart {
 
         try {
             long orderDate = System.currentTimeMillis();
-            String status = "PAID";
+            String status = "PENDING";
             OrderBill orderBill = new OrderBill(userUid, orderDate, status, m_TotalPrice);
 
             HashMap<String, OrderBillItem> orderItems = new HashMap<>();
