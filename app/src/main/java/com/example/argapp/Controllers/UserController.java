@@ -146,4 +146,14 @@ public class UserController {
     public void getUserById(String userId, UserModel.UserCallback callback) {
         m_UserModel.getUserById(userId, callback);
     }
+
+    /**
+     * Hủy đơn hàng
+     *
+     * @param orderBillId ID của đơn hàng cần hủy
+     * @param callback    Interface callback để thông báo kết quả
+     */
+    public void cancelOrder(String orderBillId, UserModel.CancelOrderCallback callback) {
+        m_UserModel.cancelOrder(orderBillId, callback);
+    }
 }

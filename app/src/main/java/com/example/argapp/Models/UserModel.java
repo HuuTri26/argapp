@@ -343,6 +343,34 @@ public class UserModel {
         void onFailure(Exception error);
     }
 
+    // Thêm interface cho callback hủy đơn hàng
+    public interface CancelOrderCallback {
+        void onSuccess();
+
+        void onFailure(Exception error);
+    }
+
+    // Thêm phương thức hủy đơn hàng
+    public void cancelOrder(String orderBillId, CancelOrderCallback callback) {
+        if (orderBillId == null || orderBillId.isEmpty()) {
+            callback.onFailure(new Exception("Invalid order ID"));
+            return;
+        }
+
+        HashMap<String, Object> updates = new HashMap<>();
+        updates.put("status", "CANCELLED");
+
+        m_Database.getReference("Data/OrderBills").child(orderBillId)
+                .updateChildren(updates)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        callback.onSuccess();
+                    } else {
+                        callback.onFailure(task.getException());
+                    }
+                });
+    }
+
     // Thêm phương thức để lấy chi tiết đơn hàng dựa trên ID
     public void getOrderDetail(String orderBillId, OrderDetailCallback callback) {
         if (orderBillId == null || orderBillId.isEmpty()) {
@@ -412,7 +440,7 @@ public class UserModel {
             }
 
             // Tạo reference để lưu đơn hàng
-            DatabaseReference orderRef = m_Database.getReference("OrderBills").push();
+            DatabaseReference orderRef = m_Database.getReference("Data/OrderBills").push();
             String orderBillId = orderRef.getKey();
 
             // Thêm ID vào OrderBill
@@ -423,7 +451,7 @@ public class UserModel {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             // Lưu tham chiếu đến OrderBill trong hồ sơ người dùng
-                            m_Database.getReference("Users").child(userId)
+                            m_Database.getReference("Data/Users").child(userId)
                                     .child("orderBills").child(orderBillId)
                                     .setValue(true)
                                     .addOnCompleteListener(userOrderTask -> {
