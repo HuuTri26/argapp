@@ -10,12 +10,13 @@
         android:layout_height="wrap_content"
         app:cardCornerRadius="30dp"
         android:elevation="8dp"
-        app:cardBackgroundColor="@color/white"
->
+        app:cardBackgroundColor="@color/white">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:layout_gravity="center"
             android:id="@+id/categoryImage"
+            android:scaleType="centerCrop"
             android:src="@drawable/condiments_sauces"/>
     </com.google.android.material.card.MaterialCardView>
 
