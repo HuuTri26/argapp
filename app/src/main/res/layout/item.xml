@@ -11,7 +11,7 @@
 
     <TextView
         android:id="@+id/itemName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:fontFamily="@font/montserratbold"
@@ -20,16 +20,19 @@
         android:shadowDy="2"
         android:shadowRadius="3"
         android:text="@string/item_name"
+        android:textAlignment="center"
         android:textColor="#333333"
         android:textSize="16sp"
+        android:maxLines="2"
+        android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="@+id/materialCardView4"
         app:layout_constraintStart_toStartOf="@+id/materialCardView4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:elevation="8dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
@@ -40,16 +43,19 @@
 
         <ImageView
             android:id="@+id/itemImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/banana" />
     </com.google.android.material.card.MaterialCardView>
 
     <ImageButton
         android:id="@+id/likeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         android:src="@drawable/blank_heart"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -58,9 +64,10 @@
 
     <ImageButton
         android:id="@+id/addToCartButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
         android:src="@drawable/blank_shopping_cart"
         android:layout_marginStart="17dp"
         android:layout_marginTop="10dp"
@@ -72,11 +79,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="29dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/montserratbold"
         android:text="Price: "
         android:textColor="@color/black"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/addToCartButton"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
@@ -88,8 +96,9 @@
         android:fontFamily="@font/montserratbold"
         android:text="@string/item_price"
         android:textColor="@color/black"
+        android:textSize="12sp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="7dp"
+        android:layout_marginStart="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
