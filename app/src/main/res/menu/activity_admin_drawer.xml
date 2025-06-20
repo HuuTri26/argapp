@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_admin_dashboard"
+            android:icon="@drawable/ic_admin_dashboard"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/nav_admin_users"
+            android:icon="@drawable/ic_admin_users"
+            android:title="Quản lý Users" />
+        <item
+            android:id="@+id/nav_admin_orders"
+            android:icon="@drawable/ic_admin_orders"
+            android:title="Quản lý Đơn hàng" />
+        <item
+            android:id="@+id/nav_admin_items"
+            android:icon="@drawable/ic_admin_items"
+            android:title="Quản lý Items" />
+        <item
+            android:id="@+id/nav_admin_reviews"
+            android:icon="@drawable/ic_admin_reviews"
+            android:title="Quản lý Reviews" />
+        <item
+            android:id="@+id/nav_admin_coupons"
+            android:icon="@drawable/ic_admin_coupons"
+            android:title="Quản lý Coupons" />
+    </group>
+
+    <item android:title="Tài khoản">
+        <menu>
+            <item
+                android:id="@+id/nav_admin_logout"
+                android:icon="@drawable/icon_arrow_back"
+                android:title="Đăng xuất" />
+        </menu>
+    </item>
+
+</menu>

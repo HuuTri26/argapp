@@ -1,0 +1,2654 @@
+{
+  "Data": {
+    "Categories": {
+      "beverages": {
+        "Id": "beverages",
+        "Image": "drawable/beverages",
+        "Name": "Beverages",
+        "Season": "summer"
+      },
+      "bread_bakery": {
+        "Id": "bread_bakery",
+        "Image": "drawable/bread_bakery",
+        "Name": "Bread & Bakery",
+        "Season": "fall"
+      },
+      "condiments_sauces": {
+        "Id": "condiments_sauces",
+        "Image": "drawable/condiments_sauces",
+        "Name": "Condiments & Sauces",
+        "Season": "spring"
+      },
+      "dairy_eggs": {
+        "Id": "dairy_eggs",
+        "Image": "drawable/dairy_eggs",
+        "Name": "Dairy & eggs",
+        "Season": "fall"
+      },
+      "fruits": {
+        "Id": "fruits",
+        "Image": "drawable/fruits_vegetables_background",
+        "Name": "Fruits",
+        "Season": "spring"
+      },
+      "grains_cereals": {
+        "Id": "grains_cereals",
+        "Image": "drawable/grains_cereals",
+        "Name": "Grains & Cereals",
+        "Season": "fall"
+      },
+      "herbs_spices": {
+        "Id": "herbs_spices",
+        "Image": "drawable/herbs_spices",
+        "Name": "Herbs & Spices",
+        "Season": "summer"
+      },
+      "meat_poultry": {
+        "Id": "meat_poultry",
+        "Image": "drawable/meat_poultry",
+        "Name": "Meat & Poultry",
+        "Season": "winter"
+      },
+      "mushrooms": {
+        "Id": "mushrooms",
+        "Image": "drawable/mushroom",
+        "Name": "Mushroom",
+        "Season": "spring"
+      },
+      "nuts_seeds": {
+        "Id": "nuts_seeds",
+        "Image": "drawable/nuts_seeds",
+        "Name": "Nuts & Seeds",
+        "Season": "fall"
+      },
+      "pantry_staples": {
+        "Id": "pantry_staples",
+        "Image": "drawable/pantry_staples",
+        "Name": "Pantry Staples",
+        "Season": "winter"
+      },
+      "root_tubers": {
+        "Id": "root_tubers",
+        "Image": "drawable/root_tubers",
+        "Name": "Root Vegetables & Tubers",
+        "Season": "winter"
+      },
+      "seasonal_products": {
+        "Id": "seasonal_products",
+        "Image": "drawable/seasonal",
+        "Name": "Seasonal Products",
+        "Season": "summer"
+      },
+      "vegetables": {
+        "Id": "vegetables",
+        "Image": "drawable/fruits_vegetables_background",
+        "Name": "Vegetables",
+        "Season": "summer"
+      }
+    },
+    "CategoriesItems": {
+      "beverages": {
+        "item1": {
+          "Description": "Nước ép cam giải khát với hương vị đặc trưng, mang đến cảm giác sảng khoái, giải nhiệt tức thì.",
+          "Id": "item1",
+          "Image": "drawable/orange_juice",
+          "Inventory": 19,
+          "Name": "Orange Juice",
+          "Price": 7.9,
+          "Quantity": 0,
+          "Type": "beverages",
+          "Unit": "chai"
+        },
+        "item2": {
+          "Description": "Nước ép dâu giải khát không đường, giúp giảm lượng calorie tiêu thụ nhưng vẫn giữ nguyên hương vị đặc trưng.",
+          "Id": "item2",
+          "Image": "drawable/strawberry_juice",
+          "Inventory": 20,
+          "Name": "Strawberry Juice",
+          "Price": 7.9,
+          "Quantity": 0,
+          "Type": "beverages",
+          "Unit": "chai"
+        },
+        "item3": {
+          "Description": "Nước ép táo tự nhiên, giàu khoáng chất có lợi cho sức khỏe, không chứa chất bảo quản.",
+          "Id": "item3",
+          "Image": "drawable/apple_juice",
+          "Inventory": 20,
+          "Name": "Apple Juice",
+          "Price": 11.9,
+          "Quantity": 0,
+          "Type": "beverages",
+          "Unit": "chai"
+        }
+      },
+      "bread_bakery": {
+        "item8": {
+          "Description": "Bánh mì phô mai tươi ngon với vỏ bánh giòn, ruột mềm và đầy ắp phô mai béo ngậy bên trong.",
+          "Id": "item8",
+          "Image": "drawable/cheese_borax",
+          "Inventory": 20,
+          "Name": "Cheese Borax",
+          "Price": 1.55,
+          "Quantity": 0,
+          "Type": "bread_bakery",
+          "Unit": "cái"
+        },
+        "item9": {
+          "Description": "Bánh mì Pháp truyền thống với vỏ bánh giòn tan và ruột mềm xốp, được nướng theo công thức đặc biệt.",
+          "Id": "item9",
+          "Image": "drawable/french_baguette",
+          "Inventory": 20,
+          "Name": "French Baguette",
+          "Price": 6.9,
+          "Quantity": 0,
+          "Type": "bread_bakery",
+          "Unit": "ổ"
+        }
+      },
+      "condiments_sauces": {
+        "item1": {
+          "Description": "Hết nước chấm",
+          "Id": "item1",
+          "Image": "drawable/sauce",
+          "Inventory": 15,
+          "Name": "BBQ Sauce",
+          "Price": 9.7,
+          "Quantity": 2,
+          "Type": "condiments_sauces",
+          "Unit": "Chai"
+        },
+        "item2": {
+          "Description": "Ngon hết nước chấm",
+          "Id": "item2",
+          "Image": "drawable/ketchup",
+          "Inventory": 20,
+          "Name": "Ketchup",
+          "Price": 7.5,
+          "Quantity": 1,
+          "Type": "condiments_sauces",
+          "Unit": "Chai"
+        }
+      },
+      "dairy_eggs": {
+        "item1": {
+          "Description": "Trứng",
+          "Id": "item1",
+          "Image": "drawable/egg",
+          "Inventory": 10,
+          "Name": "Egg",
+          "Price": 5,
+          "Quantity": 5,
+          "Type": "dairy_eggs",
+          "Unit": "cái"
+        },
+        "item2": {
+          "Description": "Phô mai",
+          "Id": "item2",
+          "Image": "drawable/cheese",
+          "Inventory": 10,
+          "Name": "Cheese",
+          "Price": 2.4,
+          "Quantity": 2,
+          "Type": "dairy_eggs",
+          "Unit": "Cái"
+        },
+        "item3": {
+          "Description": "Bơ",
+          "Id": "item3",
+          "Image": "drawable/butter",
+          "Inventory": 14,
+          "Name": "Butter",
+          "Price": 4.5,
+          "Quantity": 2,
+          "Type": "dairy_eggs",
+          "Unit": "Cái"
+        }
+      },
+      "fruits": {
+        "itemId1": {
+          "Description": "Táo tươi nhập khẩu, giòn ngọt, giàu vitamin và chất xơ, tốt cho sức khỏe và hệ tiêu hóa.",
+          "Id": "itemId1",
+          "Image": "drawable/apple",
+          "Inventory": 20,
+          "Name": "Apple",
+          "Price": 1.5,
+          "Quantity": 0,
+          "Type": "fruits",
+          "Unit": "kg"
+        },
+        "itemId2": {
+          "Description": "Chuối tươi ngon, chín tự nhiên, giàu kali và chất xơ, là nguồn năng lượng lý tưởng trước khi tập thể dục.",
+          "Id": "itemId2",
+          "Image": "drawable/banana",
+          "Inventory": 20,
+          "Name": "Banana",
+          "Price": 0.5,
+          "Quantity": 0,
+          "Type": "fruits",
+          "Unit": "kg"
+        },
+        "itemId4": {
+          "Description": "Xoài cát Hòa Lộc ngọt thơm, thịt vàng đặc sệt, là đặc sản nổi tiếng của miền Tây.",
+          "Id": "itemId4",
+          "Image": "drawable/hoa_loc_mango",
+          "Inventory": 30,
+          "Name": "Hoa Loc Mango",
+          "Price": 45,
+          "Quantity": 0,
+          "Type": "fruits",
+          "Unit": "kg"
+        },
+        "itemId5": {
+          "Description": "Cam sành Hà Giang tươi ngọt, vỏ mỏng, múi to, giàu vitamin C và chất chống oxy hóa.",
+          "Id": "itemId5",
+          "Image": "drawable/ha_giang_orange",
+          "Inventory": 50,
+          "Name": "Ha Giang Orange",
+          "Price": 28,
+          "Quantity": 0,
+          "Type": "fruits",
+          "Unit": "kg"
+        },
+        "itemId6": {
+          "Description": "Dưa hấu không hạt Gia Lai, thịt đỏ ngọt, mọng nước, giải nhiệt hiệu quả.",
+          "Id": "itemId6",
+          "Image": "drawable/seedless_watermelon",
+          "Inventory": 25,
+          "Name": "Seedless Watermelon",
+          "Price": 15,
+          "Quantity": 0,
+          "Type": "fruits",
+          "Unit": "kg"
+        }
+      },
+      "grains_cereals": {
+        "item1": {
+          "Description": "Gạo tẻ thơm ngon, hạt dài, được trồng theo phương pháp hữu cơ tại đồng bằng sông Cửu Long.",
+          "Id": "item1",
+          "Image": "drawable/jasmine_rice",
+          "Inventory": 100,
+          "Name": "Jasmine Rice",
+          "Price": 25.5,
+          "Quantity": 0,
+          "Type": "grains_cereals",
+          "Unit": "kg"
+        },
+        "item2": {
+          "Description": "Yến mạch nguyên hạt nhập khẩu từ Úc, giàu chất xơ và protein, tốt cho sức khỏe tim mạch.",
+          "Id": "item2",
+          "Image": "drawable/oats",
+          "Inventory": 50,
+          "Name": "Organic Oats",
+          "Price": 45,
+          "Quantity": 0,
+          "Type": "grains_cereals",
+          "Unit": "kg"
+        },
+        "item3": {
+          "Description": "Quinoa hữu cơ Nam Mỹ, nguồn protein hoàn chỉnh, không chứa gluten, phù hợp cho người ăn kiêng.",
+          "Id": "item3",
+          "Image": "drawable/quinoa",
+          "Inventory": 30,
+          "Name": "Organic Quinoa",
+          "Price": 120,
+          "Quantity": 0,
+          "Type": "grains_cereals",
+          "Unit": "kg"
+        }
+      },
+      "herbs_spices": {
+        "item1": {
+          "Description": "Sả tươi hữu cơ, hương thơm đặc trưng, dùng để nấu ăn và pha trà thảo mộc.",
+          "Id": "item1",
+          "Image": "drawable/lemongrass",
+          "Inventory": 25,
+          "Name": "Fresh Lemongrass",
+          "Price": 8.5,
+          "Quantity": 0,
+          "Type": "herbs_spices",
+          "Unit": "bó"
+        },
+        "item2": {
+          "Description": "Gừng tươi chất lượng cao, cay nồng, có tác dụng tốt cho hệ tiêu hóa và sưởi ấm cơ thể.",
+          "Id": "item2",
+          "Image": "drawable/ginger",
+          "Inventory": 40,
+          "Name": "Fresh Ginger",
+          "Price": 12,
+          "Quantity": 0,
+          "Type": "herbs_spices",
+          "Unit": "kg"
+        },
+        "item3": {
+          "Description": "Tỏi tươi địa phương, vị cay đặc trưng, có tác dụng kháng khuẩn và tăng cường miễn dịch.",
+          "Id": "item3",
+          "Image": "drawable/garlic",
+          "Inventory": 60,
+          "Name": "Fresh Garlic",
+          "Price": 15,
+          "Quantity": 0,
+          "Type": "herbs_spices",
+          "Unit": "kg"
+        }
+      },
+      "meat_poultry": {
+        "item1": {
+          "Description": "Thịt gà ta thực phẩm sạch, nuôi thả tự nhiên, thịt chắc ngọt, không chất kích thích tăng trưởng.",
+          "Id": "item1",
+          "Image": "drawable/free_range_chicken",
+          "Inventory": 15,
+          "Name": "Free Range Chicken",
+          "Price": 85,
+          "Quantity": 0,
+          "Type": "meat_poultry",
+          "Unit": "kg"
+        },
+        "item2": {
+          "Description": "Thịt heo hữu cơ từ trang trại sạch, thịt mềm ngọt, giàu protein và các vitamin nhóm B.",
+          "Id": "item2",
+          "Image": "drawable/organic_pork",
+          "Inventory": 20,
+          "Name": "Organic Pork",
+          "Price": 95,
+          "Quantity": 0,
+          "Type": "meat_poultry",
+          "Unit": "kg"
+        },
+        "item3": {
+          "Description": "Thịt bò Wagyu Việt Nam, thịt mềm, vân mỡ đẹp, hương vị thơm ngon đặc biệt.",
+          "Id": "item3",
+          "Image": "drawable/wagyu_beef",
+          "Inventory": 8,
+          "Name": "Vietnamese Wagyu Beef",
+          "Price": 450,
+          "Quantity": 0,
+          "Type": "meat_poultry",
+          "Unit": "kg"
+        }
+      },
+      "mushrooms": {
+        "item1": {
+          "Description": "nấm rơm",
+          "Id": "item1",
+          "Image": "drawable/rice_mushroom",
+          "Inventory": 10,
+          "Name": "Nấm rơm",
+          "Price": 20000,
+          "Quantity": 0,
+          "Type": "mushrooms",
+          "Unit": "gram"
+        },
+        "item2": {
+          "Description": "Nấm shiitake tươi Nhật Bản, hương vị thơm đậm đà, giàu protein và amino acid.",
+          "Id": "item2",
+          "Image": "drawable/shiitake_mushroom",
+          "Inventory": 15,
+          "Name": "Fresh Shiitake",
+          "Price": 120,
+          "Quantity": 0,
+          "Type": "mushrooms",
+          "Unit": "kg"
+        },
+        "item3": {
+          "Description": "Nấm kim châm tươi Hàn Quốc, thân dài trắng, thích hợp nấu lẩu và xào.",
+          "Id": "item3",
+          "Image": "drawable/enoki_mushroom",
+          "Inventory": 20,
+          "Name": "Enoki Mushroom",
+          "Price": 45,
+          "Quantity": 0,
+          "Type": "mushrooms",
+          "Unit": "kg"
+        },
+        "item4": {
+          "Description": "Nấm đùi gà hữu cơ, thịt chắc ngọt, giàu chất xơ và protein thực vật.",
+          "Id": "item4",
+          "Image": "drawable/king_oyster_mushroom",
+          "Inventory": 12,
+          "Name": "King Oyster Mushroom",
+          "Price": 80,
+          "Quantity": 0,
+          "Type": "mushrooms",
+          "Unit": "kg"
+        }
+      },
+      "nuts_seeds": {
+        "item1": {
+          "Description": "Hạnh nhân Mỹ rang muối nhẹ, giàu vitamin E và chất béo tốt, có tác dụng làm đẹp da.",
+          "Id": "item1",
+          "Image": "drawable/almonds",
+          "Inventory": 35,
+          "Name": "Roasted Almonds",
+          "Price": 180,
+          "Quantity": 0,
+          "Type": "nuts_seeds",
+          "Unit": "kg"
+        },
+        "item2": {
+          "Description": "Óc chó Mỹ cao cấp, nhân to đầy đặn, giàu omega-3, tốt cho não bộ và tim mạch.",
+          "Id": "item2",
+          "Image": "drawable/walnuts",
+          "Inventory": 25,
+          "Name": "Premium Walnuts",
+          "Price": 220,
+          "Quantity": 0,
+          "Type": "nuts_seeds",
+          "Unit": "kg"
+        },
+        "item3": {
+          "Description": "Hạt chia Mexico hữu cơ, siêu thực phẩm giàu omega-3, chất xơ và protein.",
+          "Id": "item3",
+          "Image": "drawable/chia_seeds",
+          "Inventory": 40,
+          "Name": "Organic Chia Seeds",
+          "Price": 150,
+          "Quantity": 0,
+          "Type": "nuts_seeds",
+          "Unit": "kg"
+        }
+      },
+      "pantry_staples": {
+        "item1": {
+          "Description": "Cá tươi",
+          "Id": "item1",
+          "Image": "drawable/fish",
+          "Inventory": 20,
+          "Name": "Fish",
+          "Price": 3,
+          "Quantity": 4,
+          "Type": "pantry_staples",
+          "Unit": "Con"
+        },
+        "item2": {
+          "Description": "Tôm tươi vãi ò",
+          "Id": "item2",
+          "Image": "drawable/shrimp",
+          "Inventory": 100,
+          "Name": "Shrimp",
+          "Price": 3.5,
+          "Quantity": 10,
+          "Type": "pantry_staples",
+          "Unit": "Con"
+        },
+        "item3": {
+          "Description": "Gạo châu á chất lượng cao có nguồn gốc châu âu",
+          "Id": "item3",
+          "Image": "drawable/rice",
+          "Inventory": 50,
+          "Name": "Rice",
+          "Price": 15.8,
+          "Quantity": 2,
+          "Type": "pantry_staples",
+          "Unit": "Bao"
+        }
+      },
+      "root_tubers": {
+        "item1": {
+          "Description": "Khoai lang ruột đỏ Nhật Bản, ngọt tự nhiên, giàu beta-carotene và chất xơ.",
+          "Id": "item1",
+          "Image": "drawable/sweet_potato",
+          "Inventory": 80,
+          "Name": "Japanese Sweet Potato",
+          "Price": 18,
+          "Quantity": 0,
+          "Type": "root_tubers",
+          "Unit": "kg"
+        },
+        "item2": {
+          "Description": "Khoai tây Đà Lạt loại 1, củ to đều, thịt vàng, thích hợp làm khoai tây chiên và nghiền.",
+          "Id": "item2",
+          "Image": "drawable/dalat_potato",
+          "Inventory": 100,
+          "Name": "Dalat Potato",
+          "Price": 22,
+          "Quantity": 0,
+          "Type": "root_tubers",
+          "Unit": "kg"
+        },
+        "item3": {
+          "Description": "Củ dền đường tươi, có vị ngọt tự nhiên, giàu folate và nitrate, tốt cho tim mạch.",
+          "Id": "item3",
+          "Image": "drawable/beetroot",
+          "Inventory": 30,
+          "Name": "Fresh Beetroot",
+          "Price": 25,
+          "Quantity": 0,
+          "Type": "root_tubers",
+          "Unit": "kg"
+        }
+      },
+      "vegetables": {
+        "itemId10": {
+          "Description": "Rau muống không gốc tươi sạch, lá xanh mướt, thích hợp xao hoặc luộc.",
+          "Id": "itemId10",
+          "Image": "drawable/water_spinach",
+          "Inventory": 60,
+          "Name": "Water Spinach",
+          "Price": 8,
+          "Quantity": 0,
+          "Type": "vegetables",
+          "Unit": "kg"
+        },
+        "itemId3": {
+          "Description": "Cà rốt tươi, ngọt, giàu beta-carotene, vitamin A và các chất chống oxy hóa tốt cho mắt và hệ miễn dịch.",
+          "Id": "itemId3",
+          "Image": "drawable/carrot",
+          "Inventory": 20,
+          "Name": "Carrot",
+          "Price": 0.8,
+          "Quantity": 0,
+          "Type": "vegetables",
+          "Unit": "kg"
+        },
+        "itemId7": {
+          "Description": "Rau cải ngọt Đà Lạt tươi xanh, giòn ngọt, trồng theo tiêu chuẩn VietGAP.",
+          "Id": "itemId7",
+          "Image": "drawable/dalat_bok_choy",
+          "Inventory": 40,
+          "Name": "Dalat Bok Choy",
+          "Price": 12,
+          "Quantity": 0,
+          "Type": "vegetables",
+          "Unit": "kg"
+        },
+        "itemId8": {
+          "Description": "Cà chua bi bi cherry ngọt, màu đỏ tươi, thích hợp ăn tươi hoặc làm salad.",
+          "Id": "itemId8",
+          "Image": "drawable/cherry_tomato",
+          "Inventory": 35,
+          "Name": "Cherry Tomato",
+          "Price": 35,
+          "Quantity": 0,
+          "Type": "vegetables",
+          "Unit": "kg"
+        },
+        "itemId9": {
+          "Description": "Súp lơ xanh tươi Đà Lạt, bông to đều, giàu vitamin K và chất xơ.",
+          "Id": "itemId9",
+          "Image": "drawable/broccoli",
+          "Inventory": 25,
+          "Name": "Fresh Broccoli",
+          "Price": 40,
+          "Quantity": 0,
+          "Type": "vegetables",
+          "Unit": "kg"
+        }
+      }
+    },
+    "Coupons": {
+      "C001": {
+        "Id": "C001",
+        "couponType": "percentage",
+        "description": "Giảm 10% cho nước ép cam",
+        "discountValue": 10,
+        "endDate": "2025-06-25",
+        "productId": "beverages/item1",
+        "startDate": "2025-06-05"
+      },
+      "C002": {
+        "Id": "C002",
+        "couponType": "fixed",
+        "description": "Giảm 2 USD cho mỗi chai nước ép cam",
+        "discountValue": 2,
+        "endDate": "2025-06-30",
+        "productId": "beverages/item1",
+        "startDate": "2025-06-15"
+      },
+      "C003": {
+        "Id": "C003",
+        "couponType": "percentage",
+        "description": "Giảm 15% cho nước ép dâu",
+        "discountValue": 15,
+        "endDate": "2025-06-20",
+        "productId": "beverages/item2",
+        "startDate": "2025-06-06"
+      },
+      "C004": {
+        "Id": "C004",
+        "couponType": "fixed",
+        "description": "Giảm 3 USD cho mỗi chai nước ép táo",
+        "discountValue": 3,
+        "endDate": "2025-06-25",
+        "productId": "beverages/item3",
+        "startDate": "2025-06-06"
+      },
+      "C006": {
+        "Id": "C006",
+        "couponType": "fixed",
+        "description": "Giảm 1.5 USD cho mỗi ổ bánh mì Pháp",
+        "discountValue": 1.5,
+        "endDate": "2025-06-30",
+        "productId": "bread_bakery/item9",
+        "startDate": "2025-06-15"
+      },
+      "C007": {
+        "Id": "C007",
+        "couponType": "percentage",
+        "description": "Giảm 10% cho nước chấm BBQ",
+        "discountValue": 10,
+        "endDate": "2025-06-20",
+        "productId": "condiments_sauces/item1",
+        "startDate": "2025-06-10"
+      },
+      "C008": {
+        "Id": "C008",
+        "couponType": "fixed",
+        "description": "Giảm 2 USD cho mỗi chai ketchup",
+        "discountValue": 2,
+        "endDate": "2025-06-25",
+        "productId": "condiments_sauces/item2",
+        "startDate": "2025-06-12"
+      },
+      "C009": {
+        "Id": "C009",
+        "couponType": "percentage",
+        "description": "Giảm 15% cho trứng",
+        "discountValue": 15,
+        "endDate": "2025-06-14",
+        "productId": "dairy_eggs/item1",
+        "startDate": "2025-06-07"
+      },
+      "C010": {
+        "Id": "C010",
+        "couponType": "fixed",
+        "description": "Giảm 0.5 USD cho mỗi miếng phô mai",
+        "discountValue": 0.5,
+        "endDate": "2025-06-30",
+        "productId": "dairy_eggs/item2",
+        "startDate": "2025-06-15"
+      },
+      "C011": {
+        "Id": "C011",
+        "couponType": "percentage",
+        "description": "Giảm 10% cho bơ",
+        "discountValue": 10,
+        "endDate": "2025-06-20",
+        "productId": "dairy_eggs/item3",
+        "startDate": "2025-06-10"
+      },
+      "C012": {
+        "Id": "C012",
+        "couponType": "fixed",
+        "description": "Giảm 0.3 USD cho mỗi kg táo",
+        "discountValue": 0.3,
+        "endDate": "2025-06-15",
+        "productId": "fruits/itemId1",
+        "startDate": "2025-06-08"
+      },
+      "C013": {
+        "Id": "C013",
+        "couponType": "percentage",
+        "description": "Giảm 20% cho chuối",
+        "discountValue": 20,
+        "endDate": "2025-06-25",
+        "productId": "fruits/itemId2",
+        "startDate": "2025-06-12"
+      },
+      "C014": {
+        "Id": "C014",
+        "couponType": "fixed",
+        "description": "Giảm 0.8 USD cho mỗi con cá",
+        "discountValue": 0.8,
+        "endDate": "2025-06-20",
+        "productId": "pantry_staples/item1",
+        "startDate": "2025-06-10"
+      },
+      "C015": {
+        "Id": "C015",
+        "couponType": "percentage",
+        "description": "Giảm 15% cho tôm",
+        "discountValue": 15,
+        "endDate": "2025-06-30",
+        "productId": "pantry_staples/item2",
+        "startDate": "2025-06-15"
+      },
+      "C016": {
+        "Id": "C016",
+        "couponType": "fixed",
+        "description": "Giảm 3 USD cho mỗi bao gạo",
+        "discountValue": 3,
+        "endDate": "2025-06-14",
+        "productId": "pantry_staples/item3",
+        "startDate": "2025-06-07"
+      },
+      "C017": {
+        "Id": "C017",
+        "couponType": "percentage",
+        "description": "Giảm 25% cho cà rốt",
+        "discountValue": 25,
+        "endDate": "2025-06-15",
+        "productId": "vegetables/itemId3",
+        "startDate": "2025-06-08"
+      },
+      "C018": {
+        "Id": "C018",
+        "couponType": "percentage",
+        "description": "giảm giá 18% cho nước ép táo",
+        "discountValue": 18,
+        "endDate": "2025-06-30",
+        "productId": "beverages/item3",
+        "startDate": "2025-06-17"
+      }
+    },
+    "LikedItems": {
+      "userId1": {
+        "itemId2": {
+          "Image": "drawable/banana",
+          "Name": "Banana",
+          "Price": 0.5,
+          "Quantity": 1
+        }
+      }
+    },
+    "OrderBills": {
+      "-OQ-ywd4Kp6ak9CSG3FG": {
+        "items": {
+          "Apple": {
+            "image": "drawable/apple",
+            "productKey": "Apple",
+            "productName": "Apple",
+            "quantity": 3,
+            "salePrice": 1.5,
+            "unit": "kg"
+          }
+        },
+        "orderBillId": "-OQ-ywd4Kp6ak9CSG3FG",
+        "orderDate": 1746994446908,
+        "status": "PENDING",
+        "totalPrice": 4.5,
+        "userUId": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OQ0-HUqEVWMsJA1eE84": {
+        "items": {
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 5,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OQ0-HUqEVWMsJA1e84",
+        "orderDate": 1746994799143,
+        "status": "PENDING",
+        "totalPrice": 39.5,
+        "userUId": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OQ023ygCts-5FUeumy7": {
+        "items": {
+          "Cheese Borax": {
+            "image": "drawable/cheese_borax",
+            "productKey": "Cheese Borax",
+            "productName": "Cheese Borax",
+            "quantity": 4,
+            "salePrice": 1.55,
+            "unit": "cái"
+          },
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 3,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OQ023ygCts-5FUeumy7",
+        "orderDate": 1746995530217,
+        "status": "CANCELLED",
+        "totalPrice": 29.9,
+        "userUId": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OQ2jrQZwjcGnSsJXqHP": {
+        "items": {
+          "Cheese Borax": {
+            "image": "drawable/cheese_borax",
+            "productKey": "Cheese Borax",
+            "productName": "Cheese Borax",
+            "quantity": 3,
+            "salePrice": 1.55,
+            "unit": "cái"
+          },
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 3,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OQ2jrQZwjcGnSsJXqHP",
+        "orderDate": 1747040826029,
+        "status": "PAID",
+        "totalPrice": 28.35,
+        "userUId": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OQ86j_1RrN-oOpWNMA0": {
+        "items": {
+          "Cheese Borax": {
+            "image": "drawable/cheese_borax",
+            "productKey": "Cheese Borax",
+            "productName": "Cheese Borax",
+            "quantity": 7,
+            "salePrice": 1.55,
+            "unit": "cái"
+          },
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 4,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OQ86j_1RrN-oOpWNMA0",
+        "orderDate": 1747130970827,
+        "status": "PAID",
+        "totalPrice": 42.45,
+        "userUId": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OQhA_c-vyFCs3ibmqzz": {
+        "items": {
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 2,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OQhA_c-vyFCs3ibmqzz",
+        "orderDate": 1747735957508,
+        "status": "PAID",
+        "totalPrice": 15.8,
+        "userUId": "26bHh7NrRrUGs2g3xdqwBxRHZrH3"
+      },
+      "-OSshgiC4Z0KT16yuzoc": {
+        "items": {
+          "Cheese Borax": {
+            "image": "drawable/cheese_borax",
+            "productKey": "Cheese Borax",
+            "productName": "Cheese Borax",
+            "quantity": 1,
+            "salePrice": 1.55,
+            "unit": "cái"
+          }
+        },
+        "orderBillId": "-OSshgiC4Z0KT16yuzoc",
+        "orderDate": 1750076932078,
+        "status": "PAID",
+        "totalPrice": 1.55,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OSsloK_nYwzl9VNH9t-": {
+        "items": {
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 1,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OSsloK_nYwzl9VNH9t-",
+        "orderDate": 1750078013679,
+        "status": "PAID",
+        "totalPrice": 7.9,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OSvii_UoB7Ia343-JK-": {
+        "items": {
+          "Ketchup": {
+            "image": "drawable/ketchup",
+            "productKey": "Ketchup",
+            "productName": "Ketchup",
+            "quantity": 4,
+            "salePrice": 7.5,
+            "unit": "Chai"
+          }
+        },
+        "orderBillId": "-OSvii_UoB7Ia343-JK-",
+        "orderDate": 1750127534528,
+        "status": "PAID",
+        "totalPrice": 30,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OSvjSogxbzIbEfXy3bV": {
+        "items": {
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 1,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OSvjSogxbzIbEfXy3bV",
+        "orderDate": 1750127728015,
+        "status": "PAID",
+        "totalPrice": 7.9,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OSvsjYLEmsM1i7ldIpZ": {
+        "items": {
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 3,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OSvsjYLEmsM1i7ldIpZ",
+        "orderDate": 1750130159405,
+        "status": "CANCELLED",
+        "totalPrice": 23.7,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OSvstmCwDssdskXKDxo": {
+        "items": {
+          "Carrot": {
+            "image": "drawable/carrot",
+            "productKey": "Carrot",
+            "productName": "Carrot",
+            "quantity": 5,
+            "salePrice": 0.8,
+            "unit": "kg"
+          },
+          "Cheese Borax": {
+            "image": "drawable/cheese_borax",
+            "productKey": "Cheese Borax",
+            "productName": "Cheese Borax",
+            "quantity": 5,
+            "salePrice": 1.55,
+            "unit": "cái"
+          }
+        },
+        "orderBillId": "-OSvstmCwDssdskXKDxo",
+        "orderDate": 1750130201328,
+        "status": "CANCELLED",
+        "totalPrice": 11.75,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OSy-Ztx_0ukRgKzJZjp": {
+        "items": {
+          "BBQ Sauce": {
+            "image": "drawable/sauce",
+            "productKey": "BBQ Sauce",
+            "productName": "BBQ Sauce",
+            "quantity": 1,
+            "salePrice": 9.7,
+            "unit": "Chai"
+          },
+          "Ketchup": {
+            "image": "drawable/ketchup",
+            "productKey": "Ketchup",
+            "productName": "Ketchup",
+            "quantity": 1,
+            "salePrice": 7.5,
+            "unit": "Chai"
+          }
+        },
+        "orderBillId": "-OSy-Ztx_0ukRgKzJZjp",
+        "orderDate": 1750165770492,
+        "status": "PENDING",
+        "totalPrice": 17.2,
+        "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      },
+      "-OT9Xo6ZoMHWE0Ga9lkV": {
+        "items": {
+          "Orange Juice": {
+            "image": "drawable/orange_juice",
+            "productKey": "Orange Juice",
+            "productName": "Orange Juice",
+            "quantity": 4,
+            "salePrice": 7.9,
+            "unit": "chai"
+          },
+          "Strawberry Juice": {
+            "image": "drawable/strawberry_juice",
+            "productKey": "Strawberry Juice",
+            "productName": "Strawberry Juice",
+            "quantity": 4,
+            "salePrice": 7.9,
+            "unit": "chai"
+          }
+        },
+        "orderBillId": "-OT9Xo6ZoMHWE0Ga9lkV",
+        "orderDate": 1750376070452,
+        "status": "CANCELLED",
+        "totalPrice": 63.2,
+        "userUid": "WFg40oywDkbRK2acptDSt08RR5t2"
+      },
+      "orderBill1": {
+        "items": {
+          "orderBillItem1": {
+            "image": "drawable/orange_juice",
+            "productKey": "item1",
+            "productName": "Nước ép cam",
+            "quantity": 1,
+            "salePrice": 45000,
+            "unit": "Kg"
+          },
+          "orderBillItem2": {
+            "image": "drawable/strawberry_juice",
+            "productKey": "item2",
+            "productName": "Nước ép dâu",
+            "quantity": 1,
+            "salePrice": 35000,
+            "unit": "Kg"
+          }
+        },
+        "orderDate": 1715329878136,
+        "status": "PAID",
+        "totalPrice": 30000,
+        "userUId": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+      }
+    },
+    "Reviews": {
+      "beverages": {
+        "item1": {
+          "-NFjEf9h0ijkl": {
+            "comment": "Coca Cola luôn là đồ uống giải khát yêu thích của tôi.",
+            "rating": 4,
+            "timestamp": 1690434567890,
+            "userId": "26bHh7NrRrUGs2g3xdqwBxRHZrH3",
+            "userImage": "drawable/profile_placeholder",
+            "userName": "Huu Tri"
+          },
+          "-OPqGz3jPrreXfIqPL-C": {
+            "comment": "tggt",
+            "rating": 3.5,
+            "timestamp": 1746814889850,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hong Nguyen"
+          },
+          "-OPtei-rpN9deQgwEf5S": {
+            "comment": "tot",
+            "rating": 3,
+            "timestamp": 1746871695392,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hong Nguyen"
+          },
+          "-ORpkwihJTEBaGrQv4a3": {
+            "comment": "Sna",
+            "rating": 3.5,
+            "timestamp": 1748953712809,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hong Nguyen"
+          }
+        },
+        "item2": {
+          "-OPqNE5YLGZL5D-JezIi": {
+            "comment": "rfrfr",
+            "rating": 3,
+            "timestamp": 1746816528529,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hong Nguyen"
+          }
+        }
+      },
+      "bread_bakery": {
+        "item8": {
+          "-OPqFYNq_wn1hfM1Cq12": {
+            "comment": "tgtg",
+            "rating": 3,
+            "timestamp": 1746814514307,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hong Nguyen"
+          }
+        }
+      },
+      "condiments_sauces": {
+        "item1": {
+          "-OPyNkfrSzSQHsMRDLVE": {
+            "comment": "Het nuoc cham",
+            "rating": 5,
+            "timestamp": 1746950879186,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hongtrte Nguyenftr"
+          }
+        }
+      },
+      "fruits": {
+        "itemId1": {
+          "-NFjBbdEd3asd7": {
+            "comment": "Sản phẩm rất tươi và ngon, sẽ mua lại!",
+            "rating": 5,
+            "timestamp": 1690234567890,
+            "userId": "26bHh7NrRrUGs2g3xdqwBxRHZrH3",
+            "userImage": "drawable/profile_placeholder",
+            "userName": "Huu Tri"
+          },
+          "-NFjCca1234Ac": {
+            "comment": "Táo ngọt, giòn và rất tươi. Giao hàng hơi chậm.",
+            "rating": 4.5,
+            "timestamp": 1690134567890,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/profile_placeholder",
+            "userName": "Hong Nguyen"
+          },
+          "-OPtNEoRCSODm9dvc2Af": {
+            "comment": "do vl",
+            "rating": 1,
+            "timestamp": 1746866860184,
+            "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+            "userImage": "drawable/apple",
+            "userName": "Hong Nguyen"
+          }
+        },
+        "itemId2": {
+          "-NFjDe8a9bcde": {
+            "comment": "Chuối ngọt, chín vừa phải và rất tươi.",
+            "rating": 5,
+            "timestamp": 1690334567890,
+            "userId": "userId1",
+            "userImage": "drawable/profile_placeholder",
+            "userName": "Huu Tri"
+          }
+        }
+      }
+    },
+    "ShoppingCarts": {
+      "userId1": {
+        "itemId1": {
+          "Image": "drawable/apple",
+          "Name": "Apple",
+          "Price": 1.5,
+          "Quantity": 2
+        }
+      }
+    },
+    "SoldItems": {
+      "2025-05-29": {
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 12
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 5
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 15
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 10
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 7
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 6
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 20
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 18
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 13
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 22
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 25
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 9
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 11
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 8
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 16
+        }
+      },
+      "2025-05-30": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 10
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 15
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 7
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 12
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 8
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 9
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 8
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 25
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 20
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 15
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 28
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 30
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 12
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 14
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 10
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 18
+        }
+      },
+      "2025-05-31": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 13
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 18
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 9
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 14
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 11
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 8
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 7
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 22
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 19
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 12
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 26
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 28
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 11
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 13
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 9
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 20
+        }
+      },
+      "2025-06-01": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 20
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 25
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 15
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 18
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 14
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 12
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 11
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 30
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 25
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 18
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 35
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 38
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 16
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 19
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 15
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 25
+        }
+      },
+      "2025-06-02": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 15
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 20
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 12
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 16
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 13
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 10
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 9
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 28
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 23
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 16
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 32
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 35
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 14
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 17
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 13
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 22
+        }
+      },
+      "2025-06-03": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 17
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 22
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 14
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 19
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 15
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 11
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 10
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 26
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 21
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 17
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 30
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 33
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 15
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 18
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 14
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 23
+        }
+      },
+      "2025-06-04": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 12
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 16
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 10
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 15
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 12
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 8
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 7
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 24
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 20
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 14
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 28
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 31
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 13
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 16
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 12
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 21
+        }
+      },
+      "2025-06-05": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 16
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 21
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 13
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 17
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 14
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 9
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 8
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 27
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 22
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 15
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 31
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 34
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 12
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 15
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 11
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 24
+        }
+      },
+      "2025-06-06": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 19
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 24
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 16
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 20
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 17
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 13
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 12
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 29
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 24
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 19
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 33
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 36
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 17
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 20
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 16
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 26
+        }
+      },
+      "2025-06-07": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 22
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 27
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 18
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 23
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 19
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 15
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 14
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 32
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 27
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 21
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 36
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 39
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 19
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 22
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 18
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 28
+        }
+      },
+      "2025-06-08": {
+        "beverages-item1": {
+          "Id": "beverages/item1",
+          "Sales": 25
+        },
+        "beverages-item2": {
+          "Id": "beverages/item2",
+          "Sales": 30
+        },
+        "beverages-item3": {
+          "Id": "beverages/item3",
+          "Sales": 20
+        },
+        "bread_bakery-item8": {
+          "Id": "bread_bakery/item8",
+          "Sales": 25
+        },
+        "bread_bakery-item9": {
+          "Id": "bread_bakery/item9",
+          "Sales": 21
+        },
+        "condiments_sauces-item1": {
+          "Id": "condiments_sauces/item1",
+          "Sales": 17
+        },
+        "condiments_sauces-item2": {
+          "Id": "condiments_sauces/item2",
+          "Sales": 16
+        },
+        "dairy_eggs-item1": {
+          "Id": "dairy_eggs/item1",
+          "Sales": 35
+        },
+        "dairy_eggs-item2": {
+          "Id": "dairy_eggs/item2",
+          "Sales": 30
+        },
+        "dairy_eggs-item3": {
+          "Id": "dairy_eggs/item3",
+          "Sales": 23
+        },
+        "fruits-itemId1": {
+          "Id": "fruits/itemId1",
+          "Sales": 40
+        },
+        "fruits-itemId2": {
+          "Id": "fruits/itemId2",
+          "Sales": 42
+        },
+        "pantry_staples-item1": {
+          "Id": "pantry_staples/item1",
+          "Sales": 21
+        },
+        "pantry_staples-item2": {
+          "Id": "pantry_staples/item2",
+          "Sales": 24
+        },
+        "pantry_staples-item3": {
+          "Id": "pantry_staples/item3",
+          "Sales": 20
+        },
+        "vegetables-itemId3": {
+          "Id": "vegetables/itemId3",
+          "Sales": 30
+        }
+      }
+    },
+    "Users": {
+      "26bHh7NrRrUGs2g3xdqwBxRHZrH3": {
+        "Email": "2003buihuu@gmail.com",
+        "FirstName": "Huu",
+        "LastName": "Tri",
+        "LikedItems": {
+          "Apple": {
+            "Image": "drawable/apple",
+            "Name": "Apple",
+            "Price": 1.5,
+            "Quantity": 6
+          }
+        },
+        "Password": "Huutri26102003",
+        "PhoneNumber": "+972753343665",
+        "ShoppingCart": {
+          "Items": {
+            "Apple": {
+              "Image": "drawable/apple",
+              "Name": "Apple",
+              "Price": 1.5,
+              "Quantity": 6
+            }
+          },
+          "TotalPrice": 9
+        },
+        "address": "Vĩnh Long",
+        "avatar": "drawable/vegeta",
+        "likedItems": {
+          "Banana": {
+            "description": "Chuối tươi ngon, chín tự nhiên, giàu kali và chất xơ, là nguồn năng lượng lý tưởng trước khi tập thể dục.",
+            "image": "drawable/banana",
+            "name": "Banana",
+            "price": 0.5,
+            "quantity": 4,
+            "unit": "kg"
+          },
+          "Carrot": {
+            "description": "Cà rốt tươi, ngọt, giàu beta-carotene, vitamin A và các chất chống oxy hóa tốt cho mắt và hệ miễn dịch.",
+            "image": "drawable/carrot",
+            "name": "Carrot",
+            "price": 0.8,
+            "quantity": 4,
+            "unit": "kg"
+          },
+          "Cheese Borax": {
+            "description": "Bánh mì phô mai tươi ngon với vỏ bánh giòn, ruột mềm và đầy ắp phô mai béo ngậy bên trong.",
+            "image": "drawable/cheese_borax",
+            "name": "Cheese Borax",
+            "price": 1.55,
+            "quantity": 0,
+            "unit": "cái"
+          },
+          "Coca Cola": {
+            "description": "Nước giải khát có ga Coca-Cola với hương vị đặc trưng, mang đến cảm giác sảng khoái, giải nhiệt tức thì.",
+            "image": "drawable/coca_cola",
+            "name": "Coca Cola",
+            "price": 7.9,
+            "quantity": 0,
+            "unit": "chai"
+          },
+          "Cola Zero": {
+            "description": "Nước giải khát Coca-Cola Zero không đường, giúp giảm lượng calorie tiêu thụ nhưng vẫn giữ nguyên hương vị đặc trưng.",
+            "image": "drawable/coca_cola_zero",
+            "name": "Cola Zero",
+            "price": 7.9,
+            "quantity": 1,
+            "unit": "chai"
+          },
+          "French Baguette": {
+            "description": "Bánh mì Pháp truyền thống với vỏ bánh giòn tan và ruột mềm xốp, được nướng theo công thức đặc biệt.",
+            "image": "drawable/french_baguette",
+            "name": "French Baguette",
+            "price": 6.9,
+            "quantity": 9,
+            "unit": "ổ"
+          },
+          "Mineral Water": {
+            "description": "Nước khoáng tự nhiên, giàu khoáng chất có lợi cho sức khỏe, không chứa chất bảo quản.",
+            "image": "drawable/mineral_water",
+            "name": "Mineral Water",
+            "price": 11.9,
+            "quantity": 0,
+            "unit": "chai"
+          }
+        },
+        "orderBills": {
+          "-OQhA_c-vyFCs3ibmqzz": true
+        },
+        "role": "user",
+        "shoppingCart": {
+          "shoppingCart": {
+            "Orange Juice": {
+              "description": "Nước ép cam giải khát với hương vị đặc trưng, mang đến cảm giác sảng khoái, giải nhiệt tức thì.",
+              "id": "item1",
+              "image": "drawable/orange_juice",
+              "name": "Orange Juice",
+              "price": 7.9,
+              "quantity": 1,
+              "type": "beverages",
+              "unit": "chai"
+            }
+          },
+          "totalPrice": 7.9
+        }
+      },
+      "Px4XU7YP5YUH7VDsZMZl22txRGx1": {
+        "address": "97 Man Thien, Phuong Hiep Phu, Quan 9, TP HCM",
+        "avatar": "drawable/vegeta",
+        "email": "hongnguyen@gmail.com",
+        "firstName": "Hong",
+        "lastName": "Nguyen",
+        "likedItems": {
+          "Apple Juice": {
+            "description": "Nước ép táo tự nhiên, giàu khoáng chất có lợi cho sức khỏe, không chứa chất bảo quản.",
+            "image": "drawable/apple_juice",
+            "name": "Apple Juice",
+            "price": 11.9,
+            "quantity": 0,
+            "unit": "chai"
+          },
+          "BBQ Sauce": {
+            "description": "Hết nước chấm",
+            "id": "item1",
+            "image": "drawable/sauce",
+            "name": "BBQ Sauce",
+            "price": 9.7,
+            "quantity": 1,
+            "type": "condiments_sauces",
+            "unit": "Chai"
+          },
+          "Banana": {
+            "description": "Chuối tươi ngon, chín tự nhiên, giàu kali và chất xơ, là nguồn năng lượng lý tưởng trước khi tập thể dục.",
+            "image": "drawable/banana",
+            "name": "Banana",
+            "price": 0.5,
+            "quantity": 0,
+            "unit": "kg"
+          },
+          "Carrot": {
+            "description": "Cà rốt tươi, ngọt, giàu beta-carotene, vitamin A và các chất chống oxy hóa tốt cho mắt và hệ miễn dịch.",
+            "image": "drawable/carrot",
+            "name": "Carrot",
+            "price": 0.8,
+            "quantity": 5,
+            "unit": "kg"
+          },
+          "Cheese Borax": {
+            "description": "Bánh mì phô mai tươi ngon với vỏ bánh giòn, ruột mềm và đầy ắp phô mai béo ngậy bên trong.",
+            "image": "drawable/cheese_borax",
+            "name": "Cheese Borax",
+            "price": 1.55,
+            "quantity": 1,
+            "unit": "cái"
+          },
+          "Cola Zero": {
+            "description": "Nước giải khát Coca-Cola Zero không đường, giúp giảm lượng calorie tiêu thụ nhưng vẫn giữ nguyên hương vị đặc trưng.",
+            "image": "drawable/coca_cola_zero",
+            "name": "Cola Zero",
+            "price": 7.9,
+            "quantity": 0,
+            "unit": "chai"
+          },
+          "Ketchup": {
+            "description": "Ngon hết nước chấm",
+            "id": "item2",
+            "image": "drawable/ketchup",
+            "name": "Ketchup",
+            "price": 7.5,
+            "quantity": 1,
+            "type": "condiments_sauces",
+            "unit": "Chai"
+          },
+          "Mineral Water": {
+            "description": "Nước khoáng tự nhiên, giàu khoáng chất có lợi cho sức khỏe, không chứa chất bảo quản.",
+            "image": "drawable/mineral_water",
+            "name": "Mineral Water",
+            "price": 11.9,
+            "quantity": 2,
+            "unit": "chai"
+          },
+          "Orange Juice": {
+            "description": "Nước ép cam giải khát với hương vị đặc trưng, mang đến cảm giác sảng khoái, giải nhiệt tức thì.",
+            "image": "drawable/orange_juice",
+            "name": "Orange Juice",
+            "price": 7.9,
+            "quantity": 0,
+            "unit": "chai"
+          },
+          "Shrimp": {
+            "description": "Tôm tươi vãi ò",
+            "image": "drawable/shrimp",
+            "name": "Shrimp",
+            "price": 3.5,
+            "quantity": 0,
+            "unit": "Con"
+          },
+          "Strawberry Juice": {
+            "description": "Nước ép dâu giải khát không đường, giúp giảm lượng calorie tiêu thụ nhưng vẫn giữ nguyên hương vị đặc trưng.",
+            "image": "drawable/strawberry_juice",
+            "name": "Strawberry Juice",
+            "price": 7.9,
+            "quantity": 1,
+            "unit": "chai"
+          }
+        },
+        "orderBills": {
+          "-OQ-ywd4Kp6ak9CSG3FG": true,
+          "-OQ0-HUqEVWMsJA1eE84": true,
+          "-OQ023ygCts-5FUeumy7": true,
+          "-OQ2jrQZwjcGnSsJXqHP": true,
+          "-OQ86j_1RrN-oOpWNMA0": true,
+          "-OSsloK_nYwzl9VNH9t-": true,
+          "-OSvii_UoB7Ia343-JK-": true,
+          "-OSvjSogxbzIbEfXy3bV": true,
+          "-OSvq6iJ8FKrSOh8kpjg": true,
+          "-OSvsjYLEmsM1i7ldIpZ": true,
+          "-OSvstmCwDssdskXKDxo": true,
+          "-OSy-Ztx_0ukRgKzJZjp": true
+        },
+        "password": "123456",
+        "phoneNumber": "+97204939489",
+        "role": "user",
+        "shoppingCart": {
+          "totalPrice": 0
+        }
+      },
+      "WFg40oywDkbRK2acptDSt08RR5t2": {
+        "address": "dsdfd",
+        "admin": false,
+        "email": "n21dcat058@gmail.com",
+        "firstName": "Bui",
+        "lastName": "Huuuu",
+        "likedItems": {
+          "Orange Juice": {
+            "description": "Nước ép cam giải khát với hương vị đặc trưng, mang đến cảm giác sảng khoái, giải nhiệt tức thì.",
+            "id": "item1",
+            "image": "drawable/orange_juice",
+            "name": "Orange Juice",
+            "price": 7.9,
+            "quantity": 4,
+            "type": "beverages",
+            "unit": "chai"
+          }
+        },
+        "orderBills": {
+          "-OT9Xo6ZoMHWE0Ga9lkV": true
+        },
+        "password": "Huutri26102003.",
+        "phoneNumber": "+97207659507055",
+        "role": "user",
+        "shoppingCart": {
+          "totalPrice": 0
+        },
+        "user": true
+      },
+      "haha": {
+        "Email": "huutribuii@gmail.com",
+        "FirstName": "Huu",
+        "LastName": "Trí",
+        "LikedItems": "",
+        "Password": "huutri",
+        "ShoppingCart": "",
+        "address": "Ho Chi Minh",
+        "role": "admin"
+      },
+      "k": {
+        "Email": "baTrung@gmail.com",
+        "FirstName": "Nguyen",
+        "LastName": "Bá Trung",
+        "Password": 123456,
+        "PhoneNumber": "0346738920",
+        "address": "Thành phố Thủ Đức, TP. HCM",
+        "avatar": "drawble/whis",
+        "role": "user"
+      },
+      "rxb6qOq7UkPvfdaYRW5H2gdaUWg1": {
+        "addrerss": "TP Hồ Chí Minh",
+        "avatar": "drawable/vegeta",
+        "email": "haha@gmail.com",
+        "firstName": "Quoc",
+        "lastName": "Toan",
+        "likedItems": {
+          "Apple": {
+            "description": "Táo tươi nhập khẩu, giòn ngọt, giàu vitamin và chất xơ, tốt cho sức khỏe và hệ tiêu hóa.",
+            "image": "drawable/apple",
+            "name": "Apple",
+            "price": 1.5,
+            "quantity": 0,
+            "unit": "kg"
+          },
+          "Banana": {
+            "description": "Chuối tươi ngon, chín tự nhiên, giàu kali và chất xơ, là nguồn năng lượng lý tưởng trước khi tập thể dục.",
+            "image": "drawable/banana",
+            "name": "Banana",
+            "price": 0.5,
+            "quantity": 4,
+            "unit": "kg"
+          },
+          "Carrot": {
+            "description": "Cà rốt tươi, ngọt, giàu beta-carotene, vitamin A và các chất chống oxy hóa tốt cho mắt và hệ miễn dịch.",
+            "image": "drawable/carrot",
+            "name": "Carrot",
+            "price": 0.8,
+            "quantity": 4,
+            "unit": "kg"
+          },
+          "Cheese Borax": {
+            "description": "Bánh mì phô mai tươi ngon với vỏ bánh giòn, ruột mềm và đầy ắp phô mai béo ngậy bên trong.",
+            "image": "drawable/cheese_borax",
+            "name": "Cheese Borax",
+            "price": 1.55,
+            "quantity": 0,
+            "unit": "cái"
+          },
+          "Cola Zero": {
+            "description": "Nước giải khát Coca-Cola Zero không đường, giúp giảm lượng calorie tiêu thụ nhưng vẫn giữ nguyên hương vị đặc trưng.",
+            "image": "drawable/coca_cola_zero",
+            "name": "Cola Zero",
+            "price": 7.9,
+            "quantity": 1,
+            "unit": "chai"
+          },
+          "French Baguette": {
+            "description": "Bánh mì Pháp truyền thống với vỏ bánh giòn tan và ruột mềm xốp, được nướng theo công thức đặc biệt.",
+            "image": "drawable/french_baguette",
+            "name": "French Baguette",
+            "price": 6.9,
+            "quantity": 9,
+            "unit": "ổ"
+          },
+          "Mineral Water": {
+            "description": "Nước khoáng tự nhiên, giàu khoáng chất có lợi cho sức khỏe, không chứa chất bảo quản.",
+            "image": "drawable/mineral_water",
+            "name": "Mineral Water",
+            "price": 11.9,
+            "quantity": 6,
+            "unit": "chai"
+          }
+        },
+        "password": "Huutri26102003",
+        "phoneNumber": "+972765959063",
+        "role": "user"
+      },
+      "userId1": {
+        "Email": "hannguyenlvm@gmail.com",
+        "FirstName": "Huu",
+        "LastName": "Tri",
+        "Password": "Huutri26102003",
+        "PhoneNumber": "123456789",
+        "address": "Hà Nội",
+        "avatar": "drawable/vegeta",
+        "role": "user"
+      },
+      "userId2": {
+        "Email": "jane.smith@example.com",
+        "FirstName": "Jane",
+        "LastName": "Smith",
+        "Password": "hashed_password",
+        "PhoneNumber": "987654321",
+        "address": "Đà Nẵng",
+        "avatar": "drawable/vegeta",
+        "role": "user"
+      }
+    }
+  },
+  "OrderBills": {
+    "-OS9IMXI3QBsj3D-rEK_": {
+      "items": {
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 1,
+          "salePrice": 7.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OS9IMXI3QBsj3D-rEK_",
+      "orderDate": 1749298280331,
+      "status": "PAID",
+      "totalPrice": 7.9,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OS9LEidnsIzwfMjvixK": {
+      "items": {
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 3,
+          "salePrice": 7.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OS9LEidnsIzwfMjvixK",
+      "orderDate": 1749299034445,
+      "status": "PAID",
+      "totalPrice": 23.7,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OS9OaXerSAw1LCD3NGD": {
+      "items": {
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 1,
+          "salePrice": 4.664871,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OS9OaXerSAw1LCD3NGD",
+      "orderDate": 1749299911877,
+      "status": "PAID",
+      "totalPrice": 7.9,
+      "userUid": "26bHh7NrRrUGs2g3xdqwBxRHZrH3"
+    },
+    "-OS9m5sgalZyd4wGcRVZ": {
+      "items": {
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 1,
+          "salePrice": 6.399,
+          "unit": "chai"
+        },
+        "Strawberry Juice": {
+          "image": "drawable/strawberry_juice",
+          "productKey": "Strawberry Juice",
+          "productName": "Strawberry Juice",
+          "quantity": 1,
+          "salePrice": 6.715,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OS9m5sgalZyd4wGcRVZ",
+      "orderDate": 1749306335050,
+      "status": "PAID",
+      "totalPrice": 13.12,
+      "userUid": "26bHh7NrRrUGs2g3xdqwBxRHZrH3"
+    },
+    "-OSF1U-dF_hUKZWLOT1C": {
+      "items": {
+        "Ketchup": {
+          "image": "drawable/ketchup",
+          "productKey": "Ketchup",
+          "productName": "Ketchup",
+          "quantity": 1,
+          "salePrice": 7.5,
+          "unit": "Chai"
+        },
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 1,
+          "salePrice": 7.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OSF1U-dF_hUKZWLOT1C",
+      "orderDate": 1749394517659,
+      "status": "PAID",
+      "totalPrice": 15.4,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSYFv8QoSA3js1LYijW": {
+      "items": {
+        "Cheese Borax": {
+          "image": "drawable/cheese_borax",
+          "productKey": "Cheese Borax",
+          "productName": "Cheese Borax",
+          "quantity": 1,
+          "salePrice": 1.55,
+          "unit": "cái"
+        },
+        "French Baguette": {
+          "image": "drawable/french_baguette",
+          "productKey": "French Baguette",
+          "productName": "French Baguette",
+          "quantity": 1,
+          "salePrice": 6.9,
+          "unit": "ổ"
+        }
+      },
+      "orderBillId": "-OSYFv8QoSA3js1LYijW",
+      "orderDate": 1749717072812,
+      "status": "PAID",
+      "totalPrice": 8.45,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSia53sNU4SRnouxztv": {
+      "items": {
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 3,
+          "salePrice": 7.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OSia53sNU4SRnouxztv",
+      "orderDate": 1749907169940,
+      "status": "PAID",
+      "totalPrice": 23.7,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSodhdokG_lH3R8xjSR": {
+      "items": {
+        "Mineral Water": {
+          "image": "drawable/mineral_water",
+          "productKey": "Mineral Water",
+          "productName": "Mineral Water",
+          "quantity": 2,
+          "salePrice": 11.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OSodhdokG_lH3R8xjSR",
+      "orderDate": 1750008778752,
+      "status": "PAID",
+      "totalPrice": 23.8,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSodr5CIR11NoGuGSp7": {
+      "items": {
+        "Cheese Borax": {
+          "image": "drawable/cheese_borax",
+          "productKey": "Cheese Borax",
+          "productName": "Cheese Borax",
+          "quantity": 4,
+          "salePrice": 1.55,
+          "unit": "cái"
+        }
+      },
+      "orderBillId": "-OSodr5CIR11NoGuGSp7",
+      "orderDate": 1750008817437,
+      "status": "PAID",
+      "totalPrice": 6.2,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSoeCEzAUqe4u8CGUcv": {
+      "items": {
+        "Cheese Borax": {
+          "image": "drawable/cheese_borax",
+          "productKey": "Cheese Borax",
+          "productName": "Cheese Borax",
+          "quantity": 3,
+          "salePrice": 1.55,
+          "unit": "cái"
+        },
+        "Orange Juice": {
+          "image": "drawable/orange_juice",
+          "productKey": "Orange Juice",
+          "productName": "Orange Juice",
+          "quantity": 4,
+          "salePrice": 7.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OSoeCEzAUqe4u8CGUcv",
+      "orderDate": 1750008908175,
+      "status": "PAID",
+      "totalPrice": 36.25,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSqJhNm32uz4CriBn_Y": {
+      "items": {
+        "Fish": {
+          "image": "drawable/fish",
+          "productKey": "Fish",
+          "productName": "Fish",
+          "quantity": 1,
+          "salePrice": 3,
+          "unit": "Con"
+        },
+        "Rice": {
+          "image": "drawable/rice",
+          "productKey": "Rice",
+          "productName": "Rice",
+          "quantity": 1,
+          "salePrice": 15.8,
+          "unit": "Bao"
+        }
+      },
+      "orderBillId": "-OSqJhNm32uz4CriBn_Y",
+      "orderDate": 1750036830095,
+      "status": "PAID",
+      "totalPrice": 18.8,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSqLCiDvvm_UqiMy9kb": {
+      "items": {
+        "BBQ Sauce": {
+          "image": "drawable/sauce",
+          "productKey": "BBQ Sauce",
+          "productName": "BBQ Sauce",
+          "quantity": 2,
+          "salePrice": 9.7,
+          "unit": "Chai"
+        },
+        "Ketchup": {
+          "image": "drawable/ketchup",
+          "productKey": "Ketchup",
+          "productName": "Ketchup",
+          "quantity": 1,
+          "salePrice": 7.5,
+          "unit": "Chai"
+        }
+      },
+      "orderBillId": "-OSqLCiDvvm_UqiMy9kb",
+      "orderDate": 1750037224684,
+      "status": "PAID",
+      "totalPrice": 26.9,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSr4NPYr5IBZOreGTd5": {
+      "items": {
+        "Strawberry Juice": {
+          "image": "drawable/strawberry_juice",
+          "productKey": "Strawberry Juice",
+          "productName": "Strawberry Juice",
+          "quantity": 1,
+          "salePrice": 7.9,
+          "unit": "chai"
+        }
+      },
+      "orderBillId": "-OSr4NPYr5IBZOreGTd5",
+      "orderDate": 1750049587312,
+      "status": "PAID",
+      "totalPrice": 7.9,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSrA-QO_jYtXJhCMEJ7": {
+      "items": {
+        "Ketchup": {
+          "image": "drawable/ketchup",
+          "productKey": "Ketchup",
+          "productName": "Ketchup",
+          "quantity": 2,
+          "salePrice": 7.5,
+          "unit": "Chai"
+        }
+      },
+      "orderBillId": "-OSrA-QO_jYtXJhCMEJ7",
+      "orderDate": 1750051063004,
+      "status": "PAID",
+      "totalPrice": 15,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSs-Z_PjZnlDGN_BhKH": {
+      "items": {
+        "Egg": {
+          "image": "drawable/egg",
+          "productKey": "Egg",
+          "productName": "Egg",
+          "quantity": 1,
+          "salePrice": 5,
+          "unit": "cái"
+        }
+      },
+      "orderBillId": "-OSs-Z_PjZnlDGN_BhKH",
+      "orderDate": 1750065103093,
+      "status": "PAID",
+      "totalPrice": 5,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    },
+    "-OSxzZ8Tjvad6lOqq74E": {
+      "items": {
+        "Cheese Borax": {
+          "image": "drawable/cheese_borax",
+          "productKey": "Cheese Borax",
+          "productName": "Cheese Borax",
+          "quantity": 1,
+          "salePrice": 1.55,
+          "unit": "cái"
+        }
+      },
+      "orderBillId": "-OSxzZ8Tjvad6lOqq74E",
+      "orderDate": 1750165505248,
+      "status": "PAID",
+      "totalPrice": 1.55,
+      "userUid": "Px4XU7YP5YUH7VDsZMZl22txRGx1"
+    }
+  },
+  "Reviews": {
+    "beverages": {
+      "item1": {
+        "-OSvol-izYAXx1-NoN_X": {
+          "comment": "sf",
+          "rating": 3,
+          "timestamp": 1750129113492,
+          "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+          "userImage": "drawable/apple",
+          "userName": "Người dùng"
+        }
+      }
+    },
+    "fruits": {
+      "itemId1": {
+        "-OSvsgzLdIf4SV6LrP3x": {
+          "comment": "qua ngon",
+          "rating": 5,
+          "timestamp": 1750130148920,
+          "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+          "userImage": "drawable/apple",
+          "userName": "Hong Nguyennn"
+        }
+      }
+    },
+    "vegetables": {
+      "itemId3": {
+        "-OSvqkTKSPCv9BqN_I-P": {
+          "comment": "dsdsds",
+          "rating": 2,
+          "timestamp": 1750129635540,
+          "userId": "Px4XU7YP5YUH7VDsZMZl22txRGx1",
+          "userImage": "drawable/apple",
+          "userName": "Hong Nguyennn"
+        }
+      }
+    }
+  },
+  "Users": {
+    "26bHh7NrRrUGs2g3xdqwBxRHZrH3": {
+      "orderBills": {
+        "-OS9OaXerSAw1LCD3NGD": true,
+        "-OS9m5sgalZyd4wGcRVZ": true
+      }
+    },
+    "Px4XU7YP5YUH7VDsZMZl22txRGx1": {
+      "orderBills": {
+        "-OS9IMXI3QBsj3D-rEK_": true,
+        "-OS9LEidnsIzwfMjvixK": true,
+        "-OSF1U-dF_hUKZWLOT1C": true,
+        "-OSYFv8QoSA3js1LYijW": true,
+        "-OSia53sNU4SRnouxztv": true,
+        "-OSodhdokG_lH3R8xjSR": true,
+        "-OSodr5CIR11NoGuGSp7": true,
+        "-OSoeCEzAUqe4u8CGUcv": true,
+        "-OSqJhNm32uz4CriBn_Y": true,
+        "-OSqLCiDvvm_UqiMy9kb": true,
+        "-OSr4NPYr5IBZOreGTd5": true,
+        "-OSrA-QO_jYtXJhCMEJ7": true,
+        "-OSs-Z_PjZnlDGN_BhKH": true,
+        "-OSshgiC4Z0KT16yuzoc": true,
+        "-OSxzZ8Tjvad6lOqq74E": true
+      },
+      "password": "Huutri26102003"
+    }
+  }
+}

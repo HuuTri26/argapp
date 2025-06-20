@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
-    android:layout_margin="8dp"
-    android:padding="15dp">
+    android:layout_margin="4dp"
+    android:padding="8dp">
 
+    <!-- Item name - unchanged -->
     <TextView
         android:id="@+id/itemName"
         android:layout_width="0dp"
@@ -22,17 +23,19 @@
         android:text="@string/item_name"
         android:textAlignment="center"
         android:textColor="#333333"
-        android:textSize="16sp"
+        android:textSize="10sp"
         android:maxLines="2"
         android:ellipsize="end"
         app:layout_constraintEnd_toEndOf="@+id/materialCardView4"
         app:layout_constraintStart_toStartOf="@+id/materialCardView4"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Image card - unchanged -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView4"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
         android:elevation="8dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
@@ -43,13 +46,42 @@
 
         <ImageView
             android:id="@+id/itemImage"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:scaleType="centerCrop"
+            android:padding="10dp"
+            android:scaleType="centerInside"
             android:src="@drawable/banana" />
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- Price label - moved below image -->
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/montserratbold"
+        android:text="Price: "
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@+id/materialCardView4"
+        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+
+    <!-- Price value - moved next to price label -->
+    <TextView
+        android:id="@+id/itemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserratbold"
+        android:text="@string/item_price"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2" />
+
+    <!-- Like button - moved below price -->
     <ImageButton
         android:id="@+id/likeButton"
         android:layout_width="32dp"
@@ -60,8 +92,10 @@
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/materialCardView4"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <!-- Cart button - aligned with like button -->
     <ImageButton
         android:id="@+id/addToCartButton"
         android:layout_width="32dp"
@@ -70,36 +104,7 @@
         android:scaleType="fitCenter"
         android:src="@drawable/blank_shopping_cart"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/likeButton"
         app:layout_constraintStart_toEndOf="@+id/likeButton"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/montserratbold"
-        android:text="Price: "
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/addToCartButton"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
-
-    <TextView
-        android:id="@+id/itemPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserratbold"
-        android:text="@string/item_price"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+        app:layout_constraintTop_toTopOf="@+id/likeButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

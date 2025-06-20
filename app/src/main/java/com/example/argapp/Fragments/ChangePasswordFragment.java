@@ -187,7 +187,7 @@ public class ChangePasswordFragment extends Fragment {
                     if (updateTask.isSuccessful()) {
                         // Sau khi cập nhật thành công thì lưu mật khẩu mới vào Realtime Database
                         String uid = user.getUid();
-                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+                        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Data/Users").child(uid);
                         userRef.child("password").setValue(newPwd); // không nên lưu plain-text thực tế!
 
                         Toast.makeText(getContext(), "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();

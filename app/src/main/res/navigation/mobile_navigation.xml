@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_admin_dashboard">
+
+    <fragment
+        android:id="@+id/nav_admin_dashboard"
+        android:name="com.example.argapp.Fragments.Admin.AdminDashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_admin_dashboard" />
+
+    <fragment
+        android:id="@+id/nav_admin_users"
+        android:name="com.example.argapp.Fragments.Admin.AdminUsersFragment"
+        android:label="Users"
+        tools:layout="@layout/fragment_admin_users" />
+
+    <fragment
+        android:id="@+id/nav_admin_orders"
+        android:name="com.example.argapp.Fragments.Admin.AdminOrdersFragment"
+        android:label="Orders"
+        tools:layout="@layout/fragment_admin_orders" />
+
+    <fragment
+        android:id="@+id/nav_admin_items"
+        android:name="com.example.argapp.Fragments.Admin.AdminItemsFragment"
+        android:label="Items"
+        tools:layout="@layout/fragment_admin_items" />
+
+    <fragment
+        android:id="@+id/nav_admin_reviews"
+        android:name="com.example.argapp.Fragments.Admin.AdminReviewsFragment"
+        android:label="Reviews"
+        tools:layout="@layout/fragment_admin_reviews" />
+
+    <fragment
+        android:id="@+id/nav_admin_coupons"
+        android:name="com.example.argapp.Fragments.Admin.AdminCouponsFragment"
+        android:label="Coupons"
+        tools:layout="@layout/fragment_admin_coupons" />
+</navigation>

@@ -125,7 +125,6 @@ public class OrderHistoryFragment extends Fragment implements OrderBillAdapter.O
         Navigation.findNavController(view).navigate(R.id.action_orderBillHistory_to_orderDetailFragment, args);
     }
 
-    @Override
     public void onCancelOrderClick(OrderBill orderBill, int position) {
         // Kiểm tra trạng thái đơn hàng
         if (!"PENDING".equals(orderBill.getStatus())) {
@@ -134,14 +133,22 @@ public class OrderHistoryFragment extends Fragment implements OrderBillAdapter.O
         }
 
         // Hiển thị dialog xác nhận hủy đơn hàng
-        new AlertDialog.Builder(getContext())
+        AlertDialog dialog = new AlertDialog.Builder(getContext())
                 .setTitle("Xác nhận hủy đơn hàng")
                 .setMessage("Bạn có chắc chắn muốn hủy đơn hàng #" + orderBill.getOrderBillId() + " không?")
-                .setPositiveButton("Hủy đơn hàng", (dialog, which) -> {
+                .setPositiveButton("Hủy đơn hàng", (d, which) -> {
                     cancelOrder(orderBill, position);
                 })
                 .setNegativeButton("Không", null)
-                .show();
+                .create();
+
+        dialog.show();
+
+        // Đặt màu cho các nút
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE)
+                .setTextColor(android.graphics.Color.parseColor("#4CAF50")); // Màu xanh lá cây
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE)
+                .setTextColor(android.graphics.Color.parseColor("#F44336")); // Màu đỏ
     }
 
     private void cancelOrder(OrderBill orderBill, int position) {

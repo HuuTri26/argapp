@@ -25,4 +25,8 @@
     <string name="menu_search">Search</string>
     <string name="menu_account">Profile</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation Header</string>
+
 </resources>

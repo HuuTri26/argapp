@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_review_user_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Người đánh giá: "
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <RatingBar
+        android:id="@+id/rating_bar_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:rating="5"
+        android:stepSize="0.5"
+        android:isIndicator="true"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tv_review_date_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ngày đánh giá: "
+        android:textSize="14sp"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nội dung:"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tv_review_comment_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nội dung đánh giá"
+        android:textSize="14sp" />
+
+</LinearLayout>

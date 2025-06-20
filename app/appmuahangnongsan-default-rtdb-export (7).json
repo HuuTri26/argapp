@@ -1877,6 +1877,7 @@
         "Email": "2003buihuu@gmail.com",
         "FirstName": "Huu",
         "LastName": "Tri",
+        "role":"user",
         "LikedItems": {
           "Apple": {
             "Image": "drawable/apple",
@@ -1983,6 +1984,7 @@
         "email": "hongnguyen@gmail.com",
         "firstName": "Hong",
         "lastName": "Nguyen",
+         "role":"user",
         "likedItems": {
           "Apple Juice": {
             "description": "Nước ép táo tự nhiên, giàu khoáng chất có lợi cho sức khỏe, không chứa chất bảo quản.",
@@ -2101,6 +2103,7 @@
         "Email": "huutribuii@gmail.com",
         "FirstName": "Huu",
         "LastName": "Trí",
+        "role":"admin",
         "LikedItems": "",
         "Password": "huutri",
         "ShoppingCart": "",
@@ -2110,6 +2113,7 @@
         "Email": "baTrung@gmail.com",
         "FirstName": "Nguyen",
         "LastName": "Bá Trung",
+        "role":"user",
         "Password": 123456,
         "PhoneNumber": "0346738920",
         "address": "Thành phố Thủ Đức, TP. HCM",
@@ -2121,6 +2125,7 @@
         "email": "haha@gmail.com",
         "firstName": "Quoc",
         "lastName": "Toan",
+           "role":"user",
         "likedItems": {
           "Apple": {
             "description": "Táo tươi nhập khẩu, giòn ngọt, giàu vitamin và chất xơ, tốt cho sức khỏe và hệ tiêu hóa.",
@@ -2186,6 +2191,7 @@
         "Email": "hannguyenlvm@gmail.com",
         "FirstName": "Huu",
         "LastName": "Tri",
+           "role":"user",
         "Password": "Huutri26102003",
         "PhoneNumber": "123456789",
         "address": "Hà Nội",
@@ -2195,6 +2201,7 @@
         "Email": "jane.smith@example.com",
         "FirstName": "Jane",
         "LastName": "Smith",
+           "role":"user",
         "Password": "hashed_password",
         "PhoneNumber": "987654321",
         "address": "Đà Nẵng",
