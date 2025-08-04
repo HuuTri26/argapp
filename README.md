@@ -69,18 +69,18 @@ Implements order processing and payment mechanisms with security checks, ensurin
 1. 
    Clone the repository to your local machine: git clone https://github.com/HuuTri26/argapp.git
 
-  2. 1.
+2.
    Open the project with Android Studio
-3. 2.
+3.
    Sync Gradle and install dependencies
-4. 3.
+4.
    Connect with Firebase:
    
    - Create a new Firebase project
    - Add Android application to Firebase project
    - Download google-services.json file and place it in the app/ directory
    - Enable Firebase Authentication and Realtime Database
-5. 4.
+5.
    Run the application on a real device or emulator
 ## Development Prospects
 - Integrate online payment systems
@@ -91,15 +91,15 @@ Implements order processing and payment mechanisms with security checks, ensurin
 ## Contribution
 We always welcome contributions from the community. If you want to contribute, please:
 
-1. 1.
+1. 
    Fork the project
-2. 2.
+2. 
    Create a feature branch ( git checkout -b feature/amazing-feature )
-3. 3.
+3. 
    Commit your changes ( git commit -m 'Add some amazing feature' )
-4. 4.
+4.
    Push to the branch ( git push origin feature/amazing-feature )
-5. 5.
+5. 
    Open a Pull Request
 
 
